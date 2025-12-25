@@ -1,25 +1,23 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
-from django.contrib.auth.models import User
-from django.http import JsonResponse
-from django.utils import timezone
-from openai import api_key
-
 from .models import *
-from .forms import DocumentForm, VideoLessonForm, TestFileUploadForm, TestForm, SubjectForm, TestCreateForm
+from users.models import UserProfile
+from .forms import DocumentForm, VideoLessonForm, TestFileUploadForm, SubjectForm, TestCreateForm
 import matplotlib.pyplot as plt
 import io
 import base64
-import json
-import time
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
-from users.models import UserProfile
 from django.conf import settings
-import os
-
+from .utils import update_user_difficulty_level  # Bu yerda import qilamiz
+from matplotlib.patches import Patch
+import json
+import requests
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt, csrf_protect, ensure_csrf_cookie
+import logging
 
 
 def home(request):
@@ -103,12 +101,7 @@ def home(request):
 
     # 3. Grafik yaratish - IKKALA DIAGRAMMA HAM DUMALOQ
     if subject_materials:
-        import matplotlib
-        matplotlib.use('Agg')
-        import matplotlib.pyplot as plt
-        import io
-        import base64
-        import numpy as np
+
 
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 7))
 
@@ -194,7 +187,6 @@ def home(request):
                 ax2.text(0, -0.15, f'{len(user_subjects)} fan', ha='center', va='center', fontsize=9)
 
                 # Legend
-                from matplotlib.patches import Patch
                 legend_elements = [
                     Patch(facecolor='#4CAF50', label='Yaxshi (80-100%)'),
                     Patch(facecolor='#FFC107', label='O\'rtacha (60-79%)'),
@@ -316,12 +308,7 @@ def add_video(request):
 
 # -------------------- AI YORDAMCHI --------------------
 # views.py - CSRF va localization bilan ishlaydigan versiya
-import json
-import requests
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt, csrf_protect, ensure_csrf_cookie
-from django.shortcuts import render
-import logging
+
 
 logger = logging.getLogger(__name__)
 
@@ -363,12 +350,17 @@ def ai_chat(request):
                 "messages": [
                     {
                         "role": "system",
-                        "content": """Siz foydali IT va dasturlash yordamchisisiz. 
-                        Javoblaringiz aniq, tushunarli va amaliy bo'lsin.
-                        O'zbek tilida javob bering.
-                        Agar kod namunalari kerak bo'lsa, to'liq va izohli kod yozing.
-                        Murojaat qilishda "siz" deb murojaat qiling."""
-                    },
+                        "content": f"""
+                            Siz foydali IT va dasturlash yordamchisisiz.
+                            Javoblaringiz aniq, tushunarli va amaliy bo'lsin.
+                            
+                            Javob tili: {LANGUAGE_CODE}
+                            Faqat shu tilda javob bering.
+                            
+                            Agar kod namunalari kerak bo'lsa, to'liq va izohli kod yozing.
+                            Murojaat qilishda "siz" deb murojaat qiling.
+                            """
+                        },
                     {"role": "user", "content": user_message}
                 ],
                 "max_tokens": 500,
@@ -422,45 +414,6 @@ def ai_chat(request):
     print("📄 GET so'rovi keldi, HTML sahifa yuborilmoqda...")
     return render(request, 'app1/ai_chat.html')
 
-
-# def get_offline_response(message):
-#     """Offline rejimda javob berish"""
-#     message_lower = message.lower().strip()
-#
-#     responses = {
-#         'salom': 'Salom! Dasturlash haqida qanday savolingiz bor? Men sizga yordam berishdan xursandman! 🚀',
-#         'python': 'Python - kuchli va oson dasturlash tili. Web, AI, data analysis uchun ajoyib.',
-#         'django': 'Django - Python uchun mukammal web framework. Tez va xavfsiz ilovalar yaratish uchun.',
-#         'html': 'HTML - web sahifalar strukturasi. <h1> sarlavha, <p> paragraf kabi teglar.',
-#         'css': 'CSS - web dizayn. Ranglar, shriftlar, joylashuvni boshqarish.',
-#         'javascript': 'JavaScript - web interaktivligi. Brauzerda ishlaydigan dasturlash tili.',
-#         'java': 'Java - kuchli va platformadan mustaqil til. Mobil va korporativ dasturlar.',
-#         'sql': 'SQL - ma\'lumotlar bazasi so\'rovlari. SELECT, INSERT, UPDATE, DELETE.',
-#         'yordam': 'Python, Django, Web, SQL haqida yordam bera olaman. Qaysi mavzu?',
-#         'rahmat': 'Rahmat! Yana savollaringiz bo\'lsa, so\'rang. 😊',
-#         'salom': 'Salom! Qanday yordam bera olishim mumkin? 🚀',
-#         'dasturlash': 'Dasturlash - bu kompyuterga topshiriqlarni bajarishni o\'rgatish. Python bilan boshlash tavsiya etiladi!',
-#     }
-#
-#     # To'g'ridan-to'g'ri mos kelish
-#     if message_lower in responses:
-#         return responses[message_lower]
-#
-#     # Kalit so'zlarni qidirish
-#     for key in responses:
-#         if key in message_lower:
-#             return responses[key]
-#
-#     # Standart javob
-#     return '''💡 **Men sizga quyidagi mavzularda yordam bera olaman:**
-#
-# • **Python** - dasturlash asoslari
-# • **Django** - web ilovalar
-# • **Web** - HTML, CSS, JavaScript
-# • **SQL** - ma\'lumotlar bazasi
-#
-# Savolingizni batafsilroq yozing! 🚀'''
-# -------------------- TEST TIZIMI --------------------
 
 def tests(request):
     subjects = Subject.objects.prefetch_related('test_set').all()
@@ -548,7 +501,6 @@ def take_test(request, test_id):
         test_result.calculate_average_difficulty(questions)
 
         # Foydalanuvchi darajasini yangilash
-        from .utils import update_user_difficulty_level  # Bu yerda import qilamiz
         update_user_difficulty_level(request.user, test.subject, test_result)
 
         return render(request, 'app1/test_result.html', {

@@ -1,6 +1,6 @@
 <!-- templates/app3/test_statistics.html -->
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block title %}Test Statistikasi - {{ ai_test.topic }}{% endblock %}
 
 {% block content %}
@@ -673,10 +673,10 @@
     <div class="card">
         <div class="card-header">
             <h4>
-                <i class="fas fa-chart-bar"></i> Test Statistikasi: {{ ai_test.topic }}
+                <i class="fas fa-chart-bar"></i> {% trans "Test Statistics:" %} {{ ai_test.topic }}
             </h4>
             <a href="{% url 'app3:home' %}" class="back-btn">
-                <i class="fas fa-arrow-left"></i> Orqaga
+                <i class="fas fa-arrow-left"></i> {% trans "Back" %}
             </a>
         </div>
 
@@ -685,26 +685,26 @@
             <div class="stats-grid mb-4">
                 <div class="stat-card">
                     <h2 class="text-primary">{{ total_attempts }}</h2>
-                    <p>Jami urinishlar</p>
+                    <p>{% trans "Total attempts" %}</p>
                 </div>
                 <div class="stat-card">
                     <h2 class="text-success">{{ average_score }}%</h2>
-                    <p>O'rtacha ball</p>
+                    <p>{% trans "Average score" %}</p>
                 </div>
                 <div class="stat-card">
                     <h2 class="text-info">{{ best_score }}%</h2>
-                    <p>Eng yaxshi ball</p>
+                    <p>{% trans "Best score" %}</p>
                 </div>
                 <div class="stat-card">
                     <h2 class="text-warning">{{ worst_score }}%</h2>
-                    <p>Eng past ball</p>
+                    <p>{% trans "Lowest score" %}</p>
                 </div>
             </div>
 
             <!-- Ballar taqsimoti -->
             <div class="distribution-card mb-4">
                 <div class="card-header">
-                    <h5><i class="fas fa-chart-pie"></i> Ballar taqsimoti</h5>
+                    <h5><i class="fas fa-chart-pie"></i> {% trans "Score Distribution" %}</h5>
                 </div>
                 <div class="card-body">
                     <div class="distribution-grid">
@@ -724,7 +724,7 @@
             <!-- Foydalanuvchilar natijalari -->
             <div class="users-card mb-4">
                 <div class="card-header">
-                    <h5><i class="fas fa-users"></i> Foydalanuvchilar natijalari</h5>
+                    <h5><i class="fas fa-users"></i> {% trans "Users Results" %}</h5>
                 </div>
                 <div class="card-body">
                     {% if attempts %}
@@ -733,11 +733,11 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Foydalanuvchi</th>
-                                    <th>Ball</th>
-                                    <th>Foiz</th>
-                                    <th>Vaqt</th>
-                                    <th>Holat</th>
+                                    <th>{% trans "User" %}</th>
+                                    <th>{% trans "Score" %}</th>
+                                    <th>{% trans "Percentage" %}</th>
+                                    <th>{% trans "Time" %}</th>
+                                    <th>{% trans "Status" %}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -747,7 +747,7 @@
                                     <td>
                                         <strong>{{ attempt.user.username }}</strong>
                                         {% if attempt.user.is_staff %}
-                                        <span class="badge admin-badge">Admin</span>
+                                        <span class="badge admin-badge">{% trans "Admin" %}</span>
                                         {% endif %}
                                     </td>
                                     <td>{{ attempt.score }}/{{ attempt.total_questions }}</td>
@@ -765,11 +765,11 @@
                                     <td>{{ attempt.created_at|date:"d.m.Y H:i" }}</td>
                                     <td>
                                         {% if attempt.percentage >= 80 %}
-                                        <span class="badge bg-success">A'lo</span>
+                                        <span class="badge bg-success">{% trans "Excellent" %}</span>
                                         {% elif attempt.percentage >= 60 %}
-                                        <span class="badge bg-warning">Yaxshi</span>
+                                        <span class="badge bg-warning">{% trans "Good" %}</span>
                                         {% else %}
-                                        <span class="badge bg-danger">Qoniqarsiz</span>
+                                        <span class="badge bg-danger">{% trans "Unsatisfactory" %}</span>
                                         {% endif %}
                                     </td>
                                 </tr>
@@ -780,7 +780,7 @@
                     {% else %}
                     <div class="no-data">
                         <i class="fas fa-users-slash"></i>
-                        <h5>Hozircha testni yechgan foydalanuvchilar yo'q</h5>
+                        <h5>{% trans "No users have taken this test yet" %}</h5>
                     </div>
                     {% endif %}
                 </div>
@@ -789,22 +789,22 @@
             <!-- Qo'shimcha ma'lumotlar -->
             <div class="info-card">
                 <div class="card-header">
-                    <h5><i class="fas fa-info-circle"></i> Test ma'lumotlari</h5>
+                    <h5><i class="fas fa-info-circle"></i> {% trans "Test Information" %}</h5>
                 </div>
                 <div class="card-body">
                     <div class="info-grid">
                         <div>
                             <div class="info-list">
                                 <div class="info-item">
-                                    <strong>Test mavzusi:</strong>
+                                    <strong>{% trans "Test topic:" %}</strong>
                                     <span>{{ ai_test.topic }}</span>
                                 </div>
                                 <div class="info-item">
-                                    <strong>Savollar soni:</strong>
+                                    <strong>{% trans "Number of questions:" %}</strong>
                                     <span>{{ questions_count }}</span>
                                 </div>
                                 <div class="info-item">
-                                    <strong>Yaratilgan sana:</strong>
+                                    <strong>{% trans "Created date:" %}</strong>
                                     <span>{{ ai_test.created_at|date:"d.m.Y H:i" }}</span>
                                 </div>
                             </div>
@@ -812,21 +812,21 @@
                         <div>
                             <div class="info-list">
                                 <div class="info-item">
-                                    <strong>Yaratuvchi:</strong>
+                                    <strong>{% trans "Created by:" %}</strong>
                                     <span>{{ ai_test.created_by.username|default:"Admin" }}</span>
                                 </div>
                                 <div class="info-item">
-                                    <strong>Test holati:</strong>
+                                    <strong>{% trans "Test status:" %}</strong>
                                     <span>
                                         {% if ai_test.is_active %}
-                                        <span class="badge bg-success">Faol</span>
+                                        <span class="badge bg-success">{% trans "Active" %}</span>
                                         {% else %}
-                                        <span class="badge bg-danger">Nofaol</span>
+                                        <span class="badge bg-danger">{% trans "Inactive" %}</span>
                                         {% endif %}
                                     </span>
                                 </div>
                                 <div class="info-item">
-                                    <strong>Test ID:</strong>
+                                    <strong>{% trans "Test ID:" %}</strong>
                                     <span>{{ ai_test.id }}</span>
                                 </div>
                             </div>
@@ -839,10 +839,10 @@
         <div class="card-footer">
             <div class="footer-buttons">
                 <a href="{% url 'app3:home' %}" class="footer-btn btn-secondary">
-                    <i class="fas fa-home"></i> Bosh sahifaga
+                    <i class="fas fa-home"></i> {% trans "Home" %}
                 </a>
                 <a href="{% url 'app3:take_test' ai_test.id %}" class="footer-btn btn-primary">
-                    <i class="fas fa-play"></i> Testni ishlash
+                    <i class="fas fa-play"></i> {% trans "Take Test" %}
                 </a>
             </div>
         </div>
@@ -924,7 +924,7 @@
             link.addEventListener('click', function(e) {
                 if (this.getAttribute('href') && !this.getAttribute('href').startsWith('#')) {
                     const originalHtml = this.innerHTML;
-                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Yuklanmoqda...';
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> {% trans "Loading..." %}';
                     this.style.pointerEvents = 'none';
 
                     // Reset after 3 seconds (in case of error)

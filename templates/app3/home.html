@@ -1,673 +1,29 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
+{% load custom_filters %}
 {% block title %}AI Test Platformasi - Bosh sahifa{% endblock %}
 
 {% block content %}
-     <style>
 
-
-      .container_ai_test {
-        margin: 0 auto;
-        padding: 10px 5px;
-      }
-
-      .container_ai_test a {
-        text-decoration: none;
-      }
-      /* Sarlavha qismi */
-      .h_test_ai {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 40px;
-      }
-
-      .h_ai h1 {
-        color: #2c3e50;
-        font-size: 2.8rem;
-        font-weight: 700;
-        margin-bottom: 15px;
-        gap: 20px;
-      }
-
-      .h_ai h1 .fa-robot {
-        font-size: 3rem;
-        color: rgba(5, 130, 171, 0.9);
-        background: linear-gradient(
-          45deg,
-          rgba(5, 130, 171, 0.9),
-          rgba(23, 162, 184, 0.9)
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .h_ai .lead {
-        color: rgba(44, 62, 80, 0.8);
-        font-size: 1.3rem;
-        font-weight: 400;
-        margin-bottom: 0;
-        padding-left: 4rem;
-      }
-
-      .h_test_ai a {
-        background: linear-gradient(
-          45deg,
-          rgba(5, 130, 171, 0.9),
-          rgba(23, 162, 184, 0.9)
-        );
-        color: white;
-        padding: 16px 32px;
-        border-radius: 12px;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-weight: 600;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 4px 15px rgba(5, 130, 171, 0.2);
-      }
-
-      .h_test_ai a:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(5, 130, 171, 0.3);
-        background: linear-gradient(
-          45deg,
-          rgba(5, 130, 171, 1),
-          rgba(23, 162, 184, 1)
-        );
-      }
-
-      .h_test_ai a .fa-plus-circle {
-        font-size: 1.4rem;
-      }
-
-      /* Testlar ro'yxati */
-      .list_test_ai {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-        gap: 30px;
-        margin-bottom: 40px;
-      }
-      .list_test_ai a {
-        text-decoration: none;
-      }
-      /* Test karta */
-      .test-card {
-        background: rgba(255, 255, 255, 0.215);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        border-radius: 20px;
-        overflow: hidden;
-        transition: all 0.4s ease;
-        height: 100%;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-      }
-
-      .test-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 15px 35px rgba(5, 130, 171, 0.2);
-        border-color: rgba(5, 130, 171, 0.3);
-      }
-
-      .test-card .card-header {
-        background: linear-gradient(
-          45deg,
-          rgba(5, 130, 171, 0.8),
-          rgba(23, 162, 184, 0.8)
-        ) !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        padding: 25px;
-        backdrop-filter: blur(10px);
-      }
-      .card_head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-      }
-
-      .test-card .card-header h5 {
-        color: white;
-        font-size: 1.4rem;
-        font-weight: 600;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .test-card .card-header .badge {
-        background: rgba(255, 255, 255, 0.95) !important;
-        color: rgba(5, 130, 171, 0.9);
-        font-weight: 700;
-        padding: 8px 16px;
-        border-radius: 25px;
-        font-size: 0.95rem;
-        border: 1px solid rgba(255, 255, 255, 0.4);
-      }
-
-      .test-card .card-body {
-        padding: 25px;
-        background: rgba(255, 255, 255, 0.1);
-      }
-
-      .test-card .card-text small {
-        color: rgba(44, 62, 80, 0.8);
-        display: block;
-        line-height: 1.8;
-        font-size: 0.95rem;
-      }
-
-      .test-card .card-text .fas {
-        margin-right: 10px;
-        width: 22px;
-        color: rgba(5, 130, 171, 0.8);
-      }
-
-      /* Natija xabari */
-      .alert-info {
-        background: rgba(13, 202, 240, 0.15);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(13, 202, 240, 0.3);
-        border-left: 5px solid rgba(5, 130, 171, 0.9);
-        color: #055160;
-        border-radius: 12px;
-        padding: 18px;
-        margin: 15px 0;
-      }
-
-      .alert-info .fas {
-        color: rgba(5, 130, 171, 0.9);
-        font-size: 1.1rem;
-      }
-
-      .alert-info strong {
-        color: rgba(5, 130, 171, 1);
-        font-size: 1.1rem;
-      }
-
-      /* Card footer */
-      .test-card .card-footer {
-        padding: 25px;
-        background: rgba(255, 255, 255, 0.1);
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .test-card .card-footer .d-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .test-card .btn {
-        padding: 14px 24px;
-        border-radius: 12px;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        transition: all 0.3s ease;
-        font-size: 1.05rem;
-        border: none;
-      }
-
-      .test-card .btn-primary {
-        background: linear-gradient(
-          45deg,
-          rgba(5, 130, 171, 0.9),
-          rgba(23, 162, 184, 0.9)
-        );
-        color: white;
-        box-shadow: 0 4px 15px rgba(5, 130, 171, 0.2);
-      }
-
-      .test-card .btn-primary:hover {
-        background: linear-gradient(
-          45deg,
-          rgba(5, 130, 171, 1),
-          rgba(23, 162, 184, 1)
-        );
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(5, 130, 171, 0.3);
-      }
-
-      .test-card .btn-info {
-        background: linear-gradient(
-          45deg,
-          rgba(13, 202, 240, 0.9),
-          rgba(23, 162, 184, 0.9)
-        );
-        color: white;
-        border: none;
-        box-shadow: 0 4px 15px rgba(13, 202, 240, 0.2);
-      }
-
-      .test-card .btn-info:hover {
-        background: linear-gradient(
-          45deg,
-          rgba(13, 202, 240, 1),
-          rgba(23, 162, 184, 1)
-        );
-        transform: translateY(-3px);
-      }
-
-      .test-card .btn-outline-danger {
-        background: transparent;
-        border: 2px solid #dc3545;
-        color: #dc3545;
-        transition: all 0.3s ease;
-      }
-
-      .test-card .btn-outline-danger:hover {
-        background: linear-gradient(
-          45deg,
-          rgba(220, 53, 69, 0.9),
-          rgba(220, 53, 69, 0.7)
-        );
-        color: white;
-        transform: translateY(-3px);
-        border-color: #dc3545;
-      }
-
-      /* Hech qanday test bo'lmaganda */
-      .no_test {
-        text-align: center;
-        padding: 30px 15px;
-          width: 100%;
-      }
-
-      .no_test .alert {
-        margin: 0 auto;
-      }
-
-
-      .no_test h4 {
-        color: #2c3e50;
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin-bottom: 20px;
-      }
-
-      .no_test p {
-        color: rgba(44, 62, 80, 0.8);
-        font-size: 1.2rem;
-        margin-bottom: 30px;
-        line-height: 1.6;
-      }
-
-      .no_test .btn {
-        background: linear-gradient(
-          45deg,
-          rgba(5, 130, 171, 0.9),
-          rgba(23, 162, 184, 0.9)
-        );
-        color: white;
-        padding: 16px 40px;
-        border-radius: 12px;
-        font-weight: 600;
-        font-size: 1.1rem;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        transition: all 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        box-shadow: 0 4px 15px rgba(5, 130, 171, 0.2);
-      }
-
-      .no_test .btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(5, 130, 171, 0.3);
-        background: linear-gradient(
-          45deg,
-          rgba(5, 130, 171, 1),
-          rgba(23, 162, 184, 1)
-        );
-      }
-
-      .no_test .btn .fa-plus {
-        font-size: 1.2rem;
-      }
-
-      /* Statistika qutisi */
-      .satatis_box {
-        background: rgba(255, 255, 255, 0.215);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        border-radius: 20px;
-        overflow: hidden;
-        margin-top: 40px;
-        box-shadow: 0 8px 32px rgba(5, 130, 171, 0.1);
-      }
-
-      .satatis_box .card-header {
-        background: linear-gradient(
-          45deg,
-          rgba(23, 162, 184, 0.8),
-          rgba(13, 202, 240, 0.8)
-        ) !important;
-        padding: 25px 30px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        backdrop-filter: blur(10px);
-      }
-
-      .satatis_box .card-header h5 {
-        color: white;
-        font-size: 1.4rem;
-        font-weight: 600;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .satatis_box .card-body {
-        padding: 40px;
-      }
-
-      .satatis_box .row {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-      }
-
-      .satatis_box .col-md-4 {
-        text-align: center;
-        padding: 20px;
-      }
-
-      .satatis_box h2 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        margin-bottom: 15px;
-        line-height: 1;
-      }
-
-      .satatis_box .text-primary {
-        color: rgba(5, 130, 171, 1) !important;
-      }
-
-      .satatis_box .text-success {
-        color: #198754 !important;
-      }
-
-      .satatis_box .text-warning {
-        color: #ffc107 !important;
-      }
-
-      .satatis_box p {
-        color: rgba(44, 62, 80, 0.8);
-        font-size: 1.2rem;
-        font-weight: 500;
-        margin: 0;
-      }
-
-      /* Responsive dizayn */
-      @media (max-width: 1200px) {
-        .list_test_ai {
-          grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-        }
-
-        .h_ai h1 {
-          font-size: 2.5rem;
-        }
-      }
-
-      @media (max-width: 992px) {
-        .h_test_ai {
-          gap: 25px;
-          padding:0 15px;
-          align-items: start;
-        }
-        .h_test_ai a {
-          text-align: end;
-        }
-        .h_ai h1 {
-          font-size: 2.2rem;
-        }
-
-        .h_ai .lead {
-          padding-left: 0;
-        }
-
-        .satatis_box .row {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .list_test_ai {
-          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        }
-      }
-
-      @media (max-width: 768px) {
-        .list_test_ai {
-          grid-template-columns: 1fr;
-          gap: 25px;
-        }
-
-        .h_test_ai {
-          flex-direction: column;
-        }
-
-
-        .h_ai h1 {
-          font-size: 1.8rem;
-          flex-direction: column;
-          gap: 15px;
-        }
-
-        .h_ai h1 .fa-robot {
-          font-size: 2.5rem;
-        }
-
-        .test-card .card-header h5 {
-          font-size: 1.2rem;
-        }
-
-        .satatis_box .row {
-          grid-template-columns: 1fr;
-          gap: 20px;
-        }
-
-        .satatis_box h2 {
-          font-size: 3rem;
-        }
-
-        .no_test .alert {
-          padding: 40px 30px;
-        }
-      }
-
-      @media (max-width: 576px) {
-
-
-        .h_ai h1 {
-          font-size: 1.6rem;
-        }
-        .card_head {
-          flex-direction: column;
-        }
-        .h_test_ai a {
-          justify-content: center;
-          padding: 14px 20px;
-          font-size: 14px;
-        }
-
-        .test-card .card-body,
-        .test-card .card-footer {
-          padding: 20px;
-        }
-
-        .satatis_box .card-body {
-          padding: 30px 20px;
-        }
-
-        .no_test {
-          padding: 10px 5px;
-        }
-
-        .no_test .fa-robot {
-          font-size: 3.5rem;
-        }
-
-        .no_test h4 {
-
-          font-size: 1.5rem;
-        }
-        .no_test a {
-          font-size: 14px;
-        }
-        .test-card .btn {
-          padding: 12px 20px;
-          font-size: 1rem;
-        }
-      }
-
-      /* Animatsiyalar */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .test-card {
-        animation: fadeInUp 0.6s ease-out;
-        animation-fill-mode: both;
-      }
-
-      .test-card:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-      .test-card:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .test-card:nth-child(3) {
-        animation-delay: 0.3s;
-      }
-      .test-card:nth-child(4) {
-        animation-delay: 0.4s;
-      }
-      .test-card:nth-child(5) {
-        animation-delay: 0.5s;
-      }
-
-      .no_test {
-        animation: fadeInUp 0.8s ease-out;
-      }
-
-      .satatis_box {
-        animation: fadeInUp 1s ease-out;
-      }
-
-      .h_test_ai {
-        animation: fadeInUp 0.4s ease-out;
-      }
-
-      /* Glow effekt */
-      .test-card:hover .card-header {
-        background: linear-gradient(
-          45deg,
-          rgba(5, 130, 171, 0.95),
-          rgba(23, 162, 184, 0.95)
-        ) !important;
-      }
-
-      /* Hover effektlar */
-      .btn {
-        position: relative;
-        overflow: hidden;
-      }
-
-      .btn::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 5px;
-        height: 5px;
-        background: rgba(255, 255, 255, 0.5);
-        opacity: 0;
-        border-radius: 100%;
-        transform: scale(1, 1) translate(-50%);
-        transform-origin: 50% 50%;
-      }
-
-      .btn:focus:not(:active)::after {
-        animation: ripple 1s ease-out;
-      }
-
-      @keyframes ripple {
-        0% {
-          transform: scale(0, 0);
-          opacity: 0.5;
-        }
-        20% {
-          transform: scale(25, 25);
-          opacity: 0.3;
-        }
-        100% {
-          transform: scale(40, 40);
-          opacity: 0;
-        }
-      }
-
-      /* Loading effekt */
-      .test-card {
-        position: relative;
-      }
-
-      .test-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
-        );
-        transition: 0.5s;
-      }
-
-      .test-card:hover::before {
-        left: 100%;
-      }
-    </style>
-    <section class="container_ai_test">
-    <!-- Sarlavha -->
+<section class="container_ai_test">
     <div class="h_test_ai">
         <div class="h_ai">
-            <h1><i class="fas fa-robot text-primary"></i> AI Test Platformasi</h1>
+            <h1><i class="fas fa-robot text-primary"></i> {% trans "AI Test Platformasi" %}</h1>
             <p class="lead text-muted">
-                Sun'iy intellekt yordamida yaratilgan testlar
+                {% trans "Sun'iy intellekt yordamida yaratilgan testlar" %}
             </p>
         </div>
 
-        <!-- Admin uchun test yaratish tugmasi -->
         {% if user.is_staff %}
         <a href="{% url 'app3:admin_ai_chat' %}" class="btn btn-lg btn-success">
-            <i class="fas fa-plus-circle"></i> Yangi Test Yaratish
+            <i class="fas fa-plus-circle"></i> {% trans "Yangi Test Yaratish" %}
         </a>
         {% endif %}
     </div>
 
-    <!-- Testlar ro'yxati -->
     <div class="list_test_ai">
         {% for test in ai_tests %}
-        <!-- Test karta -->
-        <div class="col-md-4 mb-4">
+        <div class="test-card-wrapper">
             <div class="card test-card h-100">
                 <div class="card-header bg-primary text-white">
                     <div class="card_head">
@@ -675,7 +31,7 @@
                             <i class="fas fa-brain"></i> {{ test.topic|truncatechars:30 }}
                         </h5>
                         <span class="badge badge-light">
-                            {{ test.questions_data|length }} savol
+                            {{ test.questions_data|length }} {% trans "savol" %}
                         </span>
                     </div>
                 </div>
@@ -687,14 +43,12 @@
                         </small>
                     </p>
 
-                    <!-- Foydalanuvchi natijasi -->
                     {% if user.is_authenticated %}
                         {% if test.id in user_attempts %}
-                            <!-- Dictionary'dan to'g'ridan-to'g'ri kalit orqali olish -->
-                            {% with attempt=user_attempts.test.id %}
+                            {% with attempt=user_attempts|get_item:test.id %}
                             <div class="alert alert-info p-2 mb-2">
                                 <small>
-                                    <i class="fas fa-chart-line"></i> Sizning natijangiz:
+                                    <i class="fas fa-chart-line"></i> {% trans "Sizning natijangiz:" %}
                                     <strong>{{ attempt.score }}/{{ attempt.total_questions }}</strong>
                                     ({{ attempt.percentage }}%)
                                 </small>
@@ -704,34 +58,29 @@
                     {% endif %}
                 </div>
 
-                <!-- Footer: Admin yoki oddiy foydalanuvchi -->
                 {% if user.is_staff %}
-                <!-- Admin uchun footer -->
                 <div class="card-footer bg-transparent border-top-0">
                     <div class="d-grid gap-2">
                         <a href="{% url 'app3:take_test' test.id %}" class="btn btn-primary">
-                            <i class="fas fa-play"></i> Testni boshlash
+                            <i class="fas fa-play"></i> {% trans "Testni boshlash" %}
                         </a>
 
-                        <!-- Statistik tugmasi -->
                         <a href="{% url 'app3:test_statistics' test.id %}" class="btn btn-info btn-sm">
-                            <i class="fas fa-chart-bar"></i> Statistikasi
+                            <i class="fas fa-chart-bar"></i> {% trans "Statistikasi" %}
                         </a>
 
-                        <!-- O'chirish tugmasi -->
                         <a href="{% url 'app3:delete_test' test.id %}"
                            class="btn btn-sm btn-outline-danger"
-                           onclick="return confirm('Testni o\'chirishni istaysizmi?')">
-                            <i class="fas fa-trash"></i> O'chirish
+                           onclick="return confirm('{% trans 'Testni o\'chirishni istaysizmi?' %}')">
+                            <i class="fas fa-trash"></i> {% trans "O'chirish" %}
                         </a>
                     </div>
                 </div>
                 {% else %}
-                <!-- Oddiy foydalanuvchilar uchun -->
                 <div class="card-footer bg-transparent border-top-0">
                     <div class="d-grid">
                         <a href="{% url 'app3:take_test' test.id %}" class="btn btn-primary">
-                            <i class="fas fa-play"></i> Testni boshlash
+                            <i class="fas fa-play"></i> {% trans "Testni boshlash" %}
                         </a>
                     </div>
                 </div>
@@ -739,45 +88,43 @@
             </div>
         </div>
         {% empty %}
-    </div>
-
-        <!-- Hech qanday test bo'lmaganda -->
         <div class="no_test">
-                <i class="fas fa-robot fa-3x mb-3"></i>
-                <h4>Hozircha testlar mavjud emas</h4>
-                <p>Admin yangi testlar yaratishi kutilmoqda...</p>
-                {% if user.is_staff %}
-                <a href="{% url 'app3:admin_ai_chat' %}" class="btn btn-primary mt-2">
-                    <i class="fas fa-plus"></i> Birinchi testni yaratish
-                </a>
-                {% endif %}
+            <i class="fas fa-robot fa-3x mb-3"></i>
+            <h4>{% trans "Hozircha testlar mavjud emas" %}</h4>
+            <p>{% trans "Admin yangi testlar yaratishi kutilmoqda..." %}</p>
+            {% if user.is_staff %}
+            <a href="{% url 'app3:admin_ai_chat' %}" class="btn btn-primary mt-2">
+                <i class="fas fa-plus"></i> {% trans "Birinchi testni yaratish" %}
+            </a>
+            {% endif %}
         </div>
         {% endfor %}
-    <!-- Statistika -->
+    </div>
+
     {% if ai_tests %}
     <div class="satatis_box">
         <div class="card-header bg-info text-white">
             <h5 class="mb-0">
-                <i class="fas fa-chart-bar"></i> Platforma statistikasi
+                <i class="fas fa-chart-bar"></i> {% trans "Platforma statistikasi" %}
             </h5>
         </div>
         <div class="card-body">
             <div class="row text-center">
                 <div class="col-md-4">
                     <h2 class="text-primary">{{ ai_tests.count }}</h2>
-                    <p class="text-muted">Jami testlar</p>
+                    <p class="text-muted">{% trans "Jami testlar" %}</p>
                 </div>
                 <div class="col-md-4">
                     <h2 class="text-success">{{ total_questions }}</h2>
-                    <p class="text-muted">Jami savollar</p>
+                    <p class="text-muted">{% trans "Jami savollar" %}</p>
                 </div>
                 <div class="col-md-4">
                     <h2 class="text-warning">{{ user_results_count }}</h2>
-                    <p class="text-muted">Sizning urinishlaringiz</p>
+                    <p class="text-muted">{% trans "Sizning urinishlaringiz" %}</p>
                 </div>
             </div>
         </div>
     </div>
     {% endif %}
 </section>
-{% endblock %}
+{% endblock %}{% endblock %}{% endblock %}

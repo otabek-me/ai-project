@@ -8,6 +8,7 @@ import requests
 from django.conf import settings
 from .models import AITest, TestAttempt
 from .forms import SimpleAITestForm
+import openai
 
 
 # app3/views.py - home funksiyasini yangilaymiz
@@ -41,7 +42,6 @@ def home(request):
 @user_passes_test(lambda u: u.is_staff)
 def admin_ai_chat(request):
     """Admin uchun AI chat bot test yaratish"""
-    # Avval settings import qilinganligini tekshiramiz
     api_key_configured = hasattr(settings, 'OPENAI_API_KEY') and settings.OPENAI_API_KEY
 
     if request.method == 'POST':
@@ -57,7 +57,6 @@ def admin_ai_chat(request):
                 return redirect('app3:admin_ai_chat')
 
             try:
-                import openai
 
                 # OpenAI API ga so'rov
                 client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
@@ -130,7 +129,6 @@ def admin_ai_chat(request):
     })
 
 
-# app3/views.py - take_test funksiyasini to'g'rilaymiz
 
 def take_test(request, test_id):
     """Testni ishlash"""

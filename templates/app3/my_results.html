@@ -1,13 +1,14 @@
 <!-- templates/app3/my_results.html -->
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Mening Natijalarim{% endblock %}
+{% block title %}{% trans "My Results" %}{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
     <div class="card">
         <div class="card-header bg-primary text-white">
-            <h4><i class="fas fa-chart-line"></i> Mening Test Natijalarim</h4>
+            <h4><i class="fas fa-chart-line"></i> {% trans "My Test Results" %}</h4>
         </div>
         <div class="card-body">
             {% if results %}
@@ -16,11 +17,11 @@
                     <thead class="table-light">
                         <tr>
                             <th>#</th>
-                            <th>Test Mavzusi</th>
-                            <th>Natija</th>
-                            <th>Foiz</th>
-                            <th>Vaqt</th>
-                            <th>Holat</th>
+                            <th>{% trans "Test Topic" %}</th>
+                            <th>{% trans "Result" %}</th>
+                            <th>{% trans "Percentage" %}</th>
+                            <th>{% trans "Time" %}</th>
+                            <th>{% trans "Status" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,11 +46,11 @@
                             <td>{{ result.created_at|date:"d.m.Y H:i" }}</td>
                             <td>
                                 {% if result.percentage >= 80 %}
-                                <span class="badge bg-success">A'lo</span>
+                                <span class="badge bg-success">{% trans "Excellent" %}</span>
                                 {% elif result.percentage >= 60 %}
-                                <span class="badge bg-warning">Yaxshi</span>
+                                <span class="badge bg-warning">{% trans "Good" %}</span>
                                 {% else %}
-                                <span class="badge bg-danger">Qoniqarsiz</span>
+                                <span class="badge bg-danger">{% trans "Unsatisfactory" %}</span>
                                 {% endif %}
                             </td>
                         </tr>
@@ -58,16 +59,16 @@
                 </table>
             </div>
 
-            <!-- Umumiy statistika - BU QISMDA XATO -->
+            <!-- Umumiy statistika -->
             <div class="card mt-4">
                 <div class="card-header bg-info text-white">
-                    <h5 class="mb-0"><i class="fas fa-chart-bar"></i> Umumiy statistika</h5>
+                    <h5 class="mb-0"><i class="fas fa-chart-bar"></i> {% trans "Overall Statistics" %}</h5>
                 </div>
                 <div class="card-body">
                     <div class="row text-center">
                         <div class="col-md-3">
                             <h3 class="text-primary">{{ results.count }}</h3>
-                            <p class="text-muted">Jami testlar</p>
+                            <p class="text-muted">{% trans "Total tests" %}</p>
                         </div>
                         <div class="col-md-3">
                             <h3 class="text-success">
@@ -85,7 +86,7 @@
                                 {% endif %}
                                 {% endwith %}
                             </h3>
-                            <p class="text-muted">Umumiy natija</p>
+                            <p class="text-muted">{% trans "Overall result" %}</p>
                         </div>
                         <div class="col-md-3">
                             <h3 class="text-warning">
@@ -101,7 +102,7 @@
                                 0
                                 {% endif %}%
                             </h3>
-                            <p class="text-muted">O'rtacha foiz</p>
+                            <p class="text-muted">{% trans "Average percentage" %}</p>
                         </div>
                         <div class="col-md-3">
                             <h3 class="text-danger">
@@ -116,7 +117,7 @@
                                 0
                                 {% endif %}
                             </h3>
-                            <p class="text-muted">Urinishlar</p>
+                            <p class="text-muted">{% trans "Attempts" %}</p>
                         </div>
                     </div>
                 </div>
@@ -125,10 +126,10 @@
             {% else %}
             <div class="text-center py-5">
                 <i class="fas fa-chart-line fa-3x text-muted mb-3"></i>
-                <h4 class="text-muted">Hozircha test natijalaringiz yo'q</h4>
-                <p>Testlarni ishlashni boshlang va natijalaringizni bu yerda ko'ring!</p>
+                <h4 class="text-muted">{% trans "No test results yet" %}</h4>
+                <p>{% trans "Start taking tests and see your results here!" %}</p>
                 <a href="{% url 'app3:home' %}" class="btn btn-primary mt-2">
-                    <i class="fas fa-play"></i> Testlarni boshlash
+                    <i class="fas fa-play"></i> {% trans "Start Tests" %}
                 </a>
             </div>
             {% endif %}
