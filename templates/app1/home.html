@@ -796,8 +796,6 @@
     }
 </style>
 
-{% load i18n %}
-
 <main>
     {% if not user.is_authenticated %}
     <!-- Asosiy kirish matni -->
@@ -860,7 +858,7 @@
   <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
 </svg>
                 <h2>{{ avg_progress|floatformat:1 }}%</h2>
-            </div>'
+            </div>
             <p>
                 {% trans "Sizning o'rtacha natijangiz" %}
             </p>
@@ -895,7 +893,7 @@
    <!-- Grafik -->
 <div class="graphic-container">
     <h4 style="display: flex; align-items: center; gap: 10px;">
-        {% trans "📊 Fanlar statistikasi" %}
+        📊{% trans " Fanlar statistikasi" %}
     </h4>
     {% if graphic %}
     <div class="text-center">

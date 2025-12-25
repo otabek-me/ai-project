@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-25 19:59+0500\n"
+"POT-Creation-Date: 2025-12-25 22:53+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: .\config\settings.py:139
+#: .\config\settings.py:129
 msgid "Uzbek"
 msgstr ""
 
-#: .\config\settings.py:140
+#: .\config\settings.py:130
 msgid "Russian"
 msgstr ""
 
-#: .\config\settings.py:141 .\templates\base.html:1371
+#: .\config\settings.py:131 .\templates\base.html:1371
 msgid "English"
 msgstr ""
 
@@ -140,6 +140,88 @@ msgstr ""
 #: .\templates\app1\add_document.html:330 .\templates\app1\add_video.html:434
 #: .\templates\app2\admin_panel.html:1184 .\templates\app3\take_test.html:630
 msgid "Bekor qilish"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:440
+msgid "Yangi Fan Qo'shish"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:445
+msgid "Yangi fan yaratish va uni testlar ro'yxatiga qo'shish"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:452
+msgid "Fan Nomi"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:458
+msgid "Masalan: Matematika, Fizika, Dasturlash..."
+msgstr ""
+
+#: .\templates\app1\add_subject.html:469
+msgid "Fan nomi aniq va tushunarli bo'lishi kerak"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:476
+msgid "Fan Tavsifi"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:482
+msgid "Fan haqida qisqacha tavsif... (ixtiyoriy)"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:491
+msgid ""
+"Fan haqida qisqacha ma'lumot. Bu foydalanuvchilarga fan mazmunini "
+"tushunishga yordam beradi."
+msgstr ""
+
+#: .\templates\app1\add_subject.html:502
+msgid "Yopish"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:511
+msgid "Ortga Qaytish"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:514
+msgid "Fanni Saqlash"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:527
+msgid "Yordam"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:533
+msgid "Fan nomini tanlashda:"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:535
+msgid "Aniq va qisqa nom tanlang"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:536
+msgid "O'quv rejasiga mos kelishi kerak"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:537
+msgid "Tushunarli va oddiy bo'lsin"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:541
+msgid "Tavsif yozishda:"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:543
+msgid "Qisqa va mazmunli bo'lsin"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:544
+msgid "Asosiy mavzularni qamrab olsin"
+msgstr ""
+
+#: .\templates\app1\add_subject.html:545
+msgid "Foydalanuvchiga yo'naltiruvchi bo'lsin"
 msgstr ""
 
 #: .\templates\app1\add_video.html:418 .\templates\app1\video_lessons.html:729
@@ -299,96 +381,100 @@ msgstr ""
 msgid "Birinchi Fanni Yaratish"
 msgstr ""
 
-#: .\templates\app1\home.html:812
+#: .\templates\app1\home.html:810
 msgid ""
 "Sun'iy intellekt va ma'lumotlarni qayta ishlash platformamizga xush kelibsiz!"
 msgstr ""
 
-#: .\templates\app1\home.html:815
+#: .\templates\app1\home.html:813
 msgid "Tizimdan to'liq foydalanish uchun ro'yxatdan o'ting."
 msgstr ""
 
-#: .\templates\app1\home.html:823 .\templates\base.html:1413
+#: .\templates\app1\home.html:821 .\templates\base.html:1413
 msgid "Ro'yxatdan o'tish"
 msgstr ""
 
-#: .\templates\app1\home.html:842
+#: .\templates\app1\home.html:840
 msgid "Foydalanuvchilar soni"
 msgstr ""
 
-#: .\templates\app1\home.html:853
+#: .\templates\app1\home.html:851
 msgid "Yuqori natija olganlar"
 msgstr ""
 
-#: .\templates\app1\home.html:879
+#: .\templates\app1\home.html:863
+msgid "Sizning o'rtacha natijangiz"
+msgstr ""
+
+#: .\templates\app1\home.html:877
 msgid "Jami fanlar"
 msgstr ""
 
-#: .\templates\app1\home.html:885
+#: .\templates\app1\home.html:883
 msgid "O'rtacha o'zlashtirish"
 msgstr ""
 
-#: .\templates\app1\home.html:890
+#: .\templates\app1\home.html:888
 msgid "O'zlashtirilgan fanlar"
 msgstr ""
 
-#: .\templates\app1\home.html:898
-msgid "📊 Fanlar statistikasi"
+#: .\templates\app1\home.html:896
+msgid " Fanlar statistikasi"
 msgstr ""
 
-#: .\templates\app1\home.html:906
+#: .\templates\app1\home.html:904
 #, python-format
 msgid "Yaxshi (80-100%%)"
 msgstr ""
 
-#: .\templates\app1\home.html:910
+#: .\templates\app1\home.html:908
 #, python-format
 msgid "O'rtacha (60-79%%)"
 msgstr ""
 
-#: .\templates\app1\home.html:914 .\templates\app3\my_results.html:170
+#: .\templates\app1\home.html:912 .\templates\app3\my_results.html:170
 #, python-format
 msgid "Qoniqarsiz (0-59%%)"
 msgstr ""
 
-#: .\templates\app1\home.html:920
+#: .\templates\app1\home.html:918
 msgid "Statistika grafigi mavjud emas"
 msgstr ""
 
-#: .\templates\app1\home.html:929
+#: .\templates\app1\home.html:927
 msgid "Fanlar bo'yicha materiallar"
 msgstr ""
 
-#: .\templates\app1\home.html:936
+#: .\templates\app1\home.html:934
 #, python-format
 msgid "%(data.videos)s video"
 msgid_plural "%(data.videos)s video"
 msgstr[0] ""
 msgstr[1] ""
 
-#: .\templates\app1\home.html:937
+#: .\templates\app1\home.html:935
 #, python-format
 msgid "%(data.documents)s material"
 msgid_plural "%(data.documents)s material"
 msgstr[0] ""
 msgstr[1] ""
 
-#: .\templates\app1\home.html:938
+#: .\templates\app1\home.html:936
 #, python-format
 msgid "%(data.tests)s test"
 msgid_plural "%(data.tests)s test"
 msgstr[0] ""
 msgstr[1] ""
 
-#: .\templates\app1\home.html:952 .\templates\app1\home.html:976
+#: .\templates\app1\home.html:950 .\templates\app1\home.html:974
 msgid "O'zlashtirish darajasi"
 msgstr ""
 
-#: .\templates\app1\home.html:978
+#: .\templates\app1\home.html:976
 msgid "Tizimga kiring va test topshiring"
 msgstr ""
 
-#: .\templates\app1\home.html:979
+#: .\templates\app1\home.html:977
 msgid "Tizimga kirish"
 msgstr ""
 
@@ -906,7 +992,7 @@ msgstr ""
 msgid "Qoniqarsiz"
 msgstr ""
 
-#: .\templates\app1\user_profile_detail.html:540 .\templates\app3\home.html:811
+#: .\templates\app1\user_profile_detail.html:540 .\templates\app3\home.html:812
 #: .\templates\app3\my_results.html:90
 msgid "Jami testlar"
 msgstr ""
@@ -1980,7 +2066,7 @@ msgstr ""
 msgid "So‘nggi yaratilgan testlar"
 msgstr ""
 
-#: .\templates\app3\admin_ai_chat.html:111 .\templates\app3\home.html:788
+#: .\templates\app3\admin_ai_chat.html:111 .\templates\app3\home.html:789
 msgid "Hozircha testlar mavjud emas"
 msgstr ""
 
@@ -2050,43 +2136,47 @@ msgstr ""
 msgid "savol"
 msgstr ""
 
-#: .\templates\app3\home.html:740
+#: .\templates\app3\home.html:737
 msgid "Sizning natijangiz:"
 msgstr ""
 
-#: .\templates\app3\home.html:756 .\templates\app3\home.html:777
+#: .\templates\app3\home.html:745
+msgid "Hali topshirilmagan"
+msgstr ""
+
+#: .\templates\app3\home.html:757 .\templates\app3\home.html:778
 msgid "Testni boshlash"
 msgstr ""
 
-#: .\templates\app3\home.html:761
+#: .\templates\app3\home.html:762
 msgid "Statistikasi"
 msgstr ""
 
-#: .\templates\app3\home.html:767
+#: .\templates\app3\home.html:768
 msgid "Testni o\\'chirishni istaysizmi?"
 msgstr ""
 
-#: .\templates\app3\home.html:768
+#: .\templates\app3\home.html:769
 msgid "O\\"
 msgstr ""
 
-#: .\templates\app3\home.html:789
+#: .\templates\app3\home.html:790
 msgid "Admin yangi testlar yaratishi kutilmoqda..."
 msgstr ""
 
-#: .\templates\app3\home.html:792
+#: .\templates\app3\home.html:793
 msgid "Birinchi testni yaratish"
 msgstr ""
 
-#: .\templates\app3\home.html:804
+#: .\templates\app3\home.html:805
 msgid "Platforma statistikasi"
 msgstr ""
 
-#: .\templates\app3\home.html:815
+#: .\templates\app3\home.html:816
 msgid "Jami savollar"
 msgstr ""
 
-#: .\templates\app3\home.html:819
+#: .\templates\app3\home.html:820
 msgid "Sizning urinishlaringiz"
 msgstr ""
 

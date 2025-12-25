@@ -1,1899 +1,1899 @@
-{% load i18n %}
+    {% load i18n %}
 
-<!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}">
-<head>
-    <meta charset="UTF-8" />
-    <meta property="og:title" content="{% trans 'AI Project' %}" />
-    <meta property="og:description" content="{% trans 'Sun\'iy intellekt sohasiga qiziquvchilar uchun kuchli platforma' %}" />
-    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ MEDIA_URL }}images/Copilot_20251219_102515.png" />
-    <meta property="og:url" content="https://ai-teach.uz/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>{% trans 'IT Ta\'lim Portali' %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <style>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      rel="stylesheet"
-    />
-      <!-- base.html ning <head> qismiga -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-      <!-- Add Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!DOCTYPE html>
+    <html lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <meta charset="UTF-8" />
+        <meta property="og:title" content="{% trans 'AI Project' %}" />
+        <meta property="og:description" content="{% trans 'Sun\'iy intellekt sohasiga qiziquvchilar uchun kuchli platforma' %}" />
+        <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ MEDIA_URL }}images/Copilot_20251219_102515.png" />
+        <meta property="og:url" content="https://ai-teach.uz/" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>{% trans 'IT Ta\'lim Portali' %}</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+        <style>
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+        />
+        <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          rel="stylesheet"
+        />
+          <!-- base.html ning <head> qismiga -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+          <!-- Add Font Awesome for icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Add Inter Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <!-- Add Inter Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <style>
-      /* Umumiy stillar */
-      * {
-        padding: 0;
-        margin: 0;
-        font-family: "Times New Roman", Times, serif;
-        box-sizing: border-box;
+        <style>
+          /* Umumiy stillar */
+          * {
+            padding: 0;
+            margin: 0;
+            font-family: "Times New Roman", Times, serif;
+            box-sizing: border-box;
+          }
+
+           body {
+        min-height: 100vh;
+        overflow-x: hidden;
+        background: linear-gradient(to right, #87ceeb, #87ceeb, #f2d8e2);
+          margin-bottom: 3rem;
+      }
+    body a{
+        text-decoration: none;
+    }
+
+      h4 {
+        font-size: 32px;
+        font-weight: bold;
       }
 
-       body {
-    min-height: 100vh;
-    overflow-x: hidden;
-    background: linear-gradient(to right, #87ceeb, #87ceeb, #f2d8e2);
-      margin-bottom: 3rem;
-  }
-body a{
-    text-decoration: none;
-}
-
-  h4 {
-    font-size: 32px;
-    font-weight: bold;
-  }
-
-  h6 {
-    font-weight: bold;
-  }
-
-  body h1 {
-    font-weight: 1000;
-  }
-
-  /* Yuklanish animatsiyasi uchun CSS */
-  .loading-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, #87ceeb, #87ceeb, #f2d8e2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    opacity: 1;
-    transition: opacity 0.5s ease;
-  }
-
-  .cube-loader-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-  }
-
-  .cube-loader {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    transform-style: preserve-3d;
-    transform: rotateX(-30deg);
-    animation: cubeRotate 4s linear infinite;
-  }
-
-  @keyframes cubeRotate {
-    0% {
-      transform: rotateX(-30deg) rotateY(0deg);
-    }
-    100% {
-      transform: rotateX(-30deg) rotateY(360deg);
-    }
-  }
-
-  .cube-wrapper {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-  }
-
-  .cube-span {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      151deg,
-      hsl(0, 48%, 42%) 0%,
-      hsl(0, 53%, 58%) 45.6%,
-      hsl(0, 64%, 57%) 54%,
-      hsl(0, 91%, 63%) 63.4%,
-      hsl(0, 93%, 95%) 73.7%,
-      hsl(0, 94%, 63%) 86.2%,
-      hsl(0, 96%, 66%) 96.3%,
-      hsl(0, 96%, 54%) 99%,
-      hsl(0, 99%, 58%) 100%
-    );
-    transform: rotateY(calc(90deg * var(--i))) translateZ(50px);
-    transform-style: preserve-3d;
-  }
-
-  .cube-top {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background: hsl(339, 3.13%, 25.1%);
-    transform: rotateX(90deg) translateZ(50px);
-    transform-style: preserve-3d;
-  }
-
-  .cube-top::before {
-    content: "";
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background: hsl(0, 93%, 68%);
-    transform: translateZ(-120px);
-    filter: blur(20px);
-    box-shadow: 0 0 20px rgba(255, 69, 0, 0.3),
-      0 0 40px rgba(255, 69, 0, 0.4), 0 0 60px rgba(255, 69, 0, 0.5),
-      0 0 80px rgba(255, 69, 0, 0.6);
-  }
-
-  .loading-text {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    animation: textPulse 1.5s ease-in-out infinite;
-  }
-
-  @keyframes textPulse {
-    0%,
-    100% {
-      opacity: 0.7;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 1;
-      transform: scale(1.05);
-    }
-  }
-
-  /* Kichik ekranlar uchun moslashuv */
-  @media (max-width: 768px) {
-    .cube-loader {
-      width: 70px;
-      height: 70px;
-    }
-
-    .cube-span {
-      transform: rotateY(calc(90deg * var(--i))) translateZ(35px);
-    }
-
-    .cube-top {
-      width: 70px;
-      height: 70px;
-      transform: rotateX(90deg) translateZ(35px);
-    }
-
-    .cube-top::before {
-      width: 70px;
-      height: 70px;
-      transform: translateZ(-85px);
-    }
-
-    .loading-text {
-      font-size: 1.2rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .cube-loader {
-      width: 50px;
-      height: 50px;
-    }
-
-    .cube-span {
-      transform: rotateY(calc(90deg * var(--i))) translateZ(25px);
-    }
-
-    .cube-top {
-      width: 50px;
-      height: 50px;
-      transform: rotateX(90deg) translateZ(25px);
-    }
-
-    .cube-top::before {
-      width: 50px;
-      height: 50px;
-      transform: translateZ(-60px);
-    }
-
-    .loading-text {
-      font-size: 1rem;
-    }
-  }
-
-  /* Container box */
-  .contaner_box {
-    display: flex;
-    min-height: 100vh;
-    width: 100%;
-    position: relative;
-  }
-
-  /* =========================== */
-  /* TIL ALMASHTIRISH - YANGI TUGIRLANGAN VERSIYA */
-  /* =========================== */
-  .language-switcher {
-    position: relative;
-    margin-right: 15px;
-    z-index: 1001;
-  }
-
-  .language-selector {
-    position: relative;
-    display: inline-block;
-  }
-
-  .current-language {
-    background: rgba(5, 130, 171, 0.9);
-    border: none;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    min-width: 70px;
-    justify-content: space-between;
-    z-index: 1002;
-  }
-
-  .current-language:hover {
-    background: rgba(5, 130, 171, 1);
-    transform: scale(0.98);
-  }
-
-  .current-language i {
-    font-size: 12px;
-    transition: transform 0.3s ease;
-  }
-
-  .current-language.active i {
-    transform: rotate(180deg);
-  }
-
-  .language-dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: rgba(5, 130, 171, 0.95);
-    border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    min-width: 180px;
-    z-index: 1003;
-    overflow: hidden;
-    margin-top: 8px;
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .language-dropdown.show {
-    display: block;
-    animation: fadeInDown 0.3s ease;
-  }
-
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .language-option {
-    background: none;
-    border: none;
-    width: 100%;
-    padding: 12px 15px;
-    text-align: left;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: white;
-    transition: all 0.2s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .language-option:last-child {
-    border-bottom: none;
-  }
-
-  .language-option:hover {
-    background: rgba(255, 255, 255, 0.15);
-  }
-
-  .language-flag {
-    font-size: 18px;
-    width: 24px;
-    text-align: center;
-  }
-
-  .language-name {
-    flex-grow: 1;
-    font-size: 14px;
-  }
-
-  .language-form {
-    display: inline-block;
-  }
-
-  /* =========================== */
-  /* MENYU SCROLLBAR - TUGIRLANGAN */
-  /* =========================== */
-  .menu {
-    width: 220px;
-    height: 100vh;
-    border-right: 1px solid #ffffff;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 999;
-    overflow-y: auto;
-    transition: transform 0.5s ease;
-    transform: translateX(-100%);
-    backdrop-filter: blur(100px);
-    background-color: rgba(255, 255, 255, 0.511);
-  }
-
-  /* Scrollbar uchun maxsus stillar */
-  .menu::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .menu::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-  }
-
-  .menu::-webkit-scrollbar-thumb {
-    background: rgba(5, 130, 171, 0.5);
-    border-radius: 3px;
-  }
-
-  .menu::-webkit-scrollbar-thumb:hover {
-    background: rgba(5, 130, 171, 0.7);
-  }
-
-  /* Firefox uchun scrollbar */
-  .menu {
-    scrollbar-width: none;
-    scrollbar-color: rgba(5, 130, 171, 0.5) rgba(255, 255, 255, 0.1);
-  }
-
-  .menu.show {
-    transform: translateX(0);
-  }
-
-  .menu article {
-    margin-bottom: 60px;
-    padding: 0 20px;
-    width: 100%;
-  }
-
-  .menu article a {
-    text-decoration: none;
-    display: block;
-    width: 100%;
-  }
-
-  .menu article a button {
-    width: 100%;
-    cursor: pointer;
-    border: none;
-    border-radius: 10px;
-    margin-top: 5px;
-    background: none;
-    font-size: 16px;
-    transition: 0.3s ease;
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    padding: 12px 15px;
-    text-align: left;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .menu article a button:hover {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    background: rgba(255, 255, 255, 0.3);
-  }
-
-  .menu article a button svg,
-  .menu article a button i {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    min-width: 20px;
-  }
-
-  /* Menu ichidagi matnlar uchun */
-  .menu article a button span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    flex-grow: 1;
-  }
-
-  /* Iconkalar uchun RESPONSIVE STYLE */
-  .icon-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  .icon-item {
-    flex: 0 0 auto;
-    text-align: center;
-    min-width: 80px;
-    transition: transform 0.3s ease;
-  }
-
-  .icon-item img {
-    width: 100%;
-    max-width: 80px;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .icon-item img:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-
-  .icon-name {
-    margin-top: 8px;
-    font-size: 14px;
-    color: #333;
-    font-weight: 500;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  /* list_btn_box uchun RESPONSIVE STYLE */
-  .list_btn_box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-    padding: 15px;
-    box-sizing: border-box;
-    max-width: 500px;
-  }
-
-  .list_btn_box a,
-  .list_btn_box form {
-    width: 100%;
-    max-width: 300px;
-    text-decoration: none;
-  }
-
-  .list_btn_box a button,
-  .list_btn_box form button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-     gap:10px;
-    width: 100%;
-    height: 40px;
-    cursor: pointer;
-    backdrop-filter: blur(100px);
-    background-color: rgba(7, 63, 80, 0.8);
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    color: white;
-    border: none;
-    padding: 15px;
-    gap: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .list_btn_box button:hover {
-    transform: scale(0.98);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    background-color: rgba(120, 181, 201, 0.9);
-  }
-
-  .list_btn_box a button p,
-  .list_btn_box form button p {
-    color: white;
-    font-size: 14px;
-    margin: 0;
-    text-align: center;
-    font-weight: 500;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-  }
-
-  .list_btn_box svg,
-  .list_btn_box i {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-    font-size: 1.2rem;
-  }
-
-  .profile-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: auto;
-    padding: 20px;
-    width: 100%;
-  }
-
-  .profile-img {
-    width: 100%;
-    max-width: 200px;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 15px;
-    object-fit: cover;
-    aspect-ratio: 1/1;
-  }
-
-  /* Asosiy content */
-  .hed_main {
-    flex: 1;
-    padding: 20px;
-    transition: none;
-    width: 100%;
-    min-height: 100vh;
-  }
-
-  /* Header qismi */
-  header {
-    width: 100%;
-    margin: 0 auto;
-    height: 4rem;
-  }
-
-  .section_header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 4.6rem;
-    backdrop-filter: blur(100px);
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 100;
-    padding: 10px 20px;
-    box-sizing: border-box;
-      border-bottom: 1px solid white;
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .logo svg {
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    backdrop-filter: blur(100px);
-    background-color: rgba(255, 255, 255, 0.782);
-    border-radius: 10px;
-    padding: 10px;
-    transition: all 0.5s ease;
-  }
-
-  .logo svg:hover {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
-  }
-
-  .logo img {
-    width: 90px;
-    height: auto;
-    max-width: 100%;
-  }
-
-  .plot {
-    width: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .profil_img {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    position: relative;
-    z-index: 100;
-  }
-
-  .profil_img img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 3px solid white;
-    transition: 0.3s ease;
-    cursor: pointer;
-    object-fit: cover;
-    aspect-ratio: 1/1;
-  }
-
-  .profil_img img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  }
-
-  .profil_img span {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    text-decoration: none;
-    border-radius: 10px;
-    transition: 0.3s ease;
-    color: rgb(20, 33, 119);
-    font-size: 16px;
-    font-weight: 500;
-  }
-
-  .menu_logo {
-    width: auto;
-    max-height: 40px;
-    text-align: center;
-  }
-
-  .menu_logo img {
-    width: 100px;
-    height: 100px;
-  }
-
-  .logo-container {
-    width: 100px;
-    height: 100px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .glavniy_logo {
-    width: 100%;
-  }
-
-  .glavniy_logo img {
-    width: 90px;
-    height: auto;
-    display: block;
-    margin-left:34px;
-  }
-
-  /* RESPONSIVE MEDIA QUERIES */
-
-  /* Katta ekranlar (desktop) */
-  @media (min-width: 1200px) {
-    .icon-item {
-      min-width: 100px;
-    }
-
-    .icon-item img {
-      max-width: 100px;
-    }
-
-    .list_btn_box {
-      max-width: 400px;
-    }
-  }
-
-  /* Planshetlar (tablet) */
-  @media (max-width: 992px) {
-    .icon-item {
-      min-width: 90px;
-    }
-      header{
-          height: 1rem;
+      h6 {
+        font-weight: bold;
       }
 
-    .icon-item img {
-      max-width: 90px;
-    }
+      body h1 {
+        font-weight: 1000;
+      }
 
-    .icon-name {
-      font-size: 13px;
-    }
+      /* Yuklanish animatsiyasi uchun CSS */
+      .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, #87ceeb, #87ceeb, #f2d8e2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+      }
 
-    .list_btn_box {
-      max-width: 350px;
-    }
+      .cube-loader-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
 
-    .profile-img {
-      max-width: 180px;
-    }
-  }
+      .cube-loader {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        transform-style: preserve-3d;
+        transform: rotateX(-30deg);
+        animation: cubeRotate 4s linear infinite;
+      }
 
-  /* Kichik planshetlar */
-  @media (max-width: 768px) {
-    .icon-container {
-      gap: 15px;
-      padding: 15px;
-    }
+      @keyframes cubeRotate {
+        0% {
+          transform: rotateX(-30deg) rotateY(0deg);
+        }
+        100% {
+          transform: rotateX(-30deg) rotateY(360deg);
+        }
+      }
 
-    .icon-item {
-      min-width: 80px;
-    }
+      .cube-wrapper {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+      }
 
-    .icon-item img {
-      max-width: 80px;
-    }
+      .cube-span {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          151deg,
+          hsl(0, 48%, 42%) 0%,
+          hsl(0, 53%, 58%) 45.6%,
+          hsl(0, 64%, 57%) 54%,
+          hsl(0, 91%, 63%) 63.4%,
+          hsl(0, 93%, 95%) 73.7%,
+          hsl(0, 94%, 63%) 86.2%,
+          hsl(0, 96%, 66%) 96.3%,
+          hsl(0, 96%, 54%) 99%,
+          hsl(0, 99%, 58%) 100%
+        );
+        transform: rotateY(calc(90deg * var(--i))) translateZ(50px);
+        transform-style: preserve-3d;
+      }
 
-    .icon-name {
-      font-size: 12px;
-    }
+      .cube-top {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: hsl(339, 3.13%, 25.1%);
+        transform: rotateX(90deg) translateZ(50px);
+        transform-style: preserve-3d;
+      }
 
-    .list_btn_box {
-      max-width: 320px;
-      padding: 12px;
-    }
+      .cube-top::before {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: hsl(0, 93%, 68%);
+        transform: translateZ(-120px);
+        filter: blur(20px);
+        box-shadow: 0 0 20px rgba(255, 69, 0, 0.3),
+          0 0 40px rgba(255, 69, 0, 0.4), 0 0 60px rgba(255, 69, 0, 0.5),
+          0 0 80px rgba(255, 69, 0, 0.6);
+      }
 
-    .list_btn_box a button,
-    .list_btn_box form button {
-      min-height: 70px;
-      padding: 12px;
-    }
+      .loading-text {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        animation: textPulse 1.5s ease-in-out infinite;
+      }
 
-    .list_btn_box a button p,
-    .list_btn_box form button p {
-      font-size: 13px;
-    }
+      @keyframes textPulse {
+        0%,
+        100% {
+          opacity: 0.7;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+      }
 
-    .profile-img {
-      max-width: 160px;
-    }
+      /* Kichik ekranlar uchun moslashuv */
+      @media (max-width: 768px) {
+        .cube-loader {
+          width: 70px;
+          height: 70px;
+        }
 
-    .section_header {
-      padding: 10px 15px;
-    }
-  }
+        .cube-span {
+          transform: rotateY(calc(90deg * var(--i))) translateZ(35px);
+        }
 
-  /* Kichik ekranlar uchun menyu tugmasi joylashuvi */
-  @media (max-width: 1001px) {
-    .logo svg {
-      background-color: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
+        .cube-top {
+          width: 70px;
+          height: 70px;
+          transform: rotateX(90deg) translateZ(35px);
+        }
 
-    /* Asosiy kontentni surish uchun margin-left o'rnatilmaydi */
-    .hed_main {
-      margin-left: 0;
-      padding-top: 70px;
-    }
+        .cube-top::before {
+          width: 70px;
+          height: 70px;
+          transform: translateZ(-85px);
+        }
 
-    .language-switcher {
-      margin-right: 10px;
-    }
+        .loading-text {
+          font-size: 1.2rem;
+        }
+      }
 
-    .current-language {
-      padding: 6px 12px;
-      min-width: 50px;
-    }
+      @media (max-width: 480px) {
+        .cube-loader {
+          width: 50px;
+          height: 50px;
+        }
 
-    .language-dropdown {
-      min-width: 160px;
-    }
+        .cube-span {
+          transform: rotateY(calc(90deg * var(--i))) translateZ(25px);
+        }
 
-    .icon-container {
-      gap: 12px;
-      padding: 12px;
-    }
+        .cube-top {
+          width: 50px;
+          height: 50px;
+          transform: rotateX(90deg) translateZ(25px);
+        }
 
-    .icon-item {
-      min-width: 70px;
-    }
+        .cube-top::before {
+          width: 50px;
+          height: 50px;
+          transform: translateZ(-60px);
+        }
 
-    .icon-item img {
-      max-width: 70px;
-    }
+        .loading-text {
+          font-size: 1rem;
+        }
+      }
 
-    .icon-name {
-      font-size: 11px;
-    }
+      /* Container box */
+      .contaner_box {
+        display: flex;
+        min-height: 100vh;
+        width: 100%;
+        position: relative;
+      }
 
-    .list_btn_box {
-      max-width: 300px;
-      padding: 10px;
-    }
-  }
+      /* =========================== */
+      /* TIL ALMASHTIRISH - YANGI TUGIRLANGAN VERSIYA */
+      /* =========================== */
+      .language-switcher {
+        position: relative;
+        margin-right: 15px;
+        z-index: 1001;
+      }
 
-  @media (max-width: 576px) {
-    .icon-container {
-      gap: 10px;
-      padding: 10px;
-    }
+      .language-selector {
+        position: relative;
+        display: inline-block;
+      }
 
-    .icon-item {
-      min-width: 60px;
-    }
+      .current-language {
+        background: rgba(5, 130, 171, 0.9);
+        border: none;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        min-width: 70px;
+        justify-content: space-between;
+        z-index: 1002;
+      }
 
-    .icon-item img {
-      max-width: 60px;
-    }
+      .current-language:hover {
+        background: rgba(5, 130, 171, 1);
+        transform: scale(0.98);
+      }
 
-    .icon-name {
-      font-size: 10px;
-      margin-top: 5px;
-    }
+      .current-language i {
+        font-size: 12px;
+        transition: transform 0.3s ease;
+      }
 
-    .list_btn_box {
-      max-width: 280px;
-      padding: 8px;
-      gap: 10px;
-    }
+      .current-language.active i {
+        transform: rotate(180deg);
+      }
 
-    .list_btn_box a button,
-    .list_btn_box form button {
-      min-height: 65px;
-      padding: 10px;
-      gap: 6px;
-    }
-
-    .list_btn_box a button p,
-    .list_btn_box form button p {
-      font-size: 12px;
-    }
-
-    .list_btn_box svg,
-    .list_btn_box i {
-      width: 20px;
-      height: 20px;
-      font-size: 1rem;
-    }
-
-    .profile-img {
-      max-width: 140px;
-    }
-
-    .section_header {
-      padding: 8px 12px;
-    }
-
-    .logo img {
+      .language-dropdown {
         display: none;
-    }
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: rgba(5, 130, 171, 0.95);
+        border-radius: 10px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        min-width: 180px;
+        z-index: 1003;
+        overflow: hidden;
+        margin-top: 8px;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
 
-    .logo svg {
-      width: 40px;
-      height: 40px;
-      padding: 8px;
-    }
+      .language-dropdown.show {
+        display: block;
+        animation: fadeInDown 0.3s ease;
+      }
 
-    .profil_img img {
-      width: 35px;
-      height: 35px;
-    }
-  }
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-  @media (max-width: 480px) {
-    .icon-container {
-      gap: 8px;
-      padding: 8px;
-    }
+      .language-option {
+        background: none;
+        border: none;
+        width: 100%;
+        padding: 12px 15px;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: white;
+        transition: all 0.2s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
 
-    .icon-item {
-      min-width: 50px;
-    }
+      .language-option:last-child {
+        border-bottom: none;
+      }
 
-    .icon-item img {
-      max-width: 50px;
-      border-radius: 8px;
-    }
+      .language-option:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
 
-    .icon-name {
-      font-size: 9px;
-    }
+      .language-flag {
+        font-size: 18px;
+        width: 24px;
+        text-align: center;
+      }
 
-    .list_btn_box {
-      max-width: 250px;
-    }
+      .language-name {
+        flex-grow: 1;
+        font-size: 14px;
+      }
 
-    .list_btn_box a button,
-    .list_btn_box form button {
-      min-height: 60px;
-      padding: 8px;
-    }
+      .language-form {
+        display: inline-block;
+      }
 
-    .list_btn_box a button p,
-    .list_btn_box form button p {
-      font-size: 11px;
-    }
+      /* =========================== */
+      /* MENYU SCROLLBAR - TUGIRLANGAN */
+      /* =========================== */
+      .menu {
+        width: 220px;
+        height: 100vh;
+        border-right: 1px solid #ffffff;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 999;
+        overflow-y: auto;
+        transition: transform 0.5s ease;
+        transform: translateX(-100%);
+        backdrop-filter: blur(100px);
+        background-color: rgba(255, 255, 255, 0.511);
+      }
 
-    .profile-img {
-      max-width: 120px;
-    }
+      /* Scrollbar uchun maxsus stillar */
+      .menu::-webkit-scrollbar {
+        width: 6px;
+      }
 
-    .hed_main {
-      padding: 5px;
-      padding-top: 60px;
-    }
+      .menu::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+      }
 
-    .menu {
-      width: 200px;
-    }
+      .menu::-webkit-scrollbar-thumb {
+        background: rgba(5, 130, 171, 0.5);
+        border-radius: 3px;
+      }
 
-    .language-switcher {
-      margin-right: 3px;
-    }
+      .menu::-webkit-scrollbar-thumb:hover {
+        background: rgba(5, 130, 171, 0.7);
+      }
 
-    .current-language {
-      padding: 5px 8px;
-      font-size: 12px;
-      min-width: 45px;
-    }
+      /* Firefox uchun scrollbar */
+      .menu {
+        scrollbar-width: none;
+        scrollbar-color: rgba(5, 130, 171, 0.5) rgba(255, 255, 255, 0.1);
+      }
 
-    .language-flag {
-      font-size: 14px;
-    }
+      .menu.show {
+        transform: translateX(0);
+      }
 
-    .language-dropdown {
-      min-width: 140px;
-    }
-  }
+      .menu article {
+        margin-bottom: 60px;
+        padding: 0 20px;
+        width: 100%;
+      }
 
-  /* Juda kichik ekranlar uchun */
-  @media (max-width: 360px) {
-    .icon-item {
-      min-width: 45px;
-    }
+      .menu article a {
+        text-decoration: none;
+        display: block;
+        width: 100%;
+      }
 
-    .icon-item img {
-      max-width: 45px;
-    }
+      .menu article a button {
+        width: 100%;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+        margin-top: 5px;
+        background: none;
+        font-size: 16px;
+        transition: 0.3s ease;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        padding: 12px 15px;
+        text-align: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 
-    .icon-name {
-      font-size: 8px;
-    }
+      .menu article a button:hover {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        background: rgba(255, 255, 255, 0.3);
+      }
 
-    .list_btn_box {
-      max-width: 220px;
-    }
+      .menu article a button svg,
+      .menu article a button i {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        min-width: 20px;
+      }
 
-    .list_btn_box a button,
-    .list_btn_box form button {
-      min-height: 55px;
-      padding: 6px;
-    }
+      /* Menu ichidagi matnlar uchun */
+      .menu article a button span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex-grow: 1;
+      }
 
-    .list_btn_box a button p,
-    .list_btn_box form button p {
-      font-size: 10px;
-    }
+      /* Iconkalar uchun RESPONSIVE STYLE */
+      .icon-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
 
-    .profile-img {
-      max-width: 100px;
-    }
+      .icon-item {
+        flex: 0 0 auto;
+        text-align: center;
+        min-width: 80px;
+        transition: transform 0.3s ease;
+      }
 
-    .section_header {
-      padding: 6px 10px;
-    }
+      .icon-item img {
+        width: 100%;
+        max-width: 80px;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
 
-    .logo img {
-      width: 60px;
-    }
+      .icon-item img:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
 
-    .logo svg {
-      width: 35px;
-      height: 35px;
-      padding: 6px;
-    }
-  }
+      .icon-name {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #333;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 
-  .glavniy_logo svg {
-    position: absolute;
-    right: 0px;
-    width: 35px;
-    height: 35px;
-    top: 26px;
-      right: 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 7px;
-    padding: 2px;
-    transition: 0.3s ease;
-    background: #0dcaf0;
-    color: white;
-  }
+      /* list_btn_box uchun RESPONSIVE STYLE */
+      .list_btn_box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        padding: 15px;
+        box-sizing: border-box;
+        max-width: 500px;
+      }
 
-  .glavniy_logo svg:hover {
-    transform: scale(0.9);
-    opacity: 0.6;
-    color: #2c3e50;
-  }
+      .list_btn_box a,
+      .list_btn_box form {
+        width: 100%;
+        max-width: 300px;
+        text-decoration: none;
+      }
 
-  /* Menu ichidagi buttonlar */
-  @media (max-width: 1225px) {
-    .menu article a button {
-      font-size: 15px;
-      padding: 10px 12px;
-    }
-  }
+      .list_btn_box a button,
+      .list_btn_box form button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+         gap:10px;
+        width: 100%;
+        height: 40px;
+        cursor: pointer;
+        backdrop-filter: blur(100px);
+        background-color: rgba(7, 63, 80, 0.8);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        color: white;
+        border: none;
+        padding: 15px;
+        gap: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
 
-  @media (max-width: 1115px) {
-    .logo svg {
-      width: 38px;
-      height: 38px;
-      padding: 8px;
-    }
+      .list_btn_box button:hover {
+        transform: scale(0.98);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        background-color: rgba(120, 181, 201, 0.9);
+      }
 
-    .menu article {
-      margin-bottom: 48px;
-      padding: 0 15px;
-    }
+      .list_btn_box a button p,
+      .list_btn_box form button p {
+        color: white;
+        font-size: 14px;
+        margin: 0;
+        text-align: center;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+      }
 
-    .menu article a button {
-      font-size: 14px;
-      padding: 8px 10px;
-    }
-  }
+      .list_btn_box svg,
+      .list_btn_box i {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        font-size: 1.2rem;
+      }
 
-  @media (max-width: 830px) {
-    .logo svg {
-      width: 40px;
-      height: 40px;
-    }
+      .profile-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: auto;
+        padding: 20px;
+        width: 100%;
+      }
 
-    .hed_main {
-      padding: 15px;
-      padding-top: 70px;
-    }
-  }
+      .profile-img {
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+        border-radius: 50%;
+        margin-bottom: 15px;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+      }
 
-  @media (max-width: 710px) {
-    .profil_img img {
-      width: 40px;
-      height: 40px;
-    }
+      /* Asosiy content */
+      .hed_main {
+        flex: 1;
+        padding: 20px;
+        transition: none;
+        width: 100%;
+        min-height: 100vh;
+      }
 
-    .hed_main {
-      padding: 10px;
-      padding-top: 60px;
-    }
+      /* Header qismi */
+      header {
+        width: 100%;
+        margin: 0 auto;
+        height: 4rem;
+      }
 
-    .menu article {
-      padding: 0 10px;
-    }
+      .section_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 4.6rem;
+        backdrop-filter: blur(100px);
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 100;
+        padding: 10px 20px;
+        box-sizing: border-box;
+          border-bottom: 1px solid white;
+      }
 
-    .menu article a button {
-      font-size: 13px;
-      padding: 6px 8px;
-    }
-  }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
 
-  @media (max-width: 620px) {
-    .logo svg {
-      padding: 4px;
-    }
+      .logo svg {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        backdrop-filter: blur(100px);
+        background-color: rgba(255, 255, 255, 0.782);
+        border-radius: 10px;
+        padding: 10px;
+        transition: all 0.5s ease;
+      }
 
-    .profil_img img {
-      width: 35px;
-      height: 35px;
-    }
+      .logo svg:hover {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transform: scale(1.05);
+      }
 
-    .hed_main {
-      padding: 8px;
-      padding-top: 60px;
-    }
+      .logo img {
+        width: 90px;
+        height: auto;
+        max-width: 100%;
+      }
 
-    .language-code-small {
-      display: none;
-    }
+      .plot {
+        width: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-    .language-name {
-      font-size: 13px;
-    }
-  }
+      .profil_img {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        position: relative;
+        z-index: 100;
+      }
 
-  /* Kichik ekranlar uchun til tanlovi optimizatsiyasi */
-  @media (max-width: 380px) {
-    .plot {
-      gap: 5px;
-    }
+      .profil_img img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 3px solid white;
+        transition: 0.3s ease;
+        cursor: pointer;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+      }
 
-    .language-switcher {
-      margin-right: 2px;
-    }
+      .profil_img img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
 
-    .current-language {
-      padding: 4px 6px;
-      min-width: 40px;
-    }
+      .profil_img span {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        text-decoration: none;
+        border-radius: 10px;
+        transition: 0.3s ease;
+        color: rgb(20, 33, 119);
+        font-size: 16px;
+        font-weight: 500;
+      }
 
-    .language-flag {
-      font-size: 12px;
-    }
-  }
-</style>
-</head>
-<body>
-    <!-- Yuklanish animatsiyasi -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="cube-loader-container">
-            <div class="cube-loader">
-                <div class="cube-top"></div>
-                <div class="cube-wrapper">
-                    <span style="--i: 0" class="cube-span"></span>
-                    <span style="--i: 1" class="cube-span"></span>
-                    <span style="--i: 2" class="cube-span"></span>
-                    <span style="--i: 3" class="cube-span"></span>
+      .menu_logo {
+        width: auto;
+        max-height: 40px;
+        text-align: center;
+      }
+
+      .menu_logo img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .logo-container {
+        width: 100px;
+        height: 100px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .glavniy_logo {
+        width: 100%;
+      }
+
+      .glavniy_logo img {
+        width: 90px;
+        height: auto;
+        display: block;
+        margin-left:34px;
+      }
+
+      /* RESPONSIVE MEDIA QUERIES */
+
+      /* Katta ekranlar (desktop) */
+      @media (min-width: 1200px) {
+        .icon-item {
+          min-width: 100px;
+        }
+
+        .icon-item img {
+          max-width: 100px;
+        }
+
+        .list_btn_box {
+          max-width: 400px;
+        }
+      }
+
+      /* Planshetlar (tablet) */
+      @media (max-width: 992px) {
+        .icon-item {
+          min-width: 90px;
+        }
+          header{
+              height: 1rem;
+          }
+
+        .icon-item img {
+          max-width: 90px;
+        }
+
+        .icon-name {
+          font-size: 13px;
+        }
+
+        .list_btn_box {
+          max-width: 350px;
+        }
+
+        .profile-img {
+          max-width: 180px;
+        }
+      }
+
+      /* Kichik planshetlar */
+      @media (max-width: 768px) {
+        .icon-container {
+          gap: 15px;
+          padding: 15px;
+        }
+
+        .icon-item {
+          min-width: 80px;
+        }
+
+        .icon-item img {
+          max-width: 80px;
+        }
+
+        .icon-name {
+          font-size: 12px;
+        }
+
+        .list_btn_box {
+          max-width: 320px;
+          padding: 12px;
+        }
+
+        .list_btn_box a button,
+        .list_btn_box form button {
+          min-height: 70px;
+          padding: 12px;
+        }
+
+        .list_btn_box a button p,
+        .list_btn_box form button p {
+          font-size: 13px;
+        }
+
+        .profile-img {
+          max-width: 160px;
+        }
+
+        .section_header {
+          padding: 10px 15px;
+        }
+      }
+
+      /* Kichik ekranlar uchun menyu tugmasi joylashuvi */
+      @media (max-width: 1001px) {
+        .logo svg {
+          background-color: rgba(255, 255, 255, 0.95);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Asosiy kontentni surish uchun margin-left o'rnatilmaydi */
+        .hed_main {
+          margin-left: 0;
+          padding-top: 70px;
+        }
+
+        .language-switcher {
+          margin-right: 10px;
+        }
+
+        .current-language {
+          padding: 6px 12px;
+          min-width: 50px;
+        }
+
+        .language-dropdown {
+          min-width: 160px;
+        }
+
+        .icon-container {
+          gap: 12px;
+          padding: 12px;
+        }
+
+        .icon-item {
+          min-width: 70px;
+        }
+
+        .icon-item img {
+          max-width: 70px;
+        }
+
+        .icon-name {
+          font-size: 11px;
+        }
+
+        .list_btn_box {
+          max-width: 300px;
+          padding: 10px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .icon-container {
+          gap: 10px;
+          padding: 10px;
+        }
+
+        .icon-item {
+          min-width: 60px;
+        }
+
+        .icon-item img {
+          max-width: 60px;
+        }
+
+        .icon-name {
+          font-size: 10px;
+          margin-top: 5px;
+        }
+
+        .list_btn_box {
+          max-width: 280px;
+          padding: 8px;
+          gap: 10px;
+        }
+
+        .list_btn_box a button,
+        .list_btn_box form button {
+          min-height: 65px;
+          padding: 10px;
+          gap: 6px;
+        }
+
+        .list_btn_box a button p,
+        .list_btn_box form button p {
+          font-size: 12px;
+        }
+
+        .list_btn_box svg,
+        .list_btn_box i {
+          width: 20px;
+          height: 20px;
+          font-size: 1rem;
+        }
+
+        .profile-img {
+          max-width: 140px;
+        }
+
+        .section_header {
+          padding: 8px 12px;
+        }
+
+        .logo img {
+            display: none;
+        }
+
+        .logo svg {
+          width: 40px;
+          height: 40px;
+          padding: 8px;
+        }
+
+        .profil_img img {
+          width: 35px;
+          height: 35px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .icon-container {
+          gap: 8px;
+          padding: 8px;
+        }
+
+        .icon-item {
+          min-width: 50px;
+        }
+
+        .icon-item img {
+          max-width: 50px;
+          border-radius: 8px;
+        }
+
+        .icon-name {
+          font-size: 9px;
+        }
+
+        .list_btn_box {
+          max-width: 250px;
+        }
+
+        .list_btn_box a button,
+        .list_btn_box form button {
+          min-height: 60px;
+          padding: 8px;
+        }
+
+        .list_btn_box a button p,
+        .list_btn_box form button p {
+          font-size: 11px;
+        }
+
+        .profile-img {
+          max-width: 120px;
+        }
+
+        .hed_main {
+          padding: 5px;
+          padding-top: 60px;
+        }
+
+        .menu {
+          width: 200px;
+        }
+
+        .language-switcher {
+          margin-right: 3px;
+        }
+
+        .current-language {
+          padding: 5px 8px;
+          font-size: 12px;
+          min-width: 45px;
+        }
+
+        .language-flag {
+          font-size: 14px;
+        }
+
+        .language-dropdown {
+          min-width: 140px;
+        }
+      }
+
+      /* Juda kichik ekranlar uchun */
+      @media (max-width: 360px) {
+        .icon-item {
+          min-width: 45px;
+        }
+
+        .icon-item img {
+          max-width: 45px;
+        }
+
+        .icon-name {
+          font-size: 8px;
+        }
+
+        .list_btn_box {
+          max-width: 220px;
+        }
+
+        .list_btn_box a button,
+        .list_btn_box form button {
+          min-height: 55px;
+          padding: 6px;
+        }
+
+        .list_btn_box a button p,
+        .list_btn_box form button p {
+          font-size: 10px;
+        }
+
+        .profile-img {
+          max-width: 100px;
+        }
+
+        .section_header {
+          padding: 6px 10px;
+        }
+
+        .logo img {
+          width: 60px;
+        }
+
+        .logo svg {
+          width: 35px;
+          height: 35px;
+          padding: 6px;
+        }
+      }
+
+      .glavniy_logo svg {
+        position: absolute;
+        right: 0px;
+        width: 35px;
+        height: 35px;
+        top: 26px;
+          right: 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 7px;
+        padding: 2px;
+        transition: 0.3s ease;
+        background: #0dcaf0;
+        color: white;
+      }
+
+      .glavniy_logo svg:hover {
+        transform: scale(0.9);
+        opacity: 0.6;
+        color: #2c3e50;
+      }
+
+      /* Menu ichidagi buttonlar */
+      @media (max-width: 1225px) {
+        .menu article a button {
+          font-size: 15px;
+          padding: 10px 12px;
+        }
+      }
+
+      @media (max-width: 1115px) {
+        .logo svg {
+          width: 38px;
+          height: 38px;
+          padding: 8px;
+        }
+
+        .menu article {
+          margin-bottom: 48px;
+          padding: 0 15px;
+        }
+
+        .menu article a button {
+          font-size: 14px;
+          padding: 8px 10px;
+        }
+      }
+
+      @media (max-width: 830px) {
+        .logo svg {
+          width: 40px;
+          height: 40px;
+        }
+
+        .hed_main {
+          padding: 15px;
+          padding-top: 70px;
+        }
+      }
+
+      @media (max-width: 710px) {
+        .profil_img img {
+          width: 40px;
+          height: 40px;
+        }
+
+        .hed_main {
+          padding: 10px;
+          padding-top: 60px;
+        }
+
+        .menu article {
+          padding: 0 10px;
+        }
+
+        .menu article a button {
+          font-size: 13px;
+          padding: 6px 8px;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .logo svg {
+          padding: 4px;
+        }
+
+        .profil_img img {
+          width: 35px;
+          height: 35px;
+        }
+
+        .hed_main {
+          padding: 8px;
+          padding-top: 60px;
+        }
+
+        .language-code-small {
+          display: none;
+        }
+
+        .language-name {
+          font-size: 13px;
+        }
+      }
+
+      /* Kichik ekranlar uchun til tanlovi optimizatsiyasi */
+      @media (max-width: 380px) {
+        .plot {
+          gap: 5px;
+        }
+
+        .language-switcher {
+          margin-right: 2px;
+        }
+
+        .current-language {
+          padding: 4px 6px;
+          min-width: 40px;
+        }
+
+        .language-flag {
+          font-size: 12px;
+        }
+      }
+    </style>
+    </head>
+    <body>
+        <!-- Yuklanish animatsiyasi -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="cube-loader-container">
+                <div class="cube-loader">
+                    <div class="cube-top"></div>
+                    <div class="cube-wrapper">
+                        <span style="--i: 0" class="cube-span"></span>
+                        <span style="--i: 1" class="cube-span"></span>
+                        <span style="--i: 2" class="cube-span"></span>
+                        <span style="--i: 3" class="cube-span"></span>
+                    </div>
                 </div>
+                <div class="loading-text">{% trans "Yuklanmoqda..." %}</div>
             </div>
-            <div class="loading-text">{% trans "Yuklanmoqda..." %}</div>
-        </div>
-    </div>
-
-    <section class="contaner_box">
-    <!-- Sidebar menu -->
-    <div class="menu" id="menu_box">
-        <div class="glavniy_logo">
-            <a href="{% url 'home' %}">
-                <img src="{{ request.scheme }}://{{ request.get_host }}{{ MEDIA_URL }}images/Copilot_20251219_102515.png" alt="{% trans 'no photo' %}">
-            </a>
-            <svg id="back_btn" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5M10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5"/>
-            </svg>
         </div>
 
-        <article id="menuBtn">
-            <!-- Home/Boshqaruv paneli -->
-            <a href="{% url 'home' %}">
-                <button class="menu-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                    </svg>
-                    <span>{% trans "Boshqaruv paneli" %}</span>
-                </button>
-            </a>
-            {% if user.is_staff %}
-            <!-- Fan Yaratish -->
-            <a href="{% url 'add_subject' %}">
-                <button class="menu-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database" viewBox="0 0 16 16">
-                        <path d="M4.318 2.687C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4c0-.374.356-.875 1.318-1.313M13 5.698V7c0 .374-.356.875-1.318 1.313C10.766 8.729 9.464 9 8 9s-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777A5 5 0 0 0 13 5.698M14 4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13zm-1 4.698V10c0 .374-.356.875-1.318 1.313C10.766 11.729 9.464 12 8 12s-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10s3.022-.289 4.096-.777A5 5 0 0 0 13 8.698m0 3V13c0 .374-.356.875-1.318 1.313C10.766 14.729 9.464 15 8 15s-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13s3.022-.289 4.096-.777c.324-.147.633-.323.904-.525"/>
-                    </svg>
-                    <span>{% trans "Fan Yaratish" %}</span>
-                </button>
-            </a>
-            {% endif %}
-            <!-- Fan materiallari -->
-            <a href="{% url 'documents' %}">
-                <button class="menu-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16">
-                        <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
-                        <path d="M4.603 14.087a.8.8 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.7 7.7 0 0 1 1.482-.645 20 20 0 0 0 1.062-2.227 7.3 7.3 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a11 11 0 0 0 .98 1.686 5.8 5.8 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.86.86 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.7 5.7 0 0 1-.911-.95 11.7 11.7 0 0 0-1.997.406 11.3 11.3 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.8.8 0 0 1-.58.029m1.379-1.901q-.25.115-.459.238c-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361q.016.032.026.044l.035-.012c.137-.056.355-.235.635-.572a8 8 0 0 0 .45-.606m1.64-1.33a13 13 0 0 1 1.01-.193 12 12 0 0 1-.51-.858 21 21 0 0 1-.5 1.05zm2.446.45q.226.245.435.41c.24.19.407.253.498.256a.1.1 0 0 0 .07-.015.3.3 0 0 0 .094-.125.44.44 0 0 0 .059-.2.1.1 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a4 4 0 0 0-.612-.053zM8.078 7.8a7 7 0 0 0 .2-.828q.046-.282.038-.465a.6.6 0 0 0-.032-.198.5.5 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822q.036.167.09.346z"/>
-                    </svg>
-                    <span>{% trans "Fan materiallari" %}</span>
-                </button>
-            </a>
-            <!-- Video darslar -->
-            <a href="{% url 'video_lessons' %}">
-                <button class="menu-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-video" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z"/>
-                    </svg>
-                    <span>{% trans "Video darslar" %}</span>
-                </button>
-            </a>
-            <!-- Code Practice linki -->
-            <a href="{% url 'app2:code_practice' %}">
-                <button class="menu-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-slash" viewBox="0 0 16 16">
-                        <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0"/>
-                    </svg>
-                    <span>{% trans "Code Practice" %}</span>
-                </button>
-            </a>
+        <section class="contaner_box">
+        <!-- Sidebar menu -->
+        <div class="menu" id="menu_box">
+            <div class="glavniy_logo">
+                <a href="{% url 'home' %}">
+                    <img src="{{ request.scheme }}://{{ request.get_host }}{{ MEDIA_URL }}images/Copilot_20251219_102515.png" alt="{% trans 'no photo' %}">
+                </a>
+                <svg id="back_btn" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5M10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5"/>
+                </svg>
+            </div>
 
-            <!-- Code Admin linki (faqat staff/admin uchun) -->
-            {% if user.is_staff %}
-            <a href="{% url 'app2:admin_panel' %}">
-                <button class="menu-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
-                        <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
-                    </svg>
-                    <span>{% trans "Code Admin" %}</span>
-                </button>
-            </a>
-            {% endif %}
-
-            <!-- Biz haqimizda -->
-            <a href="{% url 'about' %}" style="display: none">
-                <button class="menu-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
-                    </svg>
-                    <span>{% trans "Biz haqimizda" %}</span>
-                </button>
-            </a>
-            <!-- Testlar -->
-            <a href="{% url 'tests' %}">
-                <button class="menu-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
-                        <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
-                        <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0M7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0"/>
-                    </svg>
-                    <span>{% trans "Testlar" %}</span>
-                </button>
-            </a>
-            {% if user.is_staff %}
-
-            <!-- Statistika -->
-            <a href="{% url 'admin_stats' %}">
-                <button class="menu-button">
-                    <i class="fas fa-chart-bar"></i>
-                    <span>{% trans "Statistika" %}</span>
-                </button>
-            </a>
-            {% endif %}
-            {# AI test#}
-            <a href="{% url 'app3:home' %}">
-                <button class="menu-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-robot" viewBox="0 0 16 16">
-                        <path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5M3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.6 26.6 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.93.93 0 0 1-.765.935c-.845.147-2.34.346-4.235.346s-3.39-.2-4.235-.346A.93.93 0 0 1 3 9.219zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a25 25 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.754-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25 25 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.135"/>
-                        <path d="M8.5 1.866a1 1 0 1 0-1 0V3h-2A4.5 4.5 0 0 0 1 7.5V8a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v1a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1v-.5A4.5 4.5 0 0 0 10.5 3h-2zM14 7.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.5A3.5 3.5 0 0 1 5.5 4h5A3.5 3.5 0 0 1 14 7.5"/>
-                    </svg>
-                    <span>{% trans "AI Testlar" %}</span>
-                </button>
-            </a>
-
-
-
-
-            <!-- AI Chat (eskisi) -->
-            <a href="{% url 'ai_chat' %}">
-                <button class="menu-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-robot" viewBox="0 0 16 16">
-                        <path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5M3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.6 26.6 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.93.93 0 0 1-.765.935c-.845.147-2.34.346-4.235.346s-3.39-.2-4.235-.346A.93.93 0 0 1 3 9.219zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a25 25 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.754-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25 25 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.135"/>
-                        <path d="M8.5 1.866a1 1 0 1 0-1 0V3h-2A4.5 4.5 0 0 0 1 7.5V8a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v1a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1v-.5A4.5 4.5 0 0 0 10.5 3h-2zM14 7.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.5A3.5 3.5 0 0 1 5.5 4h5A3.5 3.5 0 0 1 14 7.5"/>
-                    </svg>
-                    <span>{% trans "AI muallim" %}</span>
-                </button>
-            </a>
-            {% if user.is_staff %}
-                <a href="{% url 'app3:admin_ai_chat' %}" class="admin-link" style="display: none">
+            <article id="menuBtn">
+                <!-- Home/Boshqaruv paneli -->
+                <a href="{% url 'home' %}">
                     <button class="menu-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
                         </svg>
-                        <span>{% trans "Test Yaratish" %}</span>
+                        <span>{% trans "Boshqaruv paneli" %}</span>
                     </button>
                 </a>
-            {% endif %}
-        </article>
-    </div>
+                {% if user.is_staff %}
+                <!-- Fan Yaratish -->
+                <a href="{% url 'add_subject' %}">
+                    <button class="menu-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database" viewBox="0 0 16 16">
+                            <path d="M4.318 2.687C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4c0-.374.356-.875 1.318-1.313M13 5.698V7c0 .374-.356.875-1.318 1.313C10.766 8.729 9.464 9 8 9s-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777A5 5 0 0 0 13 5.698M14 4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13zm-1 4.698V10c0 .374-.356.875-1.318 1.313C10.766 11.729 9.464 12 8 12s-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10s3.022-.289 4.096-.777A5 5 0 0 0 13 8.698m0 3V13c0 .374-.356.875-1.318 1.313C10.766 14.729 9.464 15 8 15s-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13s3.022-.289 4.096-.777c.324-.147.633-.323.904-.525"/>
+                        </svg>
+                        <span>{% trans "Fan Yaratish" %}</span>
+                    </button>
+                </a>
+                {% endif %}
+                <!-- Fan materiallari -->
+                <a href="{% url 'documents' %}">
+                    <button class="menu-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16">
+                            <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+                            <path d="M4.603 14.087a.8.8 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.7 7.7 0 0 1 1.482-.645 20 20 0 0 0 1.062-2.227 7.3 7.3 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a11 11 0 0 0 .98 1.686 5.8 5.8 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.86.86 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.7 5.7 0 0 1-.911-.95 11.7 11.7 0 0 0-1.997.406 11.3 11.3 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.8.8 0 0 1-.58.029m1.379-1.901q-.25.115-.459.238c-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361q.016.032.026.044l.035-.012c.137-.056.355-.235.635-.572a8 8 0 0 0 .45-.606m1.64-1.33a13 13 0 0 1 1.01-.193 12 12 0 0 1-.51-.858 21 21 0 0 1-.5 1.05zm2.446.45q.226.245.435.41c.24.19.407.253.498.256a.1.1 0 0 0 .07-.015.3.3 0 0 0 .094-.125.44.44 0 0 0 .059-.2.1.1 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a4 4 0 0 0-.612-.053zM8.078 7.8a7 7 0 0 0 .2-.828q.046-.282.038-.465a.6.6 0 0 0-.032-.198.5.5 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822q.036.167.09.346z"/>
+                        </svg>
+                        <span>{% trans "Fan materiallari" %}</span>
+                    </button>
+                </a>
+                <!-- Video darslar -->
+                <a href="{% url 'video_lessons' %}">
+                    <button class="menu-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-video" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z"/>
+                        </svg>
+                        <span>{% trans "Video darslar" %}</span>
+                    </button>
+                </a>
+                <!-- Code Practice linki -->
+                <a href="{% url 'app2:code_practice' %}">
+                    <button class="menu-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-slash" viewBox="0 0 16 16">
+                            <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0"/>
+                        </svg>
+                        <span>{% trans "Code Practice" %}</span>
+                    </button>
+                </a>
 
-    <!-- Asosiy kontent -->
-    <section class="hed_main" id="hedMain">
-        <header id="heaDer">
-            <section class="section_header">
-                <div class="logo">
-                    <a href="{% url 'home' %}">
-                        <img src="{{ request.scheme }}://{{ request.get_host }}{{ MEDIA_URL }}images/Copilot_20251219_102515.png" alt="{% trans 'no photo' %}">
+                <!-- Code Admin linki (faqat staff/admin uchun) -->
+                {% if user.is_staff %}
+                <a href="{% url 'app2:admin_panel' %}">
+                    <button class="menu-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+                            <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+                        </svg>
+                        <span>{% trans "Code Admin" %}</span>
+                    </button>
+                </a>
+                {% endif %}
+
+                <!-- Biz haqimizda -->
+                <a href="{% url 'about' %}" style="display: none">
+                    <button class="menu-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                        </svg>
+                        <span>{% trans "Biz haqimizda" %}</span>
+                    </button>
+                </a>
+                <!-- Testlar -->
+                <a href="{% url 'tests' %}">
+                    <button class="menu-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
+                            <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+                            <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0M7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0"/>
+                        </svg>
+                        <span>{% trans "Testlar" %}</span>
+                    </button>
+                </a>
+                {% if user.is_staff %}
+
+                <!-- Statistika -->
+                <a href="{% url 'admin_stats' %}">
+                    <button class="menu-button">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>{% trans "Statistika" %}</span>
+                    </button>
+                </a>
+                {% endif %}
+                {# AI test#}
+                <a href="{% url 'app3:home' %}">
+                    <button class="menu-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-robot" viewBox="0 0 16 16">
+                            <path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5M3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.6 26.6 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.93.93 0 0 1-.765.935c-.845.147-2.34.346-4.235.346s-3.39-.2-4.235-.346A.93.93 0 0 1 3 9.219zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a25 25 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.754-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25 25 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.135"/>
+                            <path d="M8.5 1.866a1 1 0 1 0-1 0V3h-2A4.5 4.5 0 0 0 1 7.5V8a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v1a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1v-.5A4.5 4.5 0 0 0 10.5 3h-2zM14 7.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.5A3.5 3.5 0 0 1 5.5 4h5A3.5 3.5 0 0 1 14 7.5"/>
+                        </svg>
+                        <span>{% trans "AI Testlar" %}</span>
+                    </button>
+                </a>
+
+
+
+
+                <!-- AI Chat (eskisi) -->
+                <a href="{% url 'ai_chat' %}">
+                    <button class="menu-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-robot" viewBox="0 0 16 16">
+                            <path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5M3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.6 26.6 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.93.93 0 0 1-.765.935c-.845.147-2.34.346-4.235.346s-3.39-.2-4.235-.346A.93.93 0 0 1 3 9.219zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a25 25 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.754-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25 25 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.135"/>
+                            <path d="M8.5 1.866a1 1 0 1 0-1 0V3h-2A4.5 4.5 0 0 0 1 7.5V8a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v1a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1v-.5A4.5 4.5 0 0 0 10.5 3h-2zM14 7.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.5A3.5 3.5 0 0 1 5.5 4h5A3.5 3.5 0 0 1 14 7.5"/>
+                        </svg>
+                        <span>{% trans "AI muallim" %}</span>
+                    </button>
+                </a>
+                {% if user.is_staff %}
+                    <a href="{% url 'app3:admin_ai_chat' %}" class="admin-link" style="display: none">
+                        <button class="menu-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                            </svg>
+                            <span>{% trans "Test Yaratish" %}</span>
+                        </button>
                     </a>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" id="menu">
-                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-                    </svg>
-                </div>
+                {% endif %}
+            </article>
+        </div>
 
-                <div class="plot">
-                    <!-- =============================== -->
-                    <!-- TIL ALMASHTIRISH - YANGI VERSIYA -->
-                    <!-- =============================== -->
-                    <div class="language-switcher">
-                        <form action="{% url 'set_language' %}" method="post" id="languageForm" class="language-form">
-                            {% csrf_token %}
-                            <input name="next" type="hidden" value="{{ request.get_full_path }}">
-
-                            <div class="language-selector">
-                                <button type="button" class="current-language" id="languageToggleBtn">
-                                    {% get_current_language as CURRENT_LANGUAGE %}
-                                    {% if CURRENT_LANGUAGE == 'uz' %}
-                                        <span class="language-flag">🇺🇿</span>
-                                        <span class="language-name">O'Z</span>
-                                    {% elif CURRENT_LANGUAGE == 'ru' %}
-                                        <span class="language-flag">🇷🇺</span>
-                                        <span class="language-name">РУ</span>
-                                    {% elif CURRENT_LANGUAGE == 'en' %}
-                                        <span class="language-flag">🇺🇸</span>
-                                        <span class="language-name">EN</span>
-                                    {% else %}
-                                        <span class="language-flag">🌐</span>
-                                        <span class="language-name">{% trans "Til" %}</span>
-                                    {% endif %}
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
-
-                                <div class="language-dropdown" id="languageDropdown">
-                                    <button type="button" class="language-option" data-lang="uz">
-                                        <span class="language-flag">🇺🇿</span>
-                                        <span class="language-name">{% trans "O'zbekcha" %}</span>
-                                    </button>
-                                    <button type="button" class="language-option" data-lang="ru">
-                                        <span class="language-flag">🇷🇺</span>
-                                        <span class="language-name">{% trans "Русский" %}</span>
-                                    </button>
-                                    <button type="button" class="language-option" data-lang="en">
-                                        <span class="language-flag">🇺🇸</span>
-                                        <span class="language-name">{% trans "English" %}</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+        <!-- Asosiy kontent -->
+        <section class="hed_main" id="hedMain">
+            <header id="heaDer">
+                <section class="section_header">
+                    <div class="logo">
+                        <a href="{% url 'home' %}">
+                            <img src="{{ request.scheme }}://{{ request.get_host }}{{ MEDIA_URL }}images/Copilot_20251219_102515.png" alt="{% trans 'no photo' %}">
+                        </a>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" id="menu">
+                            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                        </svg>
                     </div>
 
-                    <div class="profil_img" id="contanerList">
-                        <span><i class="fas fa-user"></i> {{ user.username }} </span>
-                        <img src="https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg?semt=ais_hybrid&w=740&q=80" alt="{% trans 'no photo' %}" id="loginBtn"/>
-
-                        <!-- Profil dropdown menyu -->
-                        <div class="list_btn_box" id="listBtn">
-                            {% if user.is_authenticated %}
-                            <!-- Profil -->
-                            <a href="{% url 'profile' %}">
-                                <button>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
-                                        <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z"/>
-                                    </svg>
-                                    <p id="imgBtn">{% trans "Profil" %}</p>
-                                </button>
-                            </a>
-                            <!-- Chiqish -->
-                            <form method="post" action="{% url 'logout' %}">
+                    <div class="plot">
+                        <!-- =============================== -->
+                        <!-- TIL ALMASHTIRISH - YANGI VERSIYA -->
+                        <!-- =============================== -->
+                        <div class="language-switcher">
+                            <form action="{% url 'set_language' %}" method="post" id="languageForm" class="language-form">
                                 {% csrf_token %}
-                                <button type="submit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
-                                        <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
-                                    </svg>
-                                    <p id="imgBtn">{% trans "Chiqish" %}</p>
-                                </button>
+                                <input name="next" type="hidden" value="{{ request.get_full_path }}">
+
+                                <div class="language-selector">
+                                    <button type="button" class="current-language" id="languageToggleBtn">
+                                        {% get_current_language as CURRENT_LANGUAGE %}
+                                        {% if CURRENT_LANGUAGE == 'uz' %}
+                                            <span class="language-flag">🇺🇿</span>
+                                            <span class="language-name">O'Z</span>
+                                        {% elif CURRENT_LANGUAGE == 'ru' %}
+                                            <span class="language-flag">🇷🇺</span>
+                                            <span class="language-name">РУ</span>
+                                        {% elif CURRENT_LANGUAGE == 'en' %}
+                                            <span class="language-flag">🇺🇸</span>
+                                            <span class="language-name">EN</span>
+                                        {% else %}
+                                            <span class="language-flag">🌐</span>
+                                            <span class="language-name">{% trans "Til" %}</span>
+                                        {% endif %}
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+
+                                    <div class="language-dropdown" id="languageDropdown">
+                                        <button type="button" class="language-option" data-lang="uz">
+                                            <span class="language-flag">🇺🇿</span>
+                                            <span class="language-name">{% trans "O'zbekcha" %}</span>
+                                        </button>
+                                        <button type="button" class="language-option" data-lang="ru">
+                                            <span class="language-flag">🇷🇺</span>
+                                            <span class="language-name">{% trans "Русский" %}</span>
+                                        </button>
+                                        <button type="button" class="language-option" data-lang="en">
+                                            <span class="language-flag">🇺🇸</span>
+                                            <span class="language-name">{% trans "English" %}</span>
+                                        </button>
+                                    </div>
+                                </div>
                             </form>
-                            {% else %}
-                            <!-- Ro'yxatdan o'tish -->
-                            <a href="{% url 'register' %}">
-                                <button>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
-                                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                                        <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
-                                    </svg>
-                                    <p id="imgBtn">{% trans "Ro'yxatdan o'tish" %}</p>
-                                </button>
-                            </a>
-                            <!-- Kirish -->
-                            <a href="{% url 'login' %}">
-                                <button>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v-2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
-                                        <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
-                                    </svg>
-                                    <p id="imgBtn">{% trans "Kirish" %}</p>
-                                </button>
-                            </a>
-                            {% endif %}
+                        </div>
+
+                        <div class="profil_img" id="contanerList">
+                            <span><i class="fas fa-user"></i> {{ user.username }} </span>
+                            <img src="https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg?semt=ais_hybrid&w=740&q=80" alt="{% trans 'no photo' %}" id="loginBtn"/>
+
+                            <!-- Profil dropdown menyu -->
+                            <div class="list_btn_box" id="listBtn">
+                                {% if user.is_authenticated %}
+                                <!-- Profil -->
+                                <a href="{% url 'profile' %}">
+                                    <button>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                                            <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z"/>
+                                        </svg>
+                                        <p id="imgBtn">{% trans "Profil" %}</p>
+                                    </button>
+                                </a>
+                                <!-- Chiqish -->
+                                <form method="post" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button type="submit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+                                            <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                                        </svg>
+                                        <p id="imgBtn">{% trans "Chiqish" %}</p>
+                                    </button>
+                                </form>
+                                {% else %}
+                                <!-- Ro'yxatdan o'tish -->
+                                <a href="{% url 'register' %}">
+                                    <button>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                                            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                                            <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
+                                        </svg>
+                                        <p id="imgBtn">{% trans "Ro'yxatdan o'tish" %}</p>
+                                    </button>
+                                </a>
+                                <!-- Kirish -->
+                                <a href="{% url 'login' %}">
+                                    <button>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v-2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
+                                            <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                                        </svg>
+                                        <p id="imgBtn">{% trans "Kirish" %}</p>
+                                    </button>
+                                </a>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </header>
+                </section>
+            </header>
 
-        <main>
-            {% block content %}
-            <!-- Asosiy kontent bu yerga keladi -->
-            {% endblock %}
-        </main>
+            <main>
+                {% block content %}
+                <!-- Asosiy kontent bu yerga keladi -->
+                {% endblock %}
+            </main>
+        </section>
     </section>
-</section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    // ============================================
-    // TIL O'ZGARTIRISH - YANGI ISHLAYDI
-    // ============================================
-    document.addEventListener('DOMContentLoaded', function() {
-        const languageToggleBtn = document.getElementById('languageToggleBtn');
-        const languageDropdown = document.getElementById('languageDropdown');
-        const languageOptions = document.querySelectorAll('.language-option');
-        const languageForm = document.getElementById('languageForm');
-        let isLanguageOpen = false;
-
-        // Til dropdown'ni ochish/yopish
-        if (languageToggleBtn) {
-            languageToggleBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                isLanguageOpen = !isLanguageOpen;
-                languageDropdown.classList.toggle('show');
-                languageToggleBtn.classList.toggle('active');
-
-                // Boshqa dropdownlarni yopish
-                if (isListBtnOpen) {
-                    closeListBtn();
-                    isListBtnOpen = false;
-                }
-
-                // Menyu ochiq bo'lsa yopish
-                if (isMenuOpen) {
-                    isMenuOpen = false;
-                    updateMenuState();
-                    localStorage.setItem("menuOpen", "false");
-                }
-            });
-        }
-
-        // Til tanlash
-        languageOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                const lang = this.getAttribute('data-lang');
-                const languageInput = document.createElement('input');
-                languageInput.type = 'hidden';
-                languageInput.name = 'language';
-                languageInput.value = lang;
-
-                // Eski inputni o'chirish
-                const oldInput = languageForm.querySelector('input[name="language"]');
-                if (oldInput) {
-                    oldInput.remove();
-                }
-
-                // Yangi input qo'shish
-                languageForm.appendChild(languageInput);
-
-                // Loading ko'rsatish
-                showLoading();
-
-                // Formni yuborish
-                setTimeout(() => {
-                    languageForm.submit();
-                }, 300);
-            });
-        });
-
-        // Sahifaning boshqa joyiga bosilganda til dropdown yopish
-        document.addEventListener('click', function(e) {
-            if (isLanguageOpen &&
-                !languageToggleBtn.contains(e.target) &&
-                !languageDropdown.contains(e.target)) {
-                isLanguageOpen = false;
-                languageDropdown.classList.remove('show');
-                languageToggleBtn.classList.remove('active');
-            }
-        });
-
-        // Escape tugmasi bilan til dropdown yopish
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && isLanguageOpen) {
-                isLanguageOpen = false;
-                languageDropdown.classList.remove('show');
-                languageToggleBtn.classList.remove('active');
-            }
-        });
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
         // ============================================
-        // MENYU VA PROFIL DROPDOWN - TO'G'IRLANGAN VERSIYA
+        // TIL O'ZGARTIRISH - YANGI ISHLAYDI
         // ============================================
-        // Yuklanish animatsiyasi
-        let loadingTimeout;
-        const loadingOverlay = document.getElementById("loadingOverlay");
-        const MAX_WAIT_TIME = 2000;
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageToggleBtn = document.getElementById('languageToggleBtn');
+            const languageDropdown = document.getElementById('languageDropdown');
+            const languageOptions = document.querySelectorAll('.language-option');
+            const languageForm = document.getElementById('languageForm');
+            let isLanguageOpen = false;
 
-        const pageLoadStartTime = Date.now();
+            // Til dropdown'ni ochish/yopish
+            if (languageToggleBtn) {
+                languageToggleBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    isLanguageOpen = !isLanguageOpen;
+                    languageDropdown.classList.toggle('show');
+                    languageToggleBtn.classList.toggle('active');
 
-        window.addEventListener("load", function () {
-            const loadTime = Date.now() - pageLoadStartTime;
+                    // Boshqa dropdownlarni yopish
+                    if (isListBtnOpen) {
+                        closeListBtn();
+                        isListBtnOpen = false;
+                    }
 
-            if (loadTime > MAX_WAIT_TIME) {
-                showLoadingAnimation();
-                setTimeout(() => {
-                    hideLoadingAnimation();
-                }, 2000);
-            } else {
-                hideLoadingAnimation();
+                    // Menyu ochiq bo'lsa yopish
+                    if (isMenuOpen) {
+                        isMenuOpen = false;
+                        updateMenuState();
+                        localStorage.setItem("menuOpen", "false");
+                    }
+                });
             }
-        });
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const domLoadTime = Date.now() - pageLoadStartTime;
-            if (domLoadTime > MAX_WAIT_TIME && !window.loaded) {
-                showLoadingAnimation();
-            }
-        });
+            // Til tanlash
+            languageOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    const languageInput = document.createElement('input');
+                    languageInput.type = 'hidden';
+                    languageInput.name = 'language';
+                    languageInput.value = lang;
 
-        function showLoadingAnimation() {
-            if (loadingOverlay) {
-                loadingOverlay.classList.add("active");
-                loadingOverlay.style.display = "block";
-                setTimeout(() => {
-                    loadingOverlay.style.opacity = "1";
-                }, 10);
-            }
-        }
+                    // Eski inputni o'chirish
+                    const oldInput = languageForm.querySelector('input[name="language"]');
+                    if (oldInput) {
+                        oldInput.remove();
+                    }
 
-        function hideLoadingAnimation() {
-            if (loadingOverlay) {
-                loadingOverlay.style.opacity = "0";
-                setTimeout(() => {
-                    loadingOverlay.classList.remove("active");
-                    loadingOverlay.style.display = "none";
-                }, 500);
-            }
-        }
+                    // Yangi input qo'shish
+                    languageForm.appendChild(languageInput);
 
-        const safetyTimeout = setTimeout(() => {
-            hideLoadingAnimation();
-        }, 10000);
+                    // Loading ko'rsatish
+                    showLoading();
 
-        window.addEventListener("load", function () {
-            clearTimeout(safetyTimeout);
-            window.loaded = true;
-        });
+                    // Formni yuborish
+                    setTimeout(() => {
+                        languageForm.submit();
+                    }, 300);
+                });
+            });
 
-        // DOM elementlarini tanlab olamiz
-        const menuIcon = document.getElementById("menu");
-        const menuBox = document.getElementById("menu_box");
-        const hedMain = document.getElementById("hedMain");
-        const loginBtn = document.getElementById("loginBtn");
-        const listBtn = document.getElementById("listBtn");
-        const userSpan = document.querySelector(".profil_img span");
-        const backBtn = document.getElementById("back_btn");
-
-        // Menuni ochish/yopish holati
-        let isMenuOpen = localStorage.getItem("menuOpen") === "true";
-
-        // ListBtn ochilish holati
-        let isListBtnOpen = false;
-
-        // Dastlabki holatni sozlash
-        updateMenuState();
-        updateElementsForScreenSize();
-
-        // Menu ikonkasi bosilganda - BARCHA EKRAN O'LCHAMLARI UCHUN
-        if (menuIcon) {
-            menuIcon.addEventListener("click", (e) => {
-                e.stopPropagation();
-                isMenuOpen = !isMenuOpen;
-                updateMenuState();
-                localStorage.setItem("menuOpen", isMenuOpen);
-
-                // Agar til dropdown ochiq bo'lsa yopish
-                if (isLanguageOpen) {
+            // Sahifaning boshqa joyiga bosilganda til dropdown yopish
+            document.addEventListener('click', function(e) {
+                if (isLanguageOpen &&
+                    !languageToggleBtn.contains(e.target) &&
+                    !languageDropdown.contains(e.target)) {
                     isLanguageOpen = false;
                     languageDropdown.classList.remove('show');
                     languageToggleBtn.classList.remove('active');
                 }
+            });
 
-                // Agar listBtn ochiq bo'lsa yopish
-                if (isListBtnOpen) {
-                    closeListBtn();
-                    isListBtnOpen = false;
+            // Escape tugmasi bilan til dropdown yopish
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isLanguageOpen) {
+                    isLanguageOpen = false;
+                    languageDropdown.classList.remove('show');
+                    languageToggleBtn.classList.remove('active');
                 }
             });
-        }
 
-        // Back tugmasi bosilganda (menyu yopish) - BARCHA EKRAN O'LCHAMLARI UCHUN
-        if (backBtn) {
-            backBtn.addEventListener("click", (e) => {
-                e.stopPropagation();
-                isMenuOpen = false;
-                updateMenuState();
-                localStorage.setItem("menuOpen", "false");
+            // ============================================
+            // MENYU VA PROFIL DROPDOWN - TO'G'IRLANGAN VERSIYA
+            // ============================================
+            // Yuklanish animatsiyasi
+            let loadingTimeout;
+            const loadingOverlay = document.getElementById("loadingOverlay");
+            const MAX_WAIT_TIME = 2000;
 
-                // Agar listBtn ochiq bo'lsa yopish
-                if (isListBtnOpen) {
-                    closeListBtn();
-                    isListBtnOpen = false;
-                }
-            });
-        }
+            const pageLoadStartTime = Date.now();
 
-        // Menu holatini yangilash funksiyasi
-        function updateMenuState() {
-            if (menuBox) {
-                if (isMenuOpen) {
-                    menuBox.classList.add("show");
+            window.addEventListener("load", function () {
+                const loadTime = Date.now() - pageLoadStartTime;
+
+                if (loadTime > MAX_WAIT_TIME) {
+                    showLoadingAnimation();
+                    setTimeout(() => {
+                        hideLoadingAnimation();
+                    }, 2000);
                 } else {
-                    menuBox.classList.remove("show");
+                    hideLoadingAnimation();
+                }
+            });
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const domLoadTime = Date.now() - pageLoadStartTime;
+                if (domLoadTime > MAX_WAIT_TIME && !window.loaded) {
+                    showLoadingAnimation();
+                }
+            });
+
+            function showLoadingAnimation() {
+                if (loadingOverlay) {
+                    loadingOverlay.classList.add("active");
+                    loadingOverlay.style.display = "block";
+                    setTimeout(() => {
+                        loadingOverlay.style.opacity = "1";
+                    }, 10);
                 }
             }
-        }
 
-        // EKRANING BOSHQA JOYIGA BOSILGANDA MENYUNI YOPISH - BARCHA EKRAN O'LCHAMLARI UCHUN
-        document.addEventListener('click', function(e) {
-            const target = e.target;
-            const isMenuClick = menuBox.contains(target);
-            const isMenuIconClick = menuIcon && menuIcon.contains(target);
-            const isBackBtnClick = backBtn && backBtn.contains(target);
-            const isLanguageToggleClick = languageToggleBtn && languageToggleBtn.contains(target);
-            const isLanguageDropdownClick = languageDropdown && languageDropdown.contains(target);
-            const isInMenu = isMenuClick || isMenuIconClick || isBackBtnClick;
+            function hideLoadingAnimation() {
+                if (loadingOverlay) {
+                    loadingOverlay.style.opacity = "0";
+                    setTimeout(() => {
+                        loadingOverlay.classList.remove("active");
+                        loadingOverlay.style.display = "none";
+                    }, 500);
+                }
+            }
 
-            // Menyu ochiq bo'lsa va menyu tashqarisiga bosilgan bo'lsa
-            if (isMenuOpen && !isInMenu &&
-                !isLanguageToggleClick && !isLanguageDropdownClick) {
-                // Kichik ekranlarda (mobil) har doim yopish
-                if (window.innerWidth < 1001) {
-                    isMenuOpen = false;
+            const safetyTimeout = setTimeout(() => {
+                hideLoadingAnimation();
+            }, 10000);
+
+            window.addEventListener("load", function () {
+                clearTimeout(safetyTimeout);
+                window.loaded = true;
+            });
+
+            // DOM elementlarini tanlab olamiz
+            const menuIcon = document.getElementById("menu");
+            const menuBox = document.getElementById("menu_box");
+            const hedMain = document.getElementById("hedMain");
+            const loginBtn = document.getElementById("loginBtn");
+            const listBtn = document.getElementById("listBtn");
+            const userSpan = document.querySelector(".profil_img span");
+            const backBtn = document.getElementById("back_btn");
+
+            // Menuni ochish/yopish holati
+            let isMenuOpen = localStorage.getItem("menuOpen") === "true";
+
+            // ListBtn ochilish holati
+            let isListBtnOpen = false;
+
+            // Dastlabki holatni sozlash
+            updateMenuState();
+            updateElementsForScreenSize();
+
+            // Menu ikonkasi bosilganda - BARCHA EKRAN O'LCHAMLARI UCHUN
+            if (menuIcon) {
+                menuIcon.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    isMenuOpen = !isMenuOpen;
                     updateMenuState();
-                    localStorage.setItem("menuOpen", "false");
-                }
-                // Katta ekranlarda faqat menu yonida emas, boshqa joyga bosilganda yopish
-                else {
-                    // Katta ekranlarda menyu o'ng tomonida emas, boshqa joyga bosilganda
-                    // (bu foydalanuvchi menyu bilan ish bajarib bo'lgandan keyin)
-                    isMenuOpen = false;
-                    updateMenuState();
-                    localStorage.setItem("menuOpen", "false");
-                }
-            }
+                    localStorage.setItem("menuOpen", isMenuOpen);
 
-            // Profil dropdown ochiq bo'lsa va uning tashqarisiga bosilgan bo'lsa
-            if (isListBtnOpen && listBtn && !listBtn.contains(target) &&
-                loginBtn && !loginBtn.contains(target) &&
-                !isInMenu) {
-                closeListBtn();
-                isListBtnOpen = false;
-            }
-        });
-
-        // ESCAPE tugmasi bilan menyu yopish - BARCHA EKRAN O'LCHAMLARI
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && isMenuOpen) {
-                isMenuOpen = false;
-                updateMenuState();
-                localStorage.setItem("menuOpen", "false");
-            }
-
-            // Profil dropdown ESCAPE bilan yopish
-            if (e.key === 'Escape' && isListBtnOpen) {
-                closeListBtn();
-                isListBtnOpen = false;
-            }
-        });
-
-        // Profil rasmi bosilganda - BARCHA EKRAN O'LCHAMLARI
-        if (loginBtn) {
-            loginBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-
-                if (!isListBtnOpen) {
-                    openListBtn();
                     // Agar til dropdown ochiq bo'lsa yopish
                     if (isLanguageOpen) {
                         isLanguageOpen = false;
                         languageDropdown.classList.remove('show');
                         languageToggleBtn.classList.remove('active');
                     }
-                } else {
+
+                    // Agar listBtn ochiq bo'lsa yopish
+                    if (isListBtnOpen) {
+                        closeListBtn();
+                        isListBtnOpen = false;
+                    }
+                });
+            }
+
+            // Back tugmasi bosilganda (menyu yopish) - BARCHA EKRAN O'LCHAMLARI UCHUN
+            if (backBtn) {
+                backBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    isMenuOpen = false;
+                    updateMenuState();
+                    localStorage.setItem("menuOpen", "false");
+
+                    // Agar listBtn ochiq bo'lsa yopish
+                    if (isListBtnOpen) {
+                        closeListBtn();
+                        isListBtnOpen = false;
+                    }
+                });
+            }
+
+            // Menu holatini yangilash funksiyasi
+            function updateMenuState() {
+                if (menuBox) {
+                    if (isMenuOpen) {
+                        menuBox.classList.add("show");
+                    } else {
+                        menuBox.classList.remove("show");
+                    }
+                }
+            }
+
+            // EKRANING BOSHQA JOYIGA BOSILGANDA MENYUNI YOPISH - BARCHA EKRAN O'LCHAMLARI UCHUN
+            document.addEventListener('click', function(e) {
+                const target = e.target;
+                const isMenuClick = menuBox.contains(target);
+                const isMenuIconClick = menuIcon && menuIcon.contains(target);
+                const isBackBtnClick = backBtn && backBtn.contains(target);
+                const isLanguageToggleClick = languageToggleBtn && languageToggleBtn.contains(target);
+                const isLanguageDropdownClick = languageDropdown && languageDropdown.contains(target);
+                const isInMenu = isMenuClick || isMenuIconClick || isBackBtnClick;
+
+                // Menyu ochiq bo'lsa va menyu tashqarisiga bosilgan bo'lsa
+                if (isMenuOpen && !isInMenu &&
+                    !isLanguageToggleClick && !isLanguageDropdownClick) {
+                    // Kichik ekranlarda (mobil) har doim yopish
+                    if (window.innerWidth < 1001) {
+                        isMenuOpen = false;
+                        updateMenuState();
+                        localStorage.setItem("menuOpen", "false");
+                    }
+                    // Katta ekranlarda faqat menu yonida emas, boshqa joyga bosilganda yopish
+                    else {
+                        // Katta ekranlarda menyu o'ng tomonida emas, boshqa joyga bosilganda
+                        // (bu foydalanuvchi menyu bilan ish bajarib bo'lgandan keyin)
+                        isMenuOpen = false;
+                        updateMenuState();
+                        localStorage.setItem("menuOpen", "false");
+                    }
+                }
+
+                // Profil dropdown ochiq bo'lsa va uning tashqarisiga bosilgan bo'lsa
+                if (isListBtnOpen && listBtn && !listBtn.contains(target) &&
+                    loginBtn && !loginBtn.contains(target) &&
+                    !isInMenu) {
                     closeListBtn();
+                    isListBtnOpen = false;
                 }
-
-                isListBtnOpen = !isListBtnOpen;
             });
-        }
 
-        // ListBtn ni ochish
-        function openListBtn() {
-            if (!listBtn) return;
+            // ESCAPE tugmasi bilan menyu yopish - BARCHA EKRAN O'LCHAMLARI
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isMenuOpen) {
+                    isMenuOpen = false;
+                    updateMenuState();
+                    localStorage.setItem("menuOpen", "false");
+                }
 
-            listBtn.style.display = "flex";
-            listBtn.style.flexDirection = "column";
-            listBtn.style.alignItems = "center";
-            listBtn.style.opacity = "0";
-            listBtn.style.transform = "translateY(-10px)";
-            listBtn.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+                // Profil dropdown ESCAPE bilan yopish
+                if (e.key === 'Escape' && isListBtnOpen) {
+                    closeListBtn();
+                    isListBtnOpen = false;
+                }
+            });
 
-            setTimeout(() => {
-                listBtn.style.opacity = "1";
-                listBtn.style.transform = "translateY(0)";
-            }, 10);
-        }
+            // Profil rasmi bosilganda - BARCHA EKRAN O'LCHAMLARI
+            if (loginBtn) {
+                loginBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
 
-        // ListBtn ni yopish
-        function closeListBtn() {
-            if (!listBtn) return;
+                    if (!isListBtnOpen) {
+                        openListBtn();
+                        // Agar til dropdown ochiq bo'lsa yopish
+                        if (isLanguageOpen) {
+                            isLanguageOpen = false;
+                            languageDropdown.classList.remove('show');
+                            languageToggleBtn.classList.remove('active');
+                        }
+                    } else {
+                        closeListBtn();
+                    }
 
-            listBtn.style.opacity = "0";
-            listBtn.style.transform = "translateY(-10px)";
+                    isListBtnOpen = !isListBtnOpen;
+                });
+            }
 
-            setTimeout(() => {
-                listBtn.style.display = "none";
-            }, 300);
-        }
+            // ListBtn ni ochish
+            function openListBtn() {
+                if (!listBtn) return;
 
-        // Ekran o'lchamiga mos elementlarni sozlash
-        function updateElementsForScreenSize() {
-            const width = window.innerWidth;
+                listBtn.style.display = "flex";
+                listBtn.style.flexDirection = "column";
+                listBtn.style.alignItems = "center";
+                listBtn.style.opacity = "0";
+                listBtn.style.transform = "translateY(-10px)";
+                listBtn.style.transition = "opacity 0.3s ease, transform 0.3s ease";
 
-            if (listBtn) {
-                if (width < 1001) {
+                setTimeout(() => {
+                    listBtn.style.opacity = "1";
+                    listBtn.style.transform = "translateY(0)";
+                }, 10);
+            }
+
+            // ListBtn ni yopish
+            function closeListBtn() {
+                if (!listBtn) return;
+
+                listBtn.style.opacity = "0";
+                listBtn.style.transform = "translateY(-10px)";
+
+                setTimeout(() => {
                     listBtn.style.display = "none";
-                    listBtn.style.position = "absolute";
-                    listBtn.style.top = "50px";
-                    listBtn.style.right = "10px";
-                    listBtn.style.zIndex = "1000";
-                    listBtn.style.backgroundColor = "rgba(5, 130, 171, 0.95)";
-                    listBtn.style.borderRadius = "12px";
-                    listBtn.style.padding = "10px";
-                    listBtn.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.2)";
-                    listBtn.style.minWidth = "180px";
+                }, 300);
+            }
+
+            // Ekran o'lchamiga mos elementlarni sozlash
+            function updateElementsForScreenSize() {
+                const width = window.innerWidth;
+
+                if (listBtn) {
+                    if (width < 1001) {
+                        listBtn.style.display = "none";
+                        listBtn.style.position = "absolute";
+                        listBtn.style.top = "50px";
+                        listBtn.style.right = "10px";
+                        listBtn.style.zIndex = "1000";
+                        listBtn.style.backgroundColor = "rgba(5, 130, 171, 0.95)";
+                        listBtn.style.borderRadius = "12px";
+                        listBtn.style.padding = "10px";
+                        listBtn.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.2)";
+                        listBtn.style.minWidth = "180px";
+                    } else {
+                        listBtn.style.display = "none";
+                        listBtn.style.position = "absolute";
+                        listBtn.style.top = "65px";
+                        listBtn.style.right = "0";
+                        listBtn.style.zIndex = "1000";
+                        listBtn.style.backgroundColor = "rgba(5, 130, 171, 0.95)";
+                        listBtn.style.borderRadius = "12px";
+                        listBtn.style.padding = "15px";
+                        listBtn.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.2)";
+                        listBtn.style.minWidth = "200px";
+                    }
+                }
+
+                if (userSpan) {
+                    if (width < 1001) {
+                        userSpan.style.display = "none";
+                    } else {
+                        userSpan.style.display = "flex";
+                    }
+                }
+
+                // Katta ekranlarda menyu holatini localStorage'dan o'qish
+                if (width >= 1001) {
+                    isMenuOpen = localStorage.getItem("menuOpen") === "true";
+                    updateMenuState();
                 } else {
-                    listBtn.style.display = "none";
-                    listBtn.style.position = "absolute";
-                    listBtn.style.top = "65px";
-                    listBtn.style.right = "0";
-                    listBtn.style.zIndex = "1000";
-                    listBtn.style.backgroundColor = "rgba(5, 130, 171, 0.95)";
-                    listBtn.style.borderRadius = "12px";
-                    listBtn.style.padding = "15px";
-                    listBtn.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.2)";
-                    listBtn.style.minWidth = "200px";
+                    // Kichik ekranda menyu har doim yopiq bo'lsin
+                    isMenuOpen = false;
+                    updateMenuState();
+                    localStorage.setItem("menuOpen", "false");
                 }
             }
 
-            if (userSpan) {
-                if (width < 1001) {
-                    userSpan.style.display = "none";
+            // Ekran o'lchami o'zgarganda
+            function handleResize() {
+                updateElementsForScreenSize();
+
+                if (isListBtnOpen) {
+                    closeListBtn();
+                    isListBtnOpen = false;
+                }
+
+                // Til dropdown yopish
+                if (isLanguageOpen) {
+                    isLanguageOpen = false;
+                    languageDropdown.classList.remove('show');
+                    languageToggleBtn.classList.remove('active');
+                }
+
+                // Katta ekranda menyu holatini localStorage'dan o'qish
+                if (window.innerWidth >= 1001) {
+                    isMenuOpen = localStorage.getItem("menuOpen") === "true";
+                    updateMenuState();
                 } else {
-                    userSpan.style.display = "flex";
+                    // Kichik ekranda menyu har doim yopiq bo'lsin
+                    isMenuOpen = false;
+                    updateMenuState();
+                    localStorage.setItem("menuOpen", "false");
                 }
             }
 
-            // Katta ekranlarda menyu holatini localStorage'dan o'qish
-            if (width >= 1001) {
-                isMenuOpen = localStorage.getItem("menuOpen") === "true";
-                updateMenuState();
-            } else {
-                // Kichik ekranda menyu har doim yopiq bo'lsin
-                isMenuOpen = false;
-                updateMenuState();
-                localStorage.setItem("menuOpen", "false");
-            }
-        }
+            // Dastlabki yuklanishda va ekran o'lchami o'zgarganda
+            window.addEventListener("load", function () {
+                handleResize();
 
-        // Ekran o'lchami o'zgarganda
-        function handleResize() {
-            updateElementsForScreenSize();
-
-            if (isListBtnOpen) {
-                closeListBtn();
+                if (listBtn) {
+                    listBtn.style.display = "none";
+                }
                 isListBtnOpen = false;
-            }
 
-            // Til dropdown yopish
-            if (isLanguageOpen) {
-                isLanguageOpen = false;
-                languageDropdown.classList.remove('show');
-                languageToggleBtn.classList.remove('active');
-            }
-
-            // Katta ekranda menyu holatini localStorage'dan o'qish
-            if (window.innerWidth >= 1001) {
-                isMenuOpen = localStorage.getItem("menuOpen") === "true";
-                updateMenuState();
-            } else {
-                // Kichik ekranda menyu har doim yopiq bo'lsin
-                isMenuOpen = false;
-                updateMenuState();
-                localStorage.setItem("menuOpen", "false");
-            }
-        }
-
-        // Dastlabki yuklanishda va ekran o'lchami o'zgarganda
-        window.addEventListener("load", function () {
-            handleResize();
-
-            if (listBtn) {
-                listBtn.style.display = "none";
-            }
-            isListBtnOpen = false;
-
-            // Dastlabki holatni o'rnatish
-            if (window.innerWidth < 1001) {
-                isMenuOpen = false;
-                updateMenuState();
-            }
-        });
-
-        window.addEventListener("resize", handleResize);
-
-        // JavaScript xatoliklarini oldini olish
-        if (menuIcon) {
-            menuIcon.style.cursor = "pointer";
-        }
-
-        if (loginBtn) {
-            loginBtn.style.cursor = "pointer";
-        }
-
-        if (backBtn) {
-            backBtn.style.cursor = "pointer";
-        }
-
-        // Loading funksiyasi
-        function showLoading() {
-            if (loadingOverlay) {
-                loadingOverlay.style.display = 'flex';
-                loadingOverlay.style.opacity = '1';
-            }
-        }
-
-        // Chiqish formi uchun loading
-        const logoutForm = document.querySelector('form[action*="logout"]');
-        if (logoutForm) {
-            logoutForm.addEventListener('submit', function() {
-                showLoading();
+                // Dastlabki holatni o'rnatish
+                if (window.innerWidth < 1001) {
+                    isMenuOpen = false;
+                    updateMenuState();
+                }
             });
-        }
 
-        // Mobil qurilmalarda menyuni yopish uchun qo'shimcha funksiya
-        window.addEventListener('touchstart', function(e) {
-            const target = e.target;
-            const isMenuClick = menuBox.contains(target);
-            const isMenuIconClick = menuIcon && menuIcon.contains(target);
-            const isBackBtnClick = backBtn && backBtn.contains(target);
-            const isInMenu = isMenuClick || isMenuIconClick || isBackBtnClick;
+            window.addEventListener("resize", handleResize);
 
-            if (isMenuOpen && !isInMenu) {
-                isMenuOpen = false;
-                updateMenuState();
-                localStorage.setItem("menuOpen", "false");
+            // JavaScript xatoliklarini oldini olish
+            if (menuIcon) {
+                menuIcon.style.cursor = "pointer";
             }
+
+            if (loginBtn) {
+                loginBtn.style.cursor = "pointer";
+            }
+
+            if (backBtn) {
+                backBtn.style.cursor = "pointer";
+            }
+
+            // Loading funksiyasi
+            function showLoading() {
+                if (loadingOverlay) {
+                    loadingOverlay.style.display = 'flex';
+                    loadingOverlay.style.opacity = '1';
+                }
+            }
+
+            // Chiqish formi uchun loading
+            const logoutForm = document.querySelector('form[action*="logout"]');
+            if (logoutForm) {
+                logoutForm.addEventListener('submit', function() {
+                    showLoading();
+                });
+            }
+
+            // Mobil qurilmalarda menyuni yopish uchun qo'shimcha funksiya
+            window.addEventListener('touchstart', function(e) {
+                const target = e.target;
+                const isMenuClick = menuBox.contains(target);
+                const isMenuIconClick = menuIcon && menuIcon.contains(target);
+                const isBackBtnClick = backBtn && backBtn.contains(target);
+                const isInMenu = isMenuClick || isMenuIconClick || isBackBtnClick;
+
+                if (isMenuOpen && !isInMenu) {
+                    isMenuOpen = false;
+                    updateMenuState();
+                    localStorage.setItem("menuOpen", "false");
+                }
+            });
         });
-    });
-</script>
-{% block scripts %}{% endblock %}
-</body>
-</html>
+    </script>
+    {% block scripts %}{% endblock %}
+    </body>
+    </html>
