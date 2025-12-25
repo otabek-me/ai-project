@@ -257,6 +257,8 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_COOKIE_AGE = 1209600  # 2 weeks in seconds
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
+DEFAULT_CHARSET = 'utf-8'
+
 # File upload settings
 # FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB
 # DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB
