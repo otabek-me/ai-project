@@ -23,7 +23,7 @@ msgid "Uzbek"
 msgstr "Uzbek"
 
 #: .\config\settings.py:130
-msgid "Russian"
+msgid "Rus tili"
 msgstr "Russian"
 
 #: .\config\settings.py:131 .\templates\base.html:1371
