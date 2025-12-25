@@ -1342,34 +1342,36 @@
                                     <button type="button" class="current-language" id="languageToggleBtn">
                                         {% get_current_language as CURRENT_LANGUAGE %}
                                         {% if CURRENT_LANGUAGE == 'uz' %}
-                                            <span class="language-flag">🇺🇿</span>
-                                            <span class="language-name">O'Z</span>
+                                            <span class="language-flag">UZ</span>
+                                            <span class="language-name">O‘zbek</span>
                                         {% elif CURRENT_LANGUAGE == 'ru' %}
-                                            <span class="language-flag">🇷🇺</span>
-                                            <span class="language-name">РУ</span>
+                                            <span class="language-flag">RU</span>
+                                            <span class="language-name">Русский</span>
                                         {% elif CURRENT_LANGUAGE == 'en' %}
-                                            <span class="language-flag">🇺🇸</span>
-                                            <span class="language-name">EN</span>
+                                            <span class="language-flag">EN</span>
+                                            <span class="language-name">English</span>
                                         {% else %}
                                             <span class="language-flag">🌐</span>
                                             <span class="language-name">{% trans "Til" %}</span>
                                         {% endif %}
+
                                         <i class="fas fa-chevron-down"></i>
                                     </button>
 
                                     <div class="language-dropdown" id="languageDropdown">
                                         <button type="button" class="language-option" data-lang="uz">
-                                            <span class="language-flag">🇺🇿</span>
+                                            <span class="language-flag">UZ</span>
                                             <span class="language-name">{% trans "O'zbekcha" %}</span>
                                         </button>
                                         <button type="button" class="language-option" data-lang="ru">
-                                            <span class="language-flag">🇷🇺</span>
-                                            <span class="language-name">{% trans "Русский" %}</span>
+                                            <span class="language-flag">RU</span>
+                                            <span class="language-name">{% trans "Rus tili" %}</span>
                                         </button>
                                         <button type="button" class="language-option" data-lang="en">
-                                            <span class="language-flag">🇺🇸</span>
+                                            <span class="language-flag">EN</span>
                                             <span class="language-name">{% trans "English" %}</span>
                                         </button>
+
                                     </div>
                                 </div>
                             </form>
