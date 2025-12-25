@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -431,7 +431,7 @@ msgid "O'zlashtirilgan fanlar"
 msgstr "Усвоенные предметы"
 
 #: .\templates\app1\home.html:896
-#, fuzzy
+
 msgid " Fanlar statistikasi"
 msgstr "Статистика по предметам"
 
@@ -1648,13 +1648,8 @@ msgstr "Редактор кода Python"
 
 #: .\templates\app2\practice_question.html:524
 #, python-format
-msgid ""
-"Siz <code class=\"bg-dark text-light px-2 "
-"py-1\">%(question.function_name)s(%(question.function_params)s)</code>\n"
-"                                    funksiyasini yozishingiz kerak."
-msgstr ""
-"Вы должны написать функцию <code class=\"bg-dark text-light px-2 "
-"py-1\">%(question.function_name)s(%(question.function_params)s)</code>."
+msgid "Siz <code class=\"bg-dark text-light px-2 py-1\">%(question.function_name)s(%(question.function_params)s)</code>\n funksiyasini yozishingiz kerak."
+msgstr "Вы должны написать функцию <code class=\"bg-dark text-light px-2 py-1\">%(question.function_name)s(%(question.function_params)s)</code>."
 
 #: .\templates\app2\practice_question.html:534
 msgid "Python kodingizni yozing:"
@@ -2078,15 +2073,15 @@ msgid "Test mavzusi"
 msgstr "Тема теста"
 
 #: .\templates\app3\admin_ai_chat.html:59
-#, fuzzy
+
 #| msgid "Masalan: Python funksiyalari, Django ORM, SQL so'rovlar"
-msgid "Masalan: Python funksiyalari, Django ORM, SQL so‘rovlar"
+msgid "Masalan: Python funksiyalari, Django ORM, SQL so'rovlar"
 msgstr "Например: Функции Python, Django ORM, SQL запросы"
 
 #: .\templates\app3\admin_ai_chat.html:66
-#, fuzzy
+
 #| msgid "Qo'shimcha izoh (ixtiyoriy)"
-msgid "Qo‘shimcha izoh (ixtiyoriy)"
+msgid "Qo'shimcha izoh (ixtiyoriy)"
 msgstr "Дополнительный комментарий (необязательно)"
 
 #: .\templates\app3\admin_ai_chat.html:74
@@ -2094,9 +2089,9 @@ msgid "Test yaratish"
 msgstr "Создать тест"
 
 #: .\templates\app3\admin_ai_chat.html:91
-#, fuzzy
+
 #| msgid "So'nggi yaratilgan testlar"
-msgid "So‘nggi yaratilgan testlar"
+msgid "So'nggi yaratilgan testlar"
 msgstr "Последние созданные тесты"
 
 #: .\templates\app3\admin_ai_chat.html:111 .\templates\app3\home.html:789
@@ -2113,16 +2108,12 @@ msgid "Python funksiyalari"
 msgstr "Функции Python"
 
 #: .\templates\app3\admin_ai_chat.html:130
-#, fuzzy
+
 #| msgid ""
 #| "Python funksiyalari bo'yicha 10 ta test savoli tuzing. Har birida 4 ta "
 #| "variant bo'lsin."
-msgid ""
-"Python funksiyalari bo‘yicha 10 ta test savoli tuzing. Har birida 4 ta "
-"variant bo‘lsin."
-msgstr ""
-"Составьте 10 тестовых вопросов по функциям Python. В каждом должно быть 4 "
-"варианта."
+msgid "Python funksiyalari bo'yicha 10 ta test savoli tuzing. Har birida 4 ta variant bo'lsin."
+msgstr "Составьте 10 тестовых вопросов по функциям Python. В каждом должно быть 4 варианта."
 
 #: .\templates\app3\admin_ai_chat.html:136
 #: .\templates\app3\admin_ai_chat.html:139
@@ -2130,9 +2121,9 @@ msgid "Django ORM"
 msgstr "Django ORM"
 
 #: .\templates\app3\admin_ai_chat.html:137
-#, fuzzy
+
 #| msgid "Django ORM bo'yicha 10 ta tushunarli test savoli tuzing."
-msgid "Django ORM bo‘yicha 10 ta tushunarli test savoli tuzing."
+msgid "Django ORM bo'yicha 10 ta tushunarli test savoli tuzing."
 msgstr "Составьте 10 понятных тестовых вопросов по Django ORM."
 
 #: .\templates\app3\admin_ai_chat.html:143
@@ -2141,9 +2132,9 @@ msgid "HTML5 teglari"
 msgstr "Теги HTML5"
 
 #: .\templates\app3\admin_ai_chat.html:144
-#, fuzzy
+
 #| msgid "HTML5 yangi teglari bo'yicha 10 ta test savoli tuzing."
-msgid "HTML5 yangi teglari bo‘yicha 10 ta test savoli tuzing."
+msgid "HTML5 yangi teglari bo'yicha 10 ta test savoli tuzing."
 msgstr "Составьте 10 тестовых вопросов по новым тегам HTML5."
 
 #: .\templates\app3\admin_ai_chat.html:150
@@ -2152,9 +2143,9 @@ msgid "CSS Flexbox"
 msgstr "CSS Flexbox"
 
 #: .\templates\app3\admin_ai_chat.html:151
-#, fuzzy
+
 #| msgid "CSS Flexbox xossalari bo'yicha 10 ta test savoli tuzing."
-msgid "CSS Flexbox xossalari bo‘yicha 10 ta test savoli tuzing."
+msgid "CSS Flexbox xossalari bo'yicha 10 ta test savoli tuzing."
 msgstr "Составьте 10 тестовых вопросов по свойствам CSS Flexbox."
 
 #: .\templates\app3\admin_ai_chat.html:182
@@ -2170,7 +2161,7 @@ msgid "AI Test Platformasi"
 msgstr "Платформа тестов с ИИ"
 
 #: .\templates\app3\home.html:697 .\templates\base.html:8
-msgid "Sun\\"
+msgid "Sun"
 msgstr "Платформа искусственного интеллекта и обработки данных"
 
 #: .\templates\app3\home.html:704
@@ -2187,7 +2178,8 @@ msgstr "Ваш результат:"
 
 #: .\templates\app3\home.html:745
 msgid "Hali topshirilmagan"
-msgstr ""
+msgstr "Ещё не сдано"
+
 
 #: .\templates\app3\home.html:757 .\templates\app3\home.html:778
 msgid "Testni boshlash"
@@ -2198,14 +2190,11 @@ msgid "Statistikasi"
 msgstr "Статистика"
 
 #: .\templates\app3\home.html:768
-#, fuzzy
+
 #| msgid "Testni o'chirishni istaysizmi?"
-msgid "Testni o\\'chirishni istaysizmi?"
+msgid "Testni o'chirishni istaysizmi?"
 msgstr "Вы хотите удалить тест?"
 
-#: .\templates\app3\home.html:769
-msgid "O\\"
-msgstr ""
 
 #: .\templates\app3\home.html:790
 msgid "Admin yangi testlar yaratishi kutilmoqda..."
@@ -2395,9 +2384,6 @@ msgstr "Пройти тест"
 msgid "AI Project"
 msgstr "Проект ИИ"
 
-#: .\templates\base.html:12
-msgid "IT Ta\\"
-msgstr ""
 
 #: .\templates\base.html:1173
 msgid "Yuklanmoqda..."
