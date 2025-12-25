@@ -432,9 +432,8 @@ msgstr "Усвоенные предметы"
 
 #: .\templates\app1\home.html:896
 #, fuzzy
-#| msgid "📊 Fanlar statistikasi"
 msgid " Fanlar statistikasi"
-msgstr "📊 Статистика по предметам"
+msgstr "Статистика по предметам"
 
 #: .\templates\app1\home.html:904
 #, python-format

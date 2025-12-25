@@ -427,9 +427,8 @@ msgstr "Mastered Subjects"
 
 #: .\templates\app1\home.html:896
 #, fuzzy
-#| msgid "📊 Fanlar statistikasi"
 msgid " Fanlar statistikasi"
-msgstr "📊 Subject Statistics"
+msgstr "Subject Statistics"
 
 #: .\templates\app1\home.html:904
 #, python-format
