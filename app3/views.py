@@ -14,25 +14,30 @@ import openai
 # app3/views.py - home funksiyasini yangilaymiz
 
 def home(request):
-    """Bosh sahifa - AI testlar ro'yxati"""
     ai_tests = AITest.objects.filter(is_active=True).order_by('-created_at')
 
-    # Foydalanuvchi natijalarini dictionary formatida olish
-    user_attempts = {}
-    if request.user.is_authenticated:
-        attempts = TestAttempt.objects.filter(user=request.user)
-        for attempt in attempts:
-            user_attempts[attempt.ai_test_id] = attempt
+    for test in ai_tests:
+        test.user_attempt = None
 
-    # Savollar umumiy soni
+    if request.user.is_authenticated:
+        attempts = TestAttempt.objects.filter(
+            user=request.user,
+            ai_test__in=ai_tests
+        )
+        attempts_map = {a.ai_test_id: a for a in attempts}
+
+        for test in ai_tests:
+            test.user_attempt = attempts_map.get(test.id)
+
     total_questions = sum(len(test.questions_data) for test in ai_tests)
 
-    # Foydalanuvchi urinishlari soni
-    user_results_count = TestAttempt.objects.filter(user=request.user).count() if request.user.is_authenticated else 0
+    user_results_count = (
+        TestAttempt.objects.filter(user=request.user).count()
+        if request.user.is_authenticated else 0
+    )
 
     return render(request, 'app3/home.html', {
         'ai_tests': ai_tests,
-        'user_attempts': user_attempts,
         'total_questions': total_questions,
         'user_results_count': user_results_count,
     })

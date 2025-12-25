@@ -1,0 +1,686 @@
+Savol: Quyidagi sinflardan qaysi biri vositasida fayllarga kiritishni amalga oshiradi?   Daraja: 1
+A) ofstream
+B) ifstream
+C) Instream
+D) Inputfile
+Javob: A
+
+ 
+Savol: String dan char ga o`tish uchun ....... funksiyalaridan foydalaniladi?   Daraja: 2
+A) String to char 
+B) Assign
+C) c_str()
+D) Strcpy
+Javob: A
+
+
+Savol: Qaysi turdagi ma'lumotlar uzunligi 32 bitdan oshmaydigan haqiqiy sonlarni qabul qiladi ? Daraja: 3
+A) long long
+B) long  
+C) float
+D) Double
+Javob: A 
+
+
+Savol: So’ng shartli sikl operatorining to'g'ri variantni ko'rsating? Daraja: 1
+A) do while
+B) for
+C) switch
+D) While
+Javob: A
+
+Savol: Fayllar bilan ishlash uchun dasturga qaysi sarlavxali faylni qo'shish lozim? Daraja: 2
+ A) fstream.h
+ B) iostream.h
+ C) conio.h
+ D) stdio.h
+Javob: A
+
+Savol: C++ tilida tuzilmani yaratish uchun ishlatiladigan kalit so’z bu? Daraja: 3
+A) struct
+B) structure
+C) record
+D) object
+Javob: A
+
+
+Savol: if operatorining (instruksiyasining) necha xil ko'rinishi mavjud? Daraja: 1
+A) 2
+B) 3
+C) 4
+D) 1
+Javob: A
+
+Savol: C++ tilida sikl operatorlarining necha xil ko'rinishi mavjud? Daraja: 2
+A) 3
+B) 4
+C) 2
+D) 1
+Javob: A
+
+
+Savol: long yoki long int - qanday tipdagi ma'lumotlarni anglatadi? Daraja: 3
+A) uzun butun son
+B) butun son;
+C) qisqa butun son;
+D) haqiqiy son;
+Javob: A
+
+
+Savol: Bir xil tipdagi elementlar majmuasi bu? Daraja: 1
+A) Massiv
+B) Yozuv
+C) Jadval
+D) To’plam
+Javob: A
+
+
+Savol: Turli tipdagi ma’lumotlardan qanday tuzilma xosil qilinadi? Daraja: 2
+A) Yozuv
+B) Massiv
+C) To’plam
+D) Jadval
+Javob: A
+
+
+Savol: Xotirani dinamik ajratish uchun kalit so’zini ko’rsating ? Daraja: 3
+A) new
+B) create
+C) make
+D) value
+Javob: A
+
+
+Savol: Stek tuzilmasida qanday xizmat ko’rsatish turi qo’llaniladi? Daraja: 1
+A) LIFO
+B) FIFO
+C) FILO
+D) LILO
+Javob: A
+
+Savol: Navbat tuzilmasidaA qanday xizmat ko’rsatish turi qo’llaniladi?  Daraja: 2
+A) FIFO
+B) LIFO
+C) FILO
+D) LILO
+Javob: A
+
+
+Savol: Stekga yangi element qo’shish funksiyasi qanday belgilanadi? Daraja: 3
+A) Push
+B) Pop
+C) Top
+D) mpty
+Javob: A
+
+
+Savol: Stekdan yuqori elementini o’chirish funksiyasi qanday belgilanadi? Daraja: 1
+A) Pop
+B) Push
+C) Top
+D) Empty
+Javob: A
+
+
+Savol: Stekdan yuqori elementini o’qitib olish funksiyasi qanday belgilanadi? Daraja: 2
+A) Top
+B) Pop
+C) Push
+D) Empty
+Javob: A
+
+
+Savol: Yarimstatik ma’lumotlar tuzilmasiga nimalar kiradi? Daraja: 3
+A) Stek, Dek, Navbat
+B) Stek, Massiv
+C) Graf. Vektor
+D) Yozuv, Jadval
+Javob: A
+
+
+Savol: Borland C++ Builder 6 muhitida komponentalar necha turda bo’ladi? Daraja: 1
+A) 2 xil turda
+B) 3 xil turda
+C) 6 xil turda
+D) 4 xil turda
+Javob: A
+
+
+Savol: Borland C++ Builder 6 muhitida loyiha Formasiga menyu qaysi komponenta orqali quyiladi? Daraja: 2
+A) MainMenu
+B) PopupMenu
+C) Memo
+D) CheckBox
+Javob: A
+
+
+Savol: while ( takrorlash_sharti) {…} " kostruksiyasininig to’gri tarifini ko'rsating? Daraja: 3
+A) Old shartni tekshirish sikli
+B) Ko'p muqobil operator
+C) So'ng shartli sikl operatori
+D) Parametrik sikl
+ Javob: A
+
+
+
+Savol: C++ tilidagi shartli o'tish operatori ... hisoblanadi. Daraja: 1
+A) if
+B) switch
+C) goto
+D) break
+Javob: A
+
+Savol: siklning tanasi necha marta bajarilishini aniqlang? Daraja: 2
+int i=0;
+do
+{
+i++;
+…
+}
+while(i/3>0);
+
+A) 1
+B) 2
+C) 10
+D) Sikl bajarilmaydi
+Javob: A
+
+
+Savol: C ++ tanlash operatori ... Daraja: 3
+A) switch ... case
+B) if ...else
+C) continue
+D) exit()
+Javob: A
+
+
+Savol: Kod fragmentini bajargandan so'ng x o'zgaruvchining qiymatini aniqlang? Daraja: 1
+int x = 1, y = 0;
+while ( y < 10 )
+y = 3 * ( ++x ) + 1;
+
+A) 3
+B) 2
+C) 1
+D) 4
+Javob: A
+
+
+
+Savol: Qaysi operator bir konstanta ifodadan boshqasiga o'tishga ruxsat bermaydi? Daraja: 2
+A) break
+B) endl
+C) stop
+D) contonue;
+Javob: A
+
+
+Savol: Qaysi mulohoza to'g'ri? Daraja: 3
+A) switch tanlash operatorida bloklarini yozish uchun figurali qavslardan foydalanish shart emas.
+B) switch tanlash operatorida case dan keyin dastur kodi uchun bloki uchun keyingi kod bloklari har doim ochiladigan figurali qavs bilan boshlanishi kerak {va yopilish figurali qavs bilan tugashi kerak.
+C) switch tanlash operatorida case dan keyin bir nechta operator berilgan bo’lsa ular figurali qavslarga olinadi.
+D) to'g'ri mulohoza mavjud emas
+Javob: A
+
+
+
+Savol: C++ tilidagi shartsiz o'tish operatori ... hisoblanadi?   Daraja: 1 
+A) goto
+B) witch
+C) if
+D) continue
+Javob: A
+
+
+
+Savol: Sikl operatori turlarining to'g'ri sonini ko'rsating? Daraja: 2
+A) 3
+B) 2
+C) 1
+D) 4
+Javob: A
+
+
+Savol: siklning tanasi necha marta bajarilishini aniqlang: Daraja: 3
+int i = 0;
+do {
+i++;
+….
+} while ( i / 2 > 0);
+
+A) 1
+B) Bir marta ham bajarilmaydi
+C) 4
+D) 3
+ Javob: A
+
+
+
+Savol: C++ tilida ishlatiladigan sikl operatorining to'g'ri versiyasini ko'rsating? Daraja: 1
+A) for,while,do while
+B) cout, getch, return
+C) while, NULL, type
+D) cin, gets, char
+Javob: A
+
+
+Savol: Fayllar bilan ishlashda fayllarni ochishning "rw" rejimi vazifasi qanday? Daraja: 2
+A) Fayllar bilan ishlashda bunday rejim mavjud emas
+B) Faylni o’qish uchun ochiladi
+C) Fayl davomiga qo’shish uchun ochadi
+D) Faylni o’qish va yozish uchun ochadi
+Javob: A
+
+
+Savol: Fayllar bilan ishlashda fayllarni ochishning a rejimi vazifasi qanday? Daraja: 3
+A) Fayl davomiga malumot qo’shish uchun ochadi
+B) Faylni o’qish uchun ochiladi
+C) Faylni yozish uchun hosil qiladi
+D) Faylni o’qish va yozish uchun ochadi
+Javob: A
+
+
+Savol: Kod fragmentini bajargandan so'ng x o'zgaruvchining qiymatini aniqlang Daraja: 1
+int x = 1, y = 0;
+while ( y < 10 )
+y = 3 * ( ++x ) + 1;
+A) 3
+B) 2
+C) 1
+D) 4
+Javob: A
+
+
+
+Savol: Quyidagi ibora qanday yoziladi "Agar o'zgaruvchi indeks sizedan katta bo'lsa, biz o'zgaruvchilar sonini (count) oshiramiz"? Daraja: 2
+A) if (index>size) count++;
+B) if index>size { count++; }
+C) if (index>=size) { ++count; }
+D) if (index>size) { count++ }
+Javob: A
+    
+
+
+Savol: Fayllar bilan ishlashda fayllarni ochishning wb rejimi vazifasi qanday? Daraja: 3
+A) Ikkilik faylini yozish uchun hosil qiladi.
+B) Ikkilik faylini o’qish uchun ochadi;
+C) Ikkilik faylini oxiriga qo’shish uchun ochadi;
+D) Fayl davomiga qo’shish uchun ochadi;
+Javob:  A
+
+
+
+Savol: Ushbu dastur qismi bajarilgandan so'ng ekranda qanday natija paydo bo'ladi: Daraja: 2
+int k;
+int main(){
+k = 123;
+printf("%d", k ++);
+return 0;
+}
+
+A) 123
+B) 124
+C) 122
+D) 121
+ Javob:  A
+
+
+
+Savol: Ushbu dasturda a nimaga teng bo'ladi? Daraja: 1
+int a = 10, n = 6;
+for(int i = 0; i < n; i ++) a += i;
+
+A) 25
+B) 30
+C) 35
+D) 31
+Javob: A
+
+
+Savol: "while (condition_expression) {…}" bu konstruksiya nimani anglatadi? Daraja: 3
+A) Old shartli sikl operatori
+B) So’ng shartli sikl operatori
+C) Tanlash operatori
+D) Parametrik sikl
+ Javob:A
+
+
+Savol: Fayllar bilan ishlashda fayllarni ochishning rb rejimi vazifasi qanday? Daraja: 3
+A) Ikkilik faylini o’qish uchun ochadi
+B) Ikkilik faylini oxiriga qo’shish uchun ochadi
+C) Fayl davomiga qo’shish uchun ochadi
+D) Faylni o’qish va yozish uchun ochadi
+Javob:A
+
+
+Savol: C ++ dasturlash tilida ishlatiladigan operatorlar to'g'ri ko'rsatilgan qatorni aniqlang? Daraja: 2
+A) cout, getch, return
+B) begin , include, clrscr
+C) while, NULL, type
+D) cin, gets, char
+ Javob:A
+
+
+Savol: Sikl operatori turlarining to'g'ri sonini ko'rsating? Daraja: 1
+A) 3
+B) 2
+C) 1
+D) 5
+Javob: A
+
+
+Savol: Quyidagi ifodaning qiymatini aniqlang? Daraja: 1
+5 + 15 / 5 * 2
+A) 2
+B) 8
+C) 7
+D) 6
+ Javob: A
+
+
+Savol: Destruktorga nechta parametr jo’natish mumkin? Daraja: 2
+A) Destruktorga parametr jo’natish mumkin emas
+B) Ko’pi bilan 3 ta
+C) Ko’pi bilan 10 ta
+D) Ko’pi bilan 1 ta
+Javob: A
+
+
+Savol: Polimorfizm bu: Daraja: 3
+A) turdosh sinflar uchun umumiy harakatlarni belgilash uchun bitta nomdan foydalanishga ruxsat berishni anglatadi
+B) bir sinfda bir xil nomdagi usullardan foydalanish imkonini beruvchi vosita;
+C)bir sinfda bir xil amallarni bajarish uchun turli nomdagi usullardan foydalanish imkonini beruvchi vosita
+D)har xil turdagi yoki boshqa miqdordagi argumentlar bilan ishlash uchun funksiyalarni ortiqcha yuklashga imkon beruvchi vosita.
+Javob:A
+
+
+Savol: C++ tilida shartli operatorni to‘g‘ri yozish usulini ko‘rsating? Daraja: 3
+A) if (x>0) y=sqrt (x);
+B) if (x>0) Do y:=sqrt (x)
+C) if y=sqrt (x) then x>0
+D) if x>0 then y:=sqrt (x);
+ Javob:A
+
+
+Savol: Noto'g'ri berilgan ifodani aniqlang? Daraja: 1
+A) A!%5
+B) A=5
+C) A==5
+D) A!=5
+Javob: A
+
+
+Savol: Quyidagi dastur qismi bajarilganda ekranga nimani chop qiladi? Daraja: 2
+int x = 3;
+if ( x > 7 | | x < 5 )
+if ( x < 6 && x > 1 )
+if ( ( x > 2 ) )
+printf ( “ 1 ” );
+else printf ( “ 2 ” );
+else printf ( “ 3 ” );
+else printf ( “ 4 ” );
+
+A) 1
+B) 4
+C) 3
+D) 2
+Javob:A
+
+
+Savol: int X ning qaysi qiymatlarda quyidagi ifoda true qiymat qabul qiladi : X < 3 | | X >= 4 & & X < 5?   Daraja: 3
+
+A) [INT_MIN;2] va 4
+B) x=4
+C) Ifoda har doim false
+D) [4;INT_MAX]
+ Javob:A
+
+
+Savol: Funksiya parametrlariga nechta argument berish mumkin?  Daraja: 1
+A) Cheklanmagan miqdorda
+B) 5
+C) 10
+D) 30
+ Javob:A
+
+
+Savol: include kalit so’zining vazifasini aniqlang ? Daraja: 2
+A) Kutubxonalarni kiritadi
+B) Dasturning boshini bildiradi
+C) Ichki buyurtmalarni chaqiradi
+D) Maxsus so'z
+ Javob:A
+
+
+Savol: Quyidagi dastur qismi bajarilganda ekranga nimani chop qiladi? Daraja: 2
+int x = 3;
+if ( x > 7 | | x < 5 )
+if ( x < 6 && x > 1 )
+if ( !( x > 2 ) )
+printf ( “ 1 ” );
+else printf ( “ 2 ” );
+else printf ( “ 3 ” );
+else printf ( “ 4 ” );
+
+A) 2
+B) 4
+C) 1
+D) 3
+Javob:A
+
+
+
+Savol: Kod fragmentiini bajarish natijasida....? Daraja: 2
+int i=2;
+switch (i)
+{ case 1: i += 2; break;
+case 2: i *= 3; break;
+case 6: i /= 2; break;
+default:      ;     }
+
+A) i o'zgaruvchisi 6 ni teng bo’ladi
+B) i o'zgaruvchisi 3 ga o'rnatiladi
+C) i switch operator kalitining tanasi i o'zgaruvchining qiymatini o'zgartirmaydi
+D) i o'zgaruvchisi 1 ga o'rnatiladi
+Javob:A
+
+
+Savol: Quyidagi dasturda nechta “Salom” so’zi chiqadi: Daraja: 3
+include
+int main(){
+float a = 45, b = a / 10 + 3;
+for (int I = 0; I < 2; I ++)
+for(int j = 0; j < -2; j ++)
+puts("Salom");
+return 0;
+}
+
+A) 0
+B) 1
+C) 9
+D) 5
+Javob: A
+
+
+Savol: siklning tanasi necha marta bajarilishini aniqlang: Daraja: 3
+int I;
+for ( I = -7; I % 3 < -1; ++I )
+{
+……
+}
+
+A)  Bir marta ham bajarilmaydi
+B)  2
+C)  Cheksiz sikl
+D)  7
+Javob: A
+
+
+
+Savol: Shartli operator noto'g'ri yozilgan javob variantini tanlang? Daraja: 1
+A) if ( x=1 ) {y=1} else y=2;
+B) if ( x==1 ) y=1; else y=2;
+C)if ( x=1 ) {y=1;} else {y=2; }
+D) if ( x==1 ) y=1; else {y=2;}
+ Javob: A
+
+
+Savol: C++ da scanf operatori uchun qaysi kutubxona ishlatiladi? Daraja: 1
+A) stdio.h
+B) conio.h
+C) stdlib.h
+D) iomanip
+Javob: A
+
+
+Savol: Kod fragmentini bajargandan so'ng x o'zgaruvchining qiymatini aniqlang: Daraja: 1
+int x=1, y=0;
+while ( y < 12 )
+y = 3 * ( ++x ) + 1;
+
+A) 4
+B) 5
+C) 13
+D) 2
+ Javob: A
+
+
+Savol: Chiqarish oqimi uchun qanday belgi ishlatiladi? Daraja: 1
+A) — >
+B) — >=
+C) — 
+D) =<
+  Javob:A
+
+Savol: siklning tanasi necha marta bajarilishini aniqlang: Daraja: 2
+int I =1;
+while ( I * ( I - 1 ) < 120 )
+{
+…….
+I += 5;
+}
+
+A) 3
+B) 1
+C) 2
+D) Bir marta ham bajarilmaydi
+ Javob: A
+
+
+Savol: Qaysi mulohoza to'g'ri? Daraja: 3
+A) default tarmogi switch operatori tanasida { …..} ixtioriy joyda ishlatilishi mumkin yoki umuman ishlatilmasligi mumkin
+B) default tarmog'i switch operatori tanasida { …..} ishlatilishi va oxirida joylashishi shart.
+C)default tarmog'i switch operatori tanasida { …..} oxirida joylashishi shart yoki bo’lmasligi mumkin
+D) default tarmogi switch operatori tanasida { …..} boshida joylashishi shart yoki umuman bo’lmasligi mumkin
+ Javob:A
+
+
+Savol: Qaysi operator bir nechta muqobil tanlov uchun mo'ljallangan? Daraja: 3
+A) switch ...case
+B) throw
+C) public
+D) struct
+ Javob:A
+
+
+Savol: siklning tanasi necha marta bajarilishini aniqlang: Daraja: 2
+int i=1;
+while ( i * i < 81 )
+{ ….
+i += 4;
+}
+
+A) 2
+B) Bir marta ham bajarilmaydi
+C) 9
+D) 1
+ Javob:A
+
+
+Savol: Agar continue operatori sikl operatori ichida bo‘lsa, u holda: Daraja: 1
+
+A) boshqaruvni siklning keyingi iteratsiyasining boshiga o'tkazadi
+B) boshqaruvni siklning oldingi iteratsiyasining oxiriga o'tkazadi
+C) belgidan keyingi siklning takrorlanishini boshqaradi
+D) siklik operatordan keyin boshqaruvni uzatadi
+ Javob:A
+
+
+Savol: case operatoridan keyin qanday ishchi belgi qo’yiladi ? Daraja: 1
+A) “:” - Ikki nuqta
+B) “.” - nuqta
+C) “-“ - tire
+D) “;” - nuqtali vergul
+ Javob:A
+
+ 
+Savol: Ushbu kodni bajargandan so'ng o'zgaruvchining ekvivalenti nima? Daraja: 2
+int a; for(a = 0; a < 10; a++) {}
+
+A) 10
+B) 9
+C) 11
+D) 1
+Javob:A
+
+
+Savol: Quyidagilardan qaysi biri C++ da sikl operatori emas? Daraja: 1
+A) repeat until
+B) do while
+C) for
+D) while
+ Javob:A
+
+
+Savol: Ushbu dastur qismi bajarilgandan so'ng ekranda qanday natija paydo bo'ladi: Daraja: 3
+int k;
+int main(){
+k = 321;
+printf("%d", k ++);
+return 0;
+}
+
+A) 321
+B) 322
+C) 320
+D) 324
+ Javob:A
+
+
+Savol: Ushbu dastur qismi bajarilgandan so'ng ekranda qanday natija paydo bo'ladi: Daraja: 1
+int k;
+int main(){
+k = 321;
+printf("%d",++k);
+return 0;
+}
+
+A) 322
+B) 321
+C) 320
+D) 324
+ Javob:A
+
+
+Savol: Borland C++ Builder 6 muhitida tuziladigan dasturlarning barchasini (loyiha, shakl, dasturiy kod va b.q.) xotirada saqlash uchun qaysi buyruqlardan foydalaniladi? Daraja: 2
+A) Save All (Shist + Ctrl + S)
+B) Save (Ctrl + S)
+C) Project As...
+D) Save As...
+ Javob:A
+
+
+Savol: Fayl oxirida boshlang'ich pozitsiyasini o'rnatish uchun qaysi rejim(mode)dan foydalaniladi? Daraja: 1
+A) ios::ate
+B) ios::end
+C) ios::beg
+D) ios::out
+ Javob:A
+
+
+Savol: Dinamik xotirani ajratish uchun qaysi operator ishlatiladi? Daraja: 1
+A) new
+B) delete
+C) continue
+D) break
+ Javob:A

@@ -1,0 +1,478 @@
+Savol: Sun'iy intellektning asosiy maqsadi nima?   Daraja:  1
+A)	 Inson faoliyatini taqlid qilish  
+B)	 Insonning o'rganish imkoniyatlarini cheklash  
+C)	 Kompyuterlarni himoya qilish  
+D)	 Moliya sohasini rivojlantirish 
+
+Javob: A
+
+
+Savol: Sun'iy intellektning rivojlanish tarixidagi muhim sanalardan biri 1956yilda nima sodir bo'lgan? Daraja:  2
+
+A)	 Alan Turingning “Turing testi” ishlab chiqildi  
+B)	 Ekspert tizimlar paydo bo'ldi  
+C)   Dartmouth konferensiyasi bo'lib o'tdi  
+D)   Neyron tarmoqlar yaratilgan
+
+Javob: C
+
+Savol: Sun'iy intellekt tibbiyot sohasida qanday qo'llaniladi?  Daraja:  1
+
+      A)  Faqat iqtisodiy hisobkitoblarni amalga oshirish uchun  
+     B) Kasalliklarni tashxislash va davolashni avtomatlashtirish uchun  
+     C) Transport tizimini boshqarish uchun  
+     D) Ko'ngilochar sanoat uchun  
+
+Javob: B
+
+Savol: Quyidagi olimlardan qaysi biri sun'iy intellekt tushunchasini kiritgan?   Daraja:  2
+
+A)	Alan Turing  
+B)	John McCarthy  
+C)	Herbert Simon  
+D)	Marvin Minsky  
+
+Javob: B
+
+Savol: “Deep Blue” kompyuter dasturi kimni mag'lub etgan edi?  Daraja:  2
+
+A)	Alan Turingni  
+B)	John McCarthyni  
+C)	Garri Kasparovni  
+D)	Li Sedolni 
+ 
+Javob: C
+
+Savol: 2016yilda “AlphaGo” sun'iy intellekti kimni yenggan?  Daraja:  3
+
+A)	Garri Kasparovni  
+B)	Li Sedolni  
+C)	Marvin Minskyni  
+D)	Herbert Simoni  
+
+Javob: B
+
+Savol: Sun'iy intellektning qanday texnologiyasi transport vositalarining o'zo'zidan harakatlanishini ta'minlaydi?  Daraja:  1
+
+A)	Ekspert tizimlar  
+B)	Chuqur o'rganish algoritmlari  
+C)	Turing testi  
+D)	Paskal teoremasi
+
+Javob: B
+
+Savol: Neyron tarmoqlar qachon mashhur bo'la boshlagan?  Daraja:  2
+
+A)	1950yillar  
+B)	1970yillar  
+C)	1980yillar  
+D)	1990yillar  
+
+Javob: C
+
+Savol: Sun'iy intellektning "Generativ" texnologiyalari qaysi jarayonda qo'llaniladi? Daraja:  1
+
+A)	Faoliyat tahlili  
+B)	Faqat robototexnikada  
+C)	Inson ijodiyotiga yaqin vazifalarni bajarishda  
+D)	Ekspert tizimlarni boshqarishda  
+
+Javob: C
+
+Savol: Quyidagilardan qaysi biri ekspert tizimining birinchi amaliyotlaridan hisoblanadi?  Daraja:  3
+
+A)	AlphaGo  
+B)	MYCIN  
+C)	Deep Blue  
+D)	Watson  
+
+Javob: B
+
+Savol: Sun'iy intellekt tizimlari bilan ishlashda qaysi ma'lumot turi qat'iy tuzilishga ega emas?  Daraja:  1
+
+A)	Strukturaviy ma'lumotlar  
+B)	Nostrukturaviy ma'lumotlar  
+C)	Yarim strukturaviy ma'lumotlar  
+D)	Tenzor ma'lumotlar  
+
+Javob: B
+
+Savol: Quyidagilardan qaysi biri sun'iy intellekt tizimlarida keng qo'llaniladigan asosiy ma'lumot tuzilmalaridan biri hisoblanadi?  Daraja:  3
+
+A)	Qatorlar va listlar  
+B)	Turing mashinasi  
+C)	Modul va generator  
+D)	Ko'rsatkichlar  
+
+Javob: A
+
+Savol: Kmeans klasterlash algoritmi qaysi turdagi o'rganish usuliga kiradi?  Daraja:  2
+
+A)	Nazoratli o'rganish  
+B)	Nazoratsiz o'rganish  
+C)	Kuchaytirilgan o'rganish  
+D)	Yarim nazoratli o'rganish  
+
+Javob: B
+
+Savol: Sun'iy intellekt algoritmlarida xususiyatlarni ajratib olish nima uchun muhim hisoblanadi?  Daraja:  2
+
+A)	O'rganish jarayonini sekinlashtirish uchun  
+B)	Ma'lumotlarning yashirin naqshlarini aniqlash uchun  
+C)	Ma'lumotlar bilan ishlashda faqat tasodifiy qiymatlar yaratish uchun  
+D)	Xatolarni kamaytirish uchun o'lchamlarni o'zgartirish uchun  
+
+Javob: B
+
+Savol: Quyidagilardan qaysi biri grafik tuzilmalardan foydalanadigan sun'iy intellekt tizimiga misol bo'la oladi?  Daraja:  3
+
+A)	Tasvir tanib olish tizimi  
+B)	Ijtimoiy tarmoq foydalanuvchilari orasidagi bog'lanishlar  
+C)	Chuqur o'rganish modeli  
+D)	Tibbiy diagnostika tizimi  
+
+Javob: B
+
+Savol: Sun'iy intellektdagi "Chuqur o'rganish" algoritmlari qanday ma'lumotlar tuzilmasidan keng foydalanadi?   Daraja:  3
+
+A)	Qatorlar
+B)	Matritsa va tenzorlar  
+C)	Jadval va listlar  
+D)	HashMap va Dictionary  
+
+Javob: B
+
+Savol: Sun'iy intellektda kuchaytirilgan o'rganish algoritmi qaysi omil asosida qaror qabul qiladi?  Daraja:  1
+
+A)	Ma'lumotlar hajmi  
+B)	Mukofot yoki jazolar  
+C)	Sinflashtirish muammosi  
+D)	Qatorlar orasidagi munosabat
+
+Javob: B
+  
+Savol: Chuqur o'rganish algoritmlari qaysi tarmoq arxitekturasiga asoslanadi?  Daraja:  2
+
+A)	Qatorlar va listlar  
+B)	Neyron tarmoqlar  
+C)	Jadval va graf tuzilmalari  
+D)	Kalitqiymat juftlari 
+
+Javob: B
+ 
+Savol: Quyidagilardan qaysi biri nazoratli o'rganish algoritmiga misol bo'la oladi?  Daraja:  3
+
+A)	Kmeans klasterlash  
+B)	PCA  
+C)	KNN (Keng yaqin qo'shnilar)  
+D)	GAN  
+
+Javob:C
+
+Savol: PCA algoritmi sun'iy intellektda qanday maqsadda ishlatiladi?  Daraja:  3
+
+A)	Ma'lumotlarni klasterlash uchun  
+B)	Yangi ma'lumotlarni yaratish uchun  
+C)	O'lchamlarni kamaytirish va asosiy komponentalarni aniqlash uchun  
+D)	Faqat nazoratli o'rganish uchun  
+
+Javob: C
+
+Savol: Modellarni baholashda qaysi jarayon modelning ma'lumotlar bilan qanchalik yaxshi ishlashini aniqlaydi?  Daraja:  3
+
+A)	O'rgatish
+B)	Testlash
+C)	Baholash
+D)	Optimallashtirish
+
+Javob: C
+
+Savol: Quyidagi qaysi metrika regression modellar uchun asosiy baholash ko'rsatkichi hisoblanadi? Daraja:  3
+
+A)	Accuracy
+B)	Precision
+C)	Mean Squared Error
+D)	Recall
+
+Javob: C
+
+Savol: Tasniflash uchun ishlatiladigan "Precision" ko'rsatkichi nimani o'lchaydi?  Daraja:  2
+
+A)	Barcha ijobiy holatlarni to'g'ri tasniflash
+B)	Ijobiy deb bashorat qilingan obyektlarning to'g'riligini 
+C)	Modelning umumiy samaradorligini
+D)	Model xatosini kamaytirish
+
+Javob: B
+
+Savol: Klasterlash masalalarida baholash uchun ishlatiladigan "Silhouette koeffitsienti" nimani o'lchaydi? Daraja:  3
+A)	Klaster ichidagi minimal masofa
+B)	Klasterlar orasidagi farq
+C)	Ma'lumotlar nuqtasining o'z klasteriga yaqinligini va boshqa klasterlarga uzoqligini 
+D)	Modelning aniqligi
+
+Javob: C
+
+Savol: Crossvalidation texnikasi nimani ta'minlaydi?   Daraja:  3
+A)	Modelni yangi ma'lumotlarga moslashtirish
+B)	Modelni bir necha marta o'qitish va baholash 
+C)	Ma'lumotlarni birbiriga yaqinlashtirish
+D)	Trening to'plamini optimallashtirish
+
+Javob: B
+
+Savol: "Bias" modeli qanday muammo yuzaga kelganini bildiradi?  Daraja:  2
+
+A)	Ma'lumotlarga haddan tashqari moslashish
+B)	#Modelning past o'rgatish 
+C)	Model xatolarini kamaytirish
+D)	Modelning ortiqcha moslashuvchanligi
+
+Javob: B
+
+Savol: "F1 Score" qaysi ikkita ko'rsatkichni birlashtiradi?  Daraja:  2
+
+A)	Accuracy va Recall
+B)	Precision va Recall 
+C)	Accuracy va Precision
+D)	MSE va MAE
+
+Javob: B
+
+Savol: Qaysi ko'rsatkich regression modellarni baholash uchun ishlatiladi?  Daraja:  2
+
+A)	AccuracyPrecision
+B)	#Mean Absolute Error 
+C)	Recall
+
+Javob: B
+
+Savol: Klasterlash uchun "Purity" metrikasi nimani ko'rsatadi?  Daraja:  2
+
+A)	Modelning umumiy samaradorligini
+B)	Klaster ichidagi to'g'ri tasniflangan nuqtalar ulushini 
+C)	O'rtacha kvadratik xato miqdorini
+D)	Barcha ijobiy holatlarni o'lchash
+
+Javob: B
+
+Savol: "KFold Crossvalidation"da "K" nima ma'noni bildiradi?   Daraja:  3
+
+A)	Ma'lumotlar to'plamining sinov qismi sonini
+B)	Ma'lumotlarning modelga qancha yaqinligini
+C)	Trening va test bo'limlari sonini 
+D)	Modelning moslashuvchanligini
+
+
+Savol: O'qituvchisiz o'qitish algoritmlari yordamida qaysi masalalar hal qilinadi?  Daraja:  2
+
+A)	Sinflashtirish
+B)	Regressiya
+C)	Klasterlash
+D)	Regressiya va klasterlash
+
+Javob: C
+
+Savol: Klasterlash algoritmlaridan qaysi biri zichlik asosida ishlaydi?  Daraja:  3
+
+A)	Kmeans
+B)	Hierarchical Clustering
+C)	PCA
+D)	DBSCAN 
+
+Javob: D
+
+Savol: O'lchovni qisqartirishning asosiy usullaridan biri bu:  Daraja:  2
+
+A)	Naive Bayes
+B)	Kmeans
+C)	PCA 
+D)	Linear Regression
+
+Javob:C
+
+Savol: Klasterlash jarayonida Kmeans algoritmi qanday asosda klasterlarni ajratadi?  Daraja:  2
+
+A)	Markaziy nuqtalar asosida 
+B)	Dendrogramma asosida
+C)	Koordinata tizimida yaqinlik asosida
+D)	Neyron tarmoqlar orqali
+
+Javob:A
+
+Savol: Anomallikni aniqlash masalasida qaysi metod keng qo'llaniladi?  Daraja:  3
+A)	Sinflashtirish
+B)	Kmeans klasterlash
+C)	Anomalliklarni identifikatsiya qilish 
+D)	Assotsiativ qoidalar aniqlash
+
+Javob:C
+
+Savol: PCA qanday vazifani bajaradi?  Daraja:  2
+
+A)	Ma'lumotlarni tasniflash
+B)	Klasterlarni aniqlash
+C)	O'lchovni qisqartirish 
+D)	Ma'lumotlarni optimallashtirish
+
+Javob:C
+
+Savol: O'qituvchisiz o'qitish algoritmlarida ma'lumotlarga qanday yondashiladi? Daraja:  3
+
+A)	Ma'lumotlarga yorliqlar beriladi 
+B)	Ma'lumotlar o'zo'zidan tahlil qilinadi 
+C)	Ma'lumotlarga nazorat qo'llaniladi
+D)	Ma'lumotlar tartiblash orqali o'rganiladi
+
+Javob:B
+
+Savol: Kmeans algoritmida K qiymatini tanlash qanday ta'sir qiladi?   Daraja:  2
+
+A)	Algoritmning samaradorligini oshiradi
+B)	Klasterlar sonini belgilaydi 
+C)	Modelni murakkablashtiradi
+D)	K qiymati ta'sir qilmaydi
+
+Javob:B
+
+Savol: Anomallikni aniqlash usullari qaysi sohalarda keng qo'llaniladi?  Daraja:  2
+
+A)	O'yin texnologiyalari
+B)	Firibgarlikni aniqlash va xavfsizlik 
+C)	 
+D)	Dasturlash tillarini o'rganish
+Javob:B
+
+Savol: Klasterlash masalalarida ierarxik klasterlash algoritmi qanday klasterlarni hosil qiladi?  Daraja:  2
+
+A)	Ikkilik daraxt asosida klasterlar
+B)	Daraxtsimon struktura asosida klasterlar 
+C)	Chiziqli struktura asosida klasterlar
+D)	Klasterlar hosil qilinmaydi
+
+Javob:B
+
+Savol: Naive Bayes algoritmi qanday asosda ishlaydi?  Daraja:  3
+
+A)	Masofaga asoslangan
+B)	Qoidalarga asoslangan
+C)	Ehtimollikka asoslangan 
+D)	Daraxt strukturasiga asoslangan
+
+Javob:C
+
+Savol: KNN algoritmi qaysi tamoyil asosida sinflashtirishni amalga oshiradi?  Daraja:  3
+
+A)	Bayes teoremasi
+B)	Daraxtsimon struktura
+C)	Ko'p ovozli sinflashtirish 
+D)	Qoidalarga asoslangan
+
+Javob:C
+
+Savol: Naive Bayes algoritmida barcha xususiyatlar qanday deb hisoblanadi?  Daraja:  3
+
+A)	Bir-biriga bog'liq
+B)	Bir-biridan mustaqil 
+C)	Ierarxik tuzilgan
+D)	Juftlashtirilgan
+
+Javob:B
+
+Savol: KNN algoritmida odatda qaysi masofa o'lchovidan foydalaniladi?  Daraja:  3
+
+A)	Hamming masofasi
+B)	Manhattan masofasi
+C)	Evklid masofasi 
+D)	Chebyshev masofasi
+
+Javob:C
+
+Savol: Naive Bayes algoritmining afzalliklaridan biri bu:  Daraja:  3
+
+A)	Ko'p sonli hisoblash talab etadi
+B)	Tez ishlaydi va katta hajmdagi ma'lumotlar bilan samarali 
+C)	Har qanday turdagi ma'lumotlarga moslashadi
+D)	Ierarxik klasterlashni amalga oshiradi
+
+Javob:B
+
+Savol: KNN algoritmi uchun K qiymatining noto'g'ri tanlanishi qanday ta'sir qiladi?  Daraja:  3
+
+A)	Algoritmning tezligini oshiradi
+B)	Algoritmning aniqligini pasaytiradi 
+C)	Sinflar orasidagi masofani oshiradi
+D)	Sinf sonini kamaytiradi
+
+Javob:B
+
+Savol: Quyidagi algoritmlardan qaysi biri ehtimolliklarni hisoblash orqali ishlaydi?  Daraja:  3
+
+A)	Decision Tree
+B)	KNearest Neighbors
+C)	Naive Bayes 
+D)	Kmeans
+
+Javob:C
+
+Savol: KNN algoritmi qaysi sohalarda keng qo'llaniladi?  Daraja:  3
+
+A)	Rasmlarni tanib olish va tavsiya tizimlari 
+B)	Matematik tahlil
+C)	Genetik tadqiqotlar
+D)	Hisoblash texnikasi
+
+Javob:A
+
+Savol: Qaysi algoritm "shovqin" va "chalkashliklar" mavjud bo'lsa samaradorligini yo'qotishi mumkin?  Daraja:  3
+
+A)	Naive Bayes
+B)	Decision Tree 
+C)	KNearest Neighbors
+D)	Kmeans
+
+Javob:B
+
+Savol: Decision Tree algoritmi qaysi turdagi ma'lumotlar uchun mos keladi?  Daraja:  3
+
+A)	Juda katta hajmdagi murakkab ma'lumotlar uchun
+B)	Kichik hajmdagi ma'lumotlar uchun yaxshi 
+C)	Raqamli xususiyatlarga mos kelmaydi
+D)	Ma'lumotlardagi chalkashliklarni kamaytiradi
+
+Javob:B
+Savol: Sinflashtirish jarayoni qanday vazifani bajaradi? Daraja:  3
+
+A)	Ma'lumotlarni guruhlarga ajratish
+B)	Ma'lumotlarni oldindan belgilangan sinflarga ajratish 
+C)	Ma'lumotlarni qisqartirish
+D)	Ma'lumotlarni tasniflash
+
+Javob:B
+
+Savol: Logistik regressiyaning asosiy maqsadi nima?  Daraja:  3
+
+A)	Sinflar sonini ko'paytirish
+B)	Ehtimollik qiymatini hisoblash orqali sinfni aniqlash 
+C)	Ma'lumotlarni qisqartirish
+D)	Ma'lumotlarni klasterlash
+
+Javob:B
+
+Savol: Sinflashtirish jarayonida ehtimollik qiymatlari qanday maqsadda hisoblanadi?  Daraja:  3
+
+A)	Har bir sinf uchun ma'lumotlar o'rtasidagi masofani aniqlash
+B)	Har bir sinf uchun ma'lumotlarning ehtimolini aniqlash 
+C)	Klasterlar o'rtasidagi masofani o'lchash
+D)	Sinf chegaralarini belgilash
+
+Javob:B
+
+Savol: Softmax regressiya ko'proq qanday sinflashtirishda ishlatiladi?  Daraja:  3
+
+A)	Ikkilik sinflashtirish
+B)	Ko'p sinfli sinflashtirish 
+C)	Klasterlash
+D)	O'lchamlarni qisqartirish
+
+Javob:B

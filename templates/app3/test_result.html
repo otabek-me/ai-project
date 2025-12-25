@@ -667,7 +667,7 @@
 <div class="result-container">
     <div class="card">
         <div class="card-header bg-success text-white">
-            <h4><i class="fas fa-trophy"></i> {% trans "Test Completed" %}</h4>
+            <h4><i class="fas fa-trophy"></i> {% trans "Test Yakunlandi" %}</h4>
         </div>
 
         <div class="card-body text-center">
@@ -684,11 +684,11 @@
                 <!-- Baholash -->
                 <div class="mt-3">
                     {% if user_result.percentage >= 80 %}
-                    <span class="badge bg-success rating-badge">{% trans "Excellent" %}</span>
+                    <span class="badge bg-success rating-badge">{% trans "A'lo" %}</span>
                     {% elif user_result.percentage >= 60 %}
-                    <span class="badge bg-warning rating-badge">{% trans "Good" %}</span>
+                    <span class="badge bg-warning rating-badge">{% trans "Yaxshi" %}</span>
                     {% else %}
-                    <span class="badge bg-danger rating-badge">{% trans "Needs improvement" %}</span>
+                    <span class="badge bg-danger rating-badge">{% trans "Yaxshilash kerak" %}</span>
                     {% endif %}
                 </div>
             </div>
@@ -696,13 +696,13 @@
             <!-- Tugmalar -->
             <div class="result-buttons">
                 <a href="{% url 'app3:take_test' ai_test.id %}" class="result-btn btn-primary">
-                    <i class="fas fa-redo"></i> {% trans "Retake" %}
+                    <i class="fas fa-redo"></i> {% trans "Qayta topshirish" %}
                 </a>
                 <a href="{% url 'app3:home' %}" class="result-btn btn-secondary">
-                    <i class="fas fa-home"></i> {% trans "Home" %}
+                    <i class="fas fa-home"></i> {% trans "Bosh sahifa" %}
                 </a>
                 <a href="{% url 'app3:my_results' %}" class="result-btn btn-info">
-                    <i class="fas fa-chart-line"></i> {% trans "All My Results" %}
+                    <i class="fas fa-chart-line"></i> {% trans "Barcha natijalarim" %}
                 </a>
             </div>
         </div>
@@ -711,41 +711,41 @@
     <!-- Test tafsilotlari -->
     <div class="details-card">
         <div class="card-header bg-info text-white">
-            <h5><i class="fas fa-check-circle"></i> {% trans "Test Details" %}</h5>
+            <h5><i class="fas fa-check-circle"></i> {% trans "Test tafsilotlari" %}</h5>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
-                    <h6>{% trans "Test Information:" %}</h6>
+                    <h6>{% trans "Test ma'lumotlari:" %}</h6>
                     <div class="custom-list">
                         <div class="list-item animate-item">
                             <i class="fas fa-calendar text-primary"></i>
-                            {% trans "Created:" %} {{ ai_test.created_at|date:"d.m.Y H:i" }}
+                            {% trans "Yaratilgan sana:" %} {{ ai_test.created_at|date:"d.m.Y H:i" }}
                         </div>
                         <div class="list-item animate-item">
                             <i class="fas fa-question-circle text-primary"></i>
-                            {% trans "Number of questions:" %} {{ user_result.total_questions }}
+                            {% trans "Savollar soni:" %} {{ user_result.total_questions }}
                         </div>
                         <div class="list-item animate-item">
                             <i class="fas fa-user text-primary"></i>
-                            {% trans "Created by:" %} {{ ai_test.created_by.username|default:"Admin" }}
+                            {% trans "Yaratuvchi:" %} {{ ai_test.created_by.username|default:"Admin" }}
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h6>{% trans "Your Results:" %}</h6>
+                    <h6>{% trans "Sizning natijalaringiz:" %}</h6>
                     <div class="custom-list">
                         <div class="list-item animate-item">
                             <i class="fas fa-check text-success"></i>
-                            {% trans "Correct answers:" %} {{ user_result.score }}
+                            {% trans "To'g'ri javoblar:" %} {{ user_result.score }}
                         </div>
                         <div class="list-item animate-item">
                             <i class="fas fa-times text-danger"></i>
-                            {% trans "Wrong answers:" %} {{ user_result.total_questions|add:"-"|add:user_result.score }}
+                            {% trans "Noto'g'ri javoblar:" %} {{ user_result.total_questions|add:"-"|add:user_result.score }}
                         </div>
                         <div class="list-item animate-item">
                             <i class="fas fa-percentage text-primary"></i>
-                            {% trans "Percentage:" %} {{ user_result.percentage }}%
+                            {% trans "Foiz:" %} {{ user_result.percentage }}%
                         </div>
                     </div>
                 </div>

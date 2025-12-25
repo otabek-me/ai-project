@@ -1,6 +1,6 @@
 <!-- templates/app3/test_statistics.html -->
 {% extends 'base.html' %}
-{% load i18n %}
+
 {% block title %}Test Statistikasi - {{ ai_test.topic }}{% endblock %}
 
 {% block content %}
@@ -673,10 +673,10 @@
     <div class="card">
         <div class="card-header">
             <h4>
-                <i class="fas fa-chart-bar"></i> {% trans "Test Statistics:" %} {{ ai_test.topic }}
+                <i class="fas fa-chart-bar"></i> {% trans "Test Statistikasi:" %} {{ ai_test.topic }}
             </h4>
             <a href="{% url 'app3:home' %}" class="back-btn">
-                <i class="fas fa-arrow-left"></i> {% trans "Back" %}
+                <i class="fas fa-arrow-left"></i> {% trans "Orqaga" %}
             </a>
         </div>
 
@@ -685,26 +685,26 @@
             <div class="stats-grid mb-4">
                 <div class="stat-card">
                     <h2 class="text-primary">{{ total_attempts }}</h2>
-                    <p>{% trans "Total attempts" %}</p>
+                    <p>{% trans "Jami urinishlar" %}</p>
                 </div>
                 <div class="stat-card">
                     <h2 class="text-success">{{ average_score }}%</h2>
-                    <p>{% trans "Average score" %}</p>
+                    <p>{% trans "O'rtacha ball" %}</p>
                 </div>
                 <div class="stat-card">
                     <h2 class="text-info">{{ best_score }}%</h2>
-                    <p>{% trans "Best score" %}</p>
+                    <p>{% trans "Eng yaxshi ball" %}</p>
                 </div>
                 <div class="stat-card">
                     <h2 class="text-warning">{{ worst_score }}%</h2>
-                    <p>{% trans "Lowest score" %}</p>
+                    <p>{% trans "Eng past ball" %}</p>
                 </div>
             </div>
 
             <!-- Ballar taqsimoti -->
             <div class="distribution-card mb-4">
                 <div class="card-header">
-                    <h5><i class="fas fa-chart-pie"></i> {% trans "Score Distribution" %}</h5>
+                    <h5><i class="fas fa-chart-pie"></i> {% trans "Ballar taqsimoti" %}</h5>
                 </div>
                 <div class="card-body">
                     <div class="distribution-grid">
@@ -724,7 +724,7 @@
             <!-- Foydalanuvchilar natijalari -->
             <div class="users-card mb-4">
                 <div class="card-header">
-                    <h5><i class="fas fa-users"></i> {% trans "Users Results" %}</h5>
+                    <h5><i class="fas fa-users"></i> {% trans "Foydalanuvchilar natijalari" %}</h5>
                 </div>
                 <div class="card-body">
                     {% if attempts %}
@@ -733,11 +733,11 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>{% trans "User" %}</th>
-                                    <th>{% trans "Score" %}</th>
-                                    <th>{% trans "Percentage" %}</th>
-                                    <th>{% trans "Time" %}</th>
-                                    <th>{% trans "Status" %}</th>
+                                    <th>{% trans "Foydalanuvchi" %}</th>
+                                    <th>{% trans "Ball" %}</th>
+                                    <th>{% trans "Foiz" %}</th>
+                                    <th>{% trans "Vaqt" %}</th>
+                                    <th>{% trans "Holat" %}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -765,11 +765,11 @@
                                     <td>{{ attempt.created_at|date:"d.m.Y H:i" }}</td>
                                     <td>
                                         {% if attempt.percentage >= 80 %}
-                                        <span class="badge bg-success">{% trans "Excellent" %}</span>
+                                        <span class="badge bg-success">{% trans "A'lo" %}</span>
                                         {% elif attempt.percentage >= 60 %}
-                                        <span class="badge bg-warning">{% trans "Good" %}</span>
+                                        <span class="badge bg-warning">{% trans "Yaxshi" %}</span>
                                         {% else %}
-                                        <span class="badge bg-danger">{% trans "Unsatisfactory" %}</span>
+                                        <span class="badge bg-danger">{% trans "Qoniqarsiz" %}</span>
                                         {% endif %}
                                     </td>
                                 </tr>
@@ -780,58 +780,9 @@
                     {% else %}
                     <div class="no-data">
                         <i class="fas fa-users-slash"></i>
-                        <h5>{% trans "No users have taken this test yet" %}</h5>
+                        <h5>{% trans "Hozircha testni yechgan foydalanuvchilar yo'q" %}</h5>
                     </div>
                     {% endif %}
-                </div>
-            </div>
-
-            <!-- Qo'shimcha ma'lumotlar -->
-            <div class="info-card">
-                <div class="card-header">
-                    <h5><i class="fas fa-info-circle"></i> {% trans "Test Information" %}</h5>
-                </div>
-                <div class="card-body">
-                    <div class="info-grid">
-                        <div>
-                            <div class="info-list">
-                                <div class="info-item">
-                                    <strong>{% trans "Test topic:" %}</strong>
-                                    <span>{{ ai_test.topic }}</span>
-                                </div>
-                                <div class="info-item">
-                                    <strong>{% trans "Number of questions:" %}</strong>
-                                    <span>{{ questions_count }}</span>
-                                </div>
-                                <div class="info-item">
-                                    <strong>{% trans "Created date:" %}</strong>
-                                    <span>{{ ai_test.created_at|date:"d.m.Y H:i" }}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="info-list">
-                                <div class="info-item">
-                                    <strong>{% trans "Created by:" %}</strong>
-                                    <span>{{ ai_test.created_by.username|default:"Admin" }}</span>
-                                </div>
-                                <div class="info-item">
-                                    <strong>{% trans "Test status:" %}</strong>
-                                    <span>
-                                        {% if ai_test.is_active %}
-                                        <span class="badge bg-success">{% trans "Active" %}</span>
-                                        {% else %}
-                                        <span class="badge bg-danger">{% trans "Inactive" %}</span>
-                                        {% endif %}
-                                    </span>
-                                </div>
-                                <div class="info-item">
-                                    <strong>{% trans "Test ID:" %}</strong>
-                                    <span>{{ ai_test.id }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -839,16 +790,15 @@
         <div class="card-footer">
             <div class="footer-buttons">
                 <a href="{% url 'app3:home' %}" class="footer-btn btn-secondary">
-                    <i class="fas fa-home"></i> {% trans "Home" %}
+                    <i class="fas fa-home"></i> {% trans "Boshqa testlar" %}
                 </a>
                 <a href="{% url 'app3:take_test' ai_test.id %}" class="footer-btn btn-primary">
-                    <i class="fas fa-play"></i> {% trans "Take Test" %}
+                    <i class="fas fa-play"></i> {% trans "Testni ishlash" %}
                 </a>
             </div>
         </div>
     </div>
 </div>
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Animate stat cards on scroll
@@ -924,7 +874,7 @@
             link.addEventListener('click', function(e) {
                 if (this.getAttribute('href') && !this.getAttribute('href').startsWith('#')) {
                     const originalHtml = this.innerHTML;
-                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> {% trans "Loading..." %}';
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Yuklanmoqda...';
                     this.style.pointerEvents = 'none';
 
                     // Reset after 3 seconds (in case of error)

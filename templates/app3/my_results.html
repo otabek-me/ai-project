@@ -2,26 +2,31 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}{% trans "My Results" %}{% endblock %}
+{% block title %}{% trans "Mening Natijalarim" %}{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-    <div class="card">
-        <div class="card-header bg-primary text-white">
-            <h4><i class="fas fa-chart-line"></i> {% trans "My Test Results" %}</h4>
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <h4 class="mb-0"><i class="fas fa-chart-line me-2"></i> {% trans "Mening Test Natijalarim" %}</h4>
+                <span class="badge bg-light text-primary">{{ total_tests }} {% trans "test" %}</span>
+            </div>
         </div>
+
         <div class="card-body">
             {% if results %}
-            <div class="table-responsive">
+            <!-- Jadval qismi -->
+            <div class="table-responsive mb-4">
                 <table class="table table-hover">
-                    <thead class="table-light">
+                    <thead class="table-primary">
                         <tr>
-                            <th>#</th>
-                            <th>{% trans "Test Topic" %}</th>
-                            <th>{% trans "Result" %}</th>
-                            <th>{% trans "Percentage" %}</th>
-                            <th>{% trans "Time" %}</th>
-                            <th>{% trans "Status" %}</th>
+                            <th width="5%">#</th>
+                            <th width="35%">{% trans "Test Mavzusi" %}</th>
+                            <th width="15%">{% trans "Natija" %}</th>
+                            <th width="15%">{% trans "Foiz" %}</th>
+                            <th width="15%">{% trans "Vaqt" %}</th>
+                            <th width="15%">{% trans "Holat" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,28 +34,38 @@
                         <tr>
                             <td>{{ forloop.counter }}</td>
                             <td>
-                                <a href="{% url 'app3:take_test' result.ai_test.id %}">
-                                    {{ result.ai_test.topic|truncatechars:40 }}
+                                <a href="{% url 'app3:take_test' result.ai_test.id %}" class="text-decoration-none text-dark fw-semibold">
+                                    {{ result.ai_test.topic }}
                                 </a>
                             </td>
-                            <td>{{ result.score }}/{{ result.total_questions }}</td>
+                            <td>
+                                <span class="badge bg-dark">{{ result.score }}/{{ result.total_questions }}</span>
+                            </td>
                             <td>
                                 {% if result.percentage >= 80 %}
-                                <span class="badge bg-success">{{ result.percentage }}%</span>
+                                    <span class="badge bg-success">{{ result.percentage|floatformat:1 }}%</span>
                                 {% elif result.percentage >= 60 %}
-                                <span class="badge bg-warning">{{ result.percentage }}%</span>
+                                    <span class="badge bg-warning">{{ result.percentage|floatformat:1 }}%</span>
                                 {% else %}
-                                <span class="badge bg-danger">{{ result.percentage }}%</span>
+                                    <span class="badge bg-danger">{{ result.percentage|floatformat:1 }}%</span>
                                 {% endif %}
                             </td>
-                            <td>{{ result.created_at|date:"d.m.Y H:i" }}</td>
+                            <td>
+                                <small class="text-muted">{{ result.created_at|date:"d.m.Y H:i" }}</small>
+                            </td>
                             <td>
                                 {% if result.percentage >= 80 %}
-                                <span class="badge bg-success">{% trans "Excellent" %}</span>
+                                    <span class="badge bg-success">
+                                        <i class="fas fa-star me-1"></i> {% trans "A'lo" %}
+                                    </span>
                                 {% elif result.percentage >= 60 %}
-                                <span class="badge bg-warning">{% trans "Good" %}</span>
+                                    <span class="badge bg-warning">
+                                        <i class="fas fa-check-circle me-1"></i> {% trans "Yaxshi" %}
+                                    </span>
                                 {% else %}
-                                <span class="badge bg-danger">{% trans "Unsatisfactory" %}</span>
+                                    <span class="badge bg-danger">
+                                        <i class="fas fa-exclamation-circle me-1"></i> {% trans "Qoniqarsiz" %}
+                                    </span>
                                 {% endif %}
                             </td>
                         </tr>
@@ -60,80 +75,229 @@
             </div>
 
             <!-- Umumiy statistika -->
-            <div class="card mt-4">
+            <div class="card border-info mb-4">
                 <div class="card-header bg-info text-white">
-                    <h5 class="mb-0"><i class="fas fa-chart-bar"></i> {% trans "Overall Statistics" %}</h5>
+                    <h5 class="mb-0"><i class="fas fa-chart-bar me-2"></i> {% trans "Umumiy statistika" %}</h5>
                 </div>
                 <div class="card-body">
                     <div class="row text-center">
-                        <div class="col-md-3">
-                            <h3 class="text-primary">{{ results.count }}</h3>
-                            <p class="text-muted">{% trans "Total tests" %}</p>
+                        <div class="col-md-3 col-6 mb-3">
+                            <div class="stat-card p-3 border rounded bg-light">
+                                <div class="stat-icon mb-2">
+                                    <i class="fas fa-file-alt fa-2x text-primary"></i>
+                                </div>
+                                <h3 class="text-primary fw-bold">{{ total_tests }}</h3>
+                                <p class="text-muted mb-0">{% trans "Jami testlar" %}</p>
+                            </div>
                         </div>
-                        <div class="col-md-3">
-                            <h3 class="text-success">
-                                {% with total_score=0 total_questions=0 %}
-                                {% for r in results %}
-                                {% widthratio r.score 1 1 as score_int %}
-                                {% widthratio r.total_questions 1 1 as total_int %}
-                                {% with total_score=total_score|add:score_int total_questions=total_questions|add:total_int %}
-                                {% endwith %}
-                                {% endfor %}
-                                {% if total_questions > 0 %}
-                                {{ total_score|add:"0" }}/{{ total_questions }}
-                                {% else %}
-                                0/0
-                                {% endif %}
-                                {% endwith %}
-                            </h3>
-                            <p class="text-muted">{% trans "Overall result" %}</p>
+
+                        <div class="col-md-3 col-6 mb-3">
+                            <div class="stat-card p-3 border rounded bg-light">
+                                <div class="stat-icon mb-2">
+                                    <i class="fas fa-check-circle fa-2x text-success"></i>
+                                </div>
+                                <h3 class="text-success fw-bold">{{ overall_result }}</h3>
+                                <p class="text-muted mb-0">{% trans "Umumiy natija" %}</p>
+                            </div>
                         </div>
-                        <div class="col-md-3">
-                            <h3 class="text-warning">
-                                {% if results %}
-                                {% with total_percentage=0 %}
-                                {% for r in results %}
-                                {% with total_percentage=total_percentage|add:r.percentage %}
-                                {% endwith %}
-                                {% endfor %}
-                                {{ total_percentage|divisibleby:results.count|default:0 }}
-                                {% endwith %}
-                                {% else %}
-                                0
-                                {% endif %}%
-                            </h3>
-                            <p class="text-muted">{% trans "Average percentage" %}</p>
+
+                        <div class="col-md-3 col-6 mb-3">
+                            <div class="stat-card p-3 border rounded bg-light">
+                                <div class="stat-icon mb-2">
+                                    <i class="fas fa-percentage fa-2x text-warning"></i>
+                                </div>
+                                <h3 class="text-warning fw-bold">{{ average_percentage|floatformat:1 }}%</h3>
+                                <p class="text-muted mb-0">{% trans "O'rtacha foiz" %}</p>
+                            </div>
                         </div>
-                        <div class="col-md-3">
-                            <h3 class="text-danger">
-                                {% if results %}
-                                {% widthratio results.count 1 1 as attempts %}
-                                {% if attempts > 0 %}
-                                {{ attempts }}
-                                {% else %}
-                                0
-                                {% endif %}
-                                {% else %}
-                                0
-                                {% endif %}
-                            </h3>
-                            <p class="text-muted">{% trans "Attempts" %}</p>
+
+                        <div class="col-md-3 col-6 mb-3">
+                            <div class="stat-card p-3 border rounded bg-light">
+                                <div class="stat-icon mb-2">
+                                    <i class="fas fa-history fa-2x text-danger"></i>
+                                </div>
+                                <h3 class="text-danger fw-bold">{{ total_tests }}</h3>
+                                <p class="text-muted mb-0">{% trans "Urinishlar" %}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {% else %}
-            <div class="text-center py-5">
-                <i class="fas fa-chart-line fa-3x text-muted mb-3"></i>
-                <h4 class="text-muted">{% trans "No test results yet" %}</h4>
-                <p>{% trans "Start taking tests and see your results here!" %}</p>
-                <a href="{% url 'app3:home' %}" class="btn btn-primary mt-2">
-                    <i class="fas fa-play"></i> {% trans "Start Tests" %}
+            <!-- Natijalar taqsimoti -->
+            <div class="card border-success mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-chart-pie me-2"></i> {% trans "Natijalar taqsimoti" %}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <div class="progress mb-3" style="height: 35px; border-radius: 10px;">
+                                {% if total_tests > 0 %}
+                                    {% widthratio excellent_count total_tests 100 as excellent_percent %}
+                                    {% widthratio good_count total_tests 100 as good_percent %}
+                                    {% widthratio poor_count total_tests 100 as poor_percent %}
+
+                                    <div class="progress-bar bg-success" style="width: {{ excellent_percent }}%; border-radius: 10px 0 0 10px;">
+                                        <span class="fw-bold">{% trans "A'lo" %} ({{ excellent_count }})</span>
+                                    </div>
+                                    <div class="progress-bar bg-warning" style="width: {{ good_percent }}%">
+                                        <span class="fw-bold">{% trans "Yaxshi" %} ({{ good_count }})</span>
+                                    </div>
+                                    <div class="progress-bar bg-danger" style="width: {{ poor_percent }}%; border-radius: 0 10px 10px 0;">
+                                        <span class="fw-bold">{% trans "Qoniqarsiz" %} ({{ poor_count }})</span>
+                                    </div>
+                                {% else %}
+                                    <div class="progress-bar bg-secondary" style="width: 100%; border-radius: 10px;">
+                                        <span class="fw-bold">{% trans "Natijalar yo'q" %}</span>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="legend">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="legend-color bg-success me-2" style="width: 20px; height: 20px; border-radius: 4px;"></span>
+                                    <span>{% trans "A'lo (80-100%)" %}: <strong>{{ excellent_count }}</strong></span>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="legend-color bg-warning me-2" style="width: 20px; height: 20px; border-radius: 4px;"></span>
+                                    <span>{% trans "Yaxshi (60-79%)" %}: <strong>{{ good_count }}</strong></span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="legend-color bg-danger me-2" style="width: 20px; height: 20px; border-radius: 4px;"></span>
+                                    <span>{% trans "Qoniqarsiz (0-59%)" %}: <strong>{{ poor_count }}</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yangi test boshlash tugmasi -->
+            <div class="text-center">
+                <a href="{% url 'app3:home' %}" class="btn btn-primary btn-lg px-5">
+                    <i class="fas fa-play me-2"></i> {% trans "Yangi test boshlash" %}
                 </a>
+            </div>
+
+            {% else %}
+            <!-- Natijalar yo'q bo'lganda -->
+            <div class="text-center py-5">
+                <div class="empty-state">
+                    <i class="fas fa-chart-line fa-4x text-muted mb-4"></i>
+                    <h3 class="text-muted mb-3">{% trans "Hozircha test natijalaringiz yo'q" %}</h3>
+                    <p class="text-muted mb-4">{% trans "Testlarni ishlashni boshlang va natijalaringizni bu yerda ko'ring!" %}</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="{% url 'app3:home' %}" class="btn btn-primary btn-lg px-4">
+                            <i class="fas fa-play me-2"></i> {% trans "Testlarni boshlash" %}
+                        </a>
+                        <a href="{% url 'app3:all_tests' %}" class="btn btn-outline-primary btn-lg px-4">
+                            <i class="fas fa-list me-2"></i> {% trans "Barcha testlar" %}
+                        </a>
+                    </div>
+                </div>
             </div>
             {% endif %}
         </div>
+
+        <div class="card-footer bg-light text-muted text-center py-3">
+            <small>
+                <i class="fas fa-info-circle me-1"></i>
+                {% trans "Natijalar avtomatik ravishda saqlanadi. Har qanday testni qayta ishlashingiz mumkin." %}
+            </small>
+        </div>
     </div>
 </div>
+
+<style>
+.stat-card {
+    transition: all 0.3s ease;
+    border: 1px solid #dee2e6 !important;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+    border-color: #0d6efd !important;
+}
+
+.stat-icon {
+    opacity: 0.8;
+}
+
+.progress-bar {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+.empty-state {
+    padding: 50px 30px;
+    border-radius: 15px;
+    background-color: #f8f9fa;
+    border: 2px dashed #dee2e6;
+}
+
+.legend-color {
+    display: inline-block;
+}
+
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    border: none;
+}
+
+.card-header {
+    border-bottom: none;
+}
+
+.badge {
+    font-size: 0.85em;
+    padding: 0.5em 0.8em;
+}
+
+.table-primary {
+    background-color: #e7f1ff;
+}
+
+.table-primary th {
+    border-bottom: 2px solid #0d6efd;
+}
+
+@media (max-width: 768px) {
+    .table-responsive {
+        font-size: 0.9rem;
+    }
+
+    .stat-card {
+        padding: 15px 10px !important;
+    }
+
+    .stat-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .progress-bar {
+        font-size: 12px;
+    }
+
+    .btn-lg {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+
+    .empty-state {
+        padding: 30px 15px;
+    }
+}
+</style>
 {% endblock %}

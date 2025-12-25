@@ -18,7 +18,6 @@ urlpatterns += i18n_patterns(
     path('code/', include('app2.urls'), name='code'),
     path('ai', include('app3.urls')),  # app3 ga o'zgartiramiz
 
-    # prefix_default_language=False,  # BU NI O'CHIRIB TASHLANG
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

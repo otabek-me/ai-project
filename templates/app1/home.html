@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block content %}
 <style>
     /* Asosiy stillar */
@@ -829,7 +829,7 @@
 
     <!-- Asosiy statistik kartalar -->
     <section class="static_contaner_section">
-
+       
         <!-- Foydalanuvchilar -->
         <div class="contaner_info">
             <div class="log_num">
@@ -860,9 +860,9 @@
   <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
 </svg>
                 <h2>{{ avg_progress|floatformat:1 }}%</h2>
-            </div>
+            </div>'
             <p>
-                Sizning o'rtacha natijangiz
+                {% trans "Sizning o'rtacha natijangiz" %}
             </p>
         </div>
 

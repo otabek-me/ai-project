@@ -18,6 +18,7 @@ import requests
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt, csrf_protect, ensure_csrf_cookie
 import logging
+from django.utils import translation
 
 
 def home(request):
@@ -316,6 +317,10 @@ logger = logging.getLogger(__name__)
 @csrf_exempt  # CSRF dan ozod qilish
 def ai_chat(request):
     """AI chatbot - localization bilan ishlaydi"""
+
+    # 🔑 Joriy tilni olish
+    lang = translation.get_language()  # 'uz', 'ru', 'en'
+
     if request.method == 'POST':
         try:
             # JSON ma'lumotlarni olish
@@ -333,12 +338,11 @@ def ai_chat(request):
                     'type': 'error'
                 })
 
-            # DEBUG: Terminalga chiqarish
             print(f"📩 Foydalanuvchi xabari: {user_message}")
+            print(f"🌍 Joriy til: {lang}")
 
-            # API kalit
             api_key = settings.OPENAI_API_KEY
-            # OpenAI API ga so'rov
+
             url = "https://api.openai.com/v1/chat/completions"
             headers = {
                 "Authorization": f"Bearer {api_key}",
@@ -346,7 +350,7 @@ def ai_chat(request):
             }
 
             payload = {
-                "model": "gpt-4o-mini",  # GPT-4o-mini modeli
+                "model": "gpt-4o-mini",
                 "messages": [
                     {
                         "role": "system",
@@ -354,23 +358,29 @@ def ai_chat(request):
                             Siz foydali IT va dasturlash yordamchisisiz.
                             Javoblaringiz aniq, tushunarli va amaliy bo'lsin.
                             
-                            Javob tili: {LANGUAGE_CODE}
+                            Javob tili: {lang}
                             Faqat shu tilda javob bering.
                             
                             Agar kod namunalari kerak bo'lsa, to'liq va izohli kod yozing.
                             Murojaat qilishda "siz" deb murojaat qiling.
                             """
-                        },
-                    {"role": "user", "content": user_message}
+                    },
+                    {
+                        "role": "user",
+                        "content": user_message
+                    }
                 ],
                 "max_tokens": 500,
                 "temperature": 0.7
             }
 
-            # So'rov yuborish
-            response = requests.post(url, headers=headers, json=payload, timeout=30)
+            response = requests.post(
+                url,
+                headers=headers,
+                json=payload,
+                timeout=30
+            )
 
-            # DEBUG: API javobi
             print(f"🔧 API Status: {response.status_code}")
 
             if response.status_code == 200:
@@ -384,36 +394,28 @@ def ai_chat(request):
                     'response': ai_response,
                     'type': 'ai'
                 })
+
             else:
                 logger.error(f"API error: {response.status_code} - {response.text}")
-                print(f"❌ API xatosi: {response.status_code} - {response.text[:200]}")
+                print(f"❌ API xatosi: {response.status_code}")
 
-                # Offline javob
-                offline_response = get_offline_response(user_message)
                 return JsonResponse({
                     'success': True,
-                    'response': offline_response,
-                    'type': 'offline',
-                    'note': 'API xatosi'
+                    'response': "Server vaqtincha javob bermayapti.",
+                    'type': 'offline'
                 })
 
         except Exception as e:
-            logger.error(f"Error: {e}")
-            print(f"🔥 Xatolik: {e}")
-
-            # Offline javob
-            offline_response = get_offline_response(user_message)
+            logger.exception("🔥 AI chat xatosi")
             return JsonResponse({
-                'success': True,
-                'response': offline_response,
-                'type': 'offline',
-                'note': str(e)[:100]
+                'success': False,
+                'response': f"Xatolik yuz berdi: {str(e)}",
+                'type': 'error'
             })
 
-    # GET so'rovi
+    # GET so'rovi (sahifa ochilganda)
     print("📄 GET so'rovi keldi, HTML sahifa yuborilmoqda...")
     return render(request, 'app1/ai_chat.html')
-
 
 def tests(request):
     subjects = Subject.objects.prefetch_related('test_set').all()

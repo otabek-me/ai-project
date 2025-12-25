@@ -462,34 +462,32 @@
   }
 </style>
 <div class="about_box">
-  <h1>Biz haqimizda</h1>
+  <h1>{% trans "Biz haqimizda" %}</h1>
   <div class="about_info">
     <div class="card-body">
       <p class="lead">
-        IT Ta'lim portali - bu texnika ixtisosligi talabalari uchun maxsus
-        yaratilgan onlayn o'quv platformasi.
+        {% trans "IT Ta'lim portali - bu texnika ixtisosligi talabalari uchun maxsus yaratilgan onlayn o'quv platformasi." %}
       </p>
 
-      <h4>Platformamizning asosiy maqsadlari:</h4>
+      <h4>{% trans "Platformamizning asosiy maqsadlari:" %}</h4>
       <ul>
         <li>
-          Talabalarga mutaxassislik fanlari bo'yicha qo'shimcha materiallar
-          taqdim etish
+          {% trans "Talabalarga mutaxassislik fanlari bo'yicha qo'shimcha materiallar taqdim etish" %}
         </li>
-        <li>Interaktiv testlar orqali bilimlarni mustahkamlash</li>
-        <li>Video darslar yordamida murakkab mavzularni tushunarli qilish</li>
-        <li>Sun'iy intellekt yordamida individual yondashuvni ta'minlash</li>
+        <li>{% trans "Interaktiv testlar orqali bilimlarni mustahkamlash" %}</li>
+        <li>{% trans "Video darslar yordamida murakkab mavzularni tushunarli qilish" %}</li>
+        <li>{% trans "Sun'iy intellekt yordamida individual yondashuvni ta'minlash" %}</li>
       </ul>
 
-      <h4>Bizning afzalliklarimiz:</h4>
+      <h4>{% trans "Bizning afzalliklarimiz:" %}</h4>
       <div class="row mt-4">
         <div class="col-md-6">
           <div class="d-flex align-items-center mb-3">
             <i class="fas fa-graduation-cap text-primary fa-2x me-3"></i>
             <div>
-              <h5>Malakali o'qituvchilar</h5>
+              <h5>{% trans "Malakali o'qituvchilar" %}</h5>
               <p class="mb-0">
-                Soha mutaxassislari tomonidan tayyorlangan materiallar
+                {% trans "Soha mutaxassislari tomonidan tayyorlangan materiallar" %}
               </p>
             </div>
           </div>
@@ -498,8 +496,10 @@
           <div class="d-flex align-items-center mb-3">
             <i class="fas fa-laptop-code text-success fa-2x me-3"></i>
             <div>
-              <h5>Zamonaviy texnologiyalar</h5>
-              <p class="mb-0">Eng so'nggi dasturlash tillari va frameworklar</p>
+              <h5>{% trans "Zamonaviy texnologiyalar" %}</h5>
+              <p class="mb-0">
+                {% trans "Eng so'nggi dasturlash tillari va frameworklar" %}
+              </p>
             </div>
           </div>
         </div>
@@ -507,9 +507,9 @@
           <div class="d-flex align-items-center mb-3">
             <i class="fas fa-chart-line text-warning fa-2x me-3"></i>
             <div>
-              <h5>Progress monitoring</h5>
+              <h5>{% trans "Progress monitoring" %}</h5>
               <p class="mb-0">
-                O'z bilimingizni doimiy ravishda kuzatib boring
+                {% trans "O'z bilimingizni doimiy ravishda kuzatib boring" %}
               </p>
             </div>
           </div>
@@ -518,13 +518,14 @@
           <div class="d-flex align-items-center mb-3">
             <i class="fas fa-users text-info fa-2x me-3"></i>
             <div>
-              <h5>Hamkorlik</h5>
-              <p class="mb-0">Boshqa talabalar bilan bilim almashing</p>
+              <h5>{% trans "Hamkorlik" %}</h5>
+              <p class="mb-0">
+                {% trans "Boshqa talabalar bilan bilim almashing" %}
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-{% endblock %}
+</div>{% endblock %}
