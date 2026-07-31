@@ -6,9 +6,10 @@ from django.http import JsonResponse
 import json
 import requests
 from django.conf import settings
+from django.views.decorators.http import require_POST
 from .models import AITest, TestAttempt
 from .forms import SimpleAITestForm
-import openai
+from groq import Groq
 
 
 # app3/views.py - home funksiyasini yangilaymiz
@@ -47,7 +48,7 @@ def home(request):
 @user_passes_test(lambda u: u.is_staff)
 def admin_ai_chat(request):
     """Admin uchun AI chat bot test yaratish"""
-    api_key_configured = hasattr(settings, 'OPENAI_API_KEY') and settings.OPENAI_API_KEY
+    api_key_configured = hasattr(settings, 'GROQ_API_KEY') and settings.GROQ_API_KEY
 
     if request.method == 'POST':
         form = SimpleAITestForm(request.POST)
@@ -58,43 +59,70 @@ def admin_ai_chat(request):
 
             # API kalit borligini tekshirish
             if not api_key_configured:
-                messages.error(request, "❌ OpenAI API kaliti topilmadi. settings.py fayliga OPENAI_API_KEY qo'shing")
+                messages.error(request, "❌ Groq API kaliti topilmadi. settings.py fayliga GROQ_API_KEY qo'shing")
                 return redirect('app3:admin_ai_chat')
 
             try:
 
-                # OpenAI API ga so'rov
-                client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
+                # Groq API ga so'rov
+                client = Groq(api_key=settings.GROQ_API_KEY)
 
+                # MUHIM: Groq'ning response_format=json_object rejimi modeldan
+                # albatta JSON OBYEKT ({..}) qaytarishni talab qiladi, JSON MASSIV
+                # ([..]) emas. Shuning uchun savollarni "questions" kaliti ichida
+                # so'raymiz, keyin pastda uni qayta massivga aylantiramiz.
                 full_prompt = f"""
                 {prompt_text}
 
                 Iltimos, faqat quyidagi JSON formatida javob bering:
-                [
-                  {{
-                    "question": "Savol matni",
-                    "options": ["A variant", "B variant", "C variant", "D variant"],
-                    "correct": 0
-                  }}
-                ]
+                {{
+                  "questions": [
+                    {{
+                      "question": "Savol matni",
+                      "options": ["A variant", "B variant", "C variant", "D variant"],
+                      "correct": 0
+                    }}
+                  ]
+                }}
 
                 Savollar soni: 10 ta
                 """
 
                 response = client.chat.completions.create(
-                    model="gpt-4o-mini",
+                    model="llama-3.3-70b-versatile",
                     messages=[
                         {
                             "role": "system",
-                            "content": "Siz test savollari yaratuvchi yordamchisiz. Faqat JSON formatida javob bering."
+                            "content": "Siz test savollari yaratuvchi yordamchisiz. Faqat so'ralgan JSON formatida javob bering."
                         },
                         {"role": "user", "content": full_prompt}
                     ],
                     temperature=0.7,
-                    max_tokens=2000
+                    max_tokens=2000,
+                    response_format={"type": "json_object"}
                 )
 
-                ai_response = response.choices[0].message.content
+                raw_response = response.choices[0].message.content
+
+                # Modeldan kelgan {"questions": [...]} obyektini
+                # create_test_from_ai_response() kutgan [...] massiv shakliga
+                # qaytarib o'giramiz.
+                try:
+                    parsed = json.loads(raw_response)
+                    questions_list = parsed.get("questions", []) if isinstance(parsed, dict) else parsed
+                except (json.JSONDecodeError, AttributeError):
+                    questions_list = []
+
+                ai_response = json.dumps(questions_list, ensure_ascii=False)
+
+                if not questions_list:
+                    logger_msg = raw_response[:300] if raw_response else "(bo'sh javob)"
+                    messages.error(
+                        request,
+                        f"❌ AI'dan savollar formatini ajratib bo'lmadi. Qayta urinib ko'ring. "
+                        f"(Xom javob: {logger_msg})"
+                    )
+                    return redirect('app3:admin_ai_chat')
 
                 # Test yaratish
                 ai_test = AITest.objects.create(
@@ -115,11 +143,12 @@ def admin_ai_chat(request):
                 # Yangilangan testlar ro'yxati bilan redirect
                 return redirect('app3:admin_ai_chat')
 
-            except openai.AuthenticationError:
-                messages.error(request, "❌ OpenAI API kaliti noto'g'ri yoki mavjud emas")
-                return redirect('app3:admin_ai_chat')
             except Exception as e:
-                messages.error(request, f"❌ Xatolik: {str(e)}")
+                error_str = str(e)
+                if "invalid_api_key" in error_str.lower() or "401" in error_str:
+                    messages.error(request, "❌ Groq API kaliti noto'g'ri yoki mavjud emas")
+                else:
+                    messages.error(request, f"❌ Xatolik: {error_str}")
                 return redirect('app3:admin_ai_chat')
     else:
         form = SimpleAITestForm()
@@ -224,7 +253,7 @@ def my_results(request):
         'attempts_count': total_tests,  # Urinishlar soni = testlar soni
     })
 
-
+@require_POST
 @login_required
 @user_passes_test(lambda u: u.is_staff)
 def delete_test(request, test_id):

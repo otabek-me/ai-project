@@ -763,11 +763,12 @@
                         </a>
 
                         <!-- O'chirish tugmasi -->
-                        <a href="{% url 'app3:delete_test' test.id %}"
-                           class="btn btn-sm btn-outline-danger"
-                           onclick="return confirm('{% trans "Testni o\'chirishni istaysizmi?" %}')">
-                            <i class="fas fa-trash"></i> {% trans 'O\'chirish' %}
-                        </a>
+                        <form action="{% url 'app3:delete_test' test.id %}" method="post" style="display:inline;" onsubmit="return confirm('{% trans "Testni o\'chirishni istaysizmi?" %}')">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                <i class="fas fa-trash"></i> {% trans 'O\'chirish' %}
+                            </button>
+                        </form>
                     </div>
                 </div>
                 {% else %}

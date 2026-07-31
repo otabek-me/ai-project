@@ -9,6 +9,7 @@ import io
 import base64
 import numpy as np
 import matplotlib
+
 matplotlib.use('Agg')
 from django.conf import settings
 from .utils import update_user_difficulty_level  # Bu yerda import qilamiz
@@ -102,7 +103,6 @@ def home(request):
 
     # 3. Grafik yaratish - IKKALA DIAGRAMMA HAM DUMALOQ
     if subject_materials:
-
 
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 7))
 
@@ -234,6 +234,8 @@ def home(request):
             user_subject_progress)
         if user_subject_progress else 0
     })
+
+
 def about(request):
     """Loyiha haqida sahifa"""
     return render(request, 'app1/about.html')
@@ -284,6 +286,7 @@ def add_document(request):
         form = DocumentForm(initial=initial)
 
     return render(request, 'app1/add_document.html', {'form': form})
+
 
 def video_lessons(request):
     """Video darslar ro'yxati"""
@@ -341,26 +344,26 @@ def ai_chat(request):
             print(f"📩 Foydalanuvchi xabari: {user_message}")
             print(f"🌍 Joriy til: {lang}")
 
-            api_key = settings.OPENAI_API_KEY
+            api_key = settings.GROQ_API_KEY
 
-            url = "https://api.openai.com/v1/chat/completions"
+            url = "https://api.groq.com/openai/v1/chat/completions"
             headers = {
                 "Authorization": f"Bearer {api_key}",
                 "Content-Type": "application/json"
             }
 
             payload = {
-                "model": "gpt-4o-mini",
+                "model": "llama-3.3-70b-versatile",
                 "messages": [
                     {
                         "role": "system",
                         "content": f"""
                             Siz foydali IT va dasturlash yordamchisisiz.
                             Javoblaringiz aniq, tushunarli va amaliy bo'lsin.
-                            
+
                             Javob tili: {lang}
                             Faqat shu tilda javob bering.
-                            
+
                             Agar kod namunalari kerak bo'lsa, to'liq va izohli kod yozing.
                             Murojaat qilishda "siz" deb murojaat qiling.
                             """
@@ -417,6 +420,7 @@ def ai_chat(request):
     print("📄 GET so'rovi keldi, HTML sahifa yuborilmoqda...")
     return render(request, 'app1/ai_chat.html')
 
+
 def tests(request):
     subjects = Subject.objects.prefetch_related('test_set').all()
 
@@ -446,6 +450,7 @@ def delete_test(request, test_id):
         messages.success(request, f'"{test_title}" testi o\'chirildi!')
 
     return redirect('tests')
+
 
 # views.py dagi take_test funksiyasida
 @login_required
@@ -520,6 +525,7 @@ def take_test(request, test_id):
         'time_limit_seconds': test.time_limit_minutes * 60,
         'total_questions': total_questions
     })
+
 
 @login_required
 def submit_test(request, test_id):
@@ -779,6 +785,7 @@ def user_stats(request, user_id):
             subject_stats) if subject_stats else 0
     })
 
+
 @login_required
 @user_passes_test(is_admin)
 def user_profile_detail(request, user_id):
@@ -795,4 +802,3 @@ def user_profile_detail(request, user_id):
         'user_profile': user_profile,
         'test_results': test_results
     })
-
