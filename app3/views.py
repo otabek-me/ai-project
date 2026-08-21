@@ -4,7 +4,6 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 import json
-import requests
 from django.conf import settings
 from django.views.decorators.http import require_POST
 from .models import AITest, TestAttempt
